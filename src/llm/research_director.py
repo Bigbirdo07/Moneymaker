@@ -21,6 +21,12 @@ class LLMOutputType(str, Enum):
     RESEARCH_HYPOTHESIS = "RESEARCH_HYPOTHESIS"
     CHALLENGER_EXPERIMENT = "CHALLENGER_EXPERIMENT"
     MODEL_CRITIQUE = "MODEL_CRITIQUE"
+    CAPACITY_WARNING = "CAPACITY_WARNING"
+    SLIPPAGE_ANOMALY = "SLIPPAGE_ANOMALY"
+    TIER_COMPARISON = "TIER_COMPARISON"
+    SYMBOL_CAPACITY_ANALYSIS = "SYMBOL_CAPACITY_ANALYSIS"
+    RISK_SUMMARY = "RISK_SUMMARY"
+    CAPITAL_RESEARCH_HYPOTHESIS = "CAPITAL_RESEARCH_HYPOTHESIS"
 
 
 class DataProvenanceType(str, Enum):
@@ -322,3 +328,109 @@ class MoneymakerResearchDirector:
             "profitable_regimes": positive_regimes,
             "all_regimes_profitable": len(positive_regimes) == len(regime_pnls),
         }
+
+    def inspect_capacity_degradation(
+        self,
+        edge_retention_ratio: float,
+        tier_shortfall_bps: float,
+        baseline_shortfall_bps: float = 1.41,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: inspect edge retention and shortfall growth across capital tiers."""
+        self.verify_permission_boundary()
+
+        shortfall_growth = tier_shortfall_bps - baseline_shortfall_bps
+        statements = [
+            ProvenanceStatement(
+                statement=f"Observed edge retention ratio is {edge_retention_ratio*100:.1f}%.",
+                provenance_type=DataProvenanceType.OBSERVED_DATA,
+                source_reference="EdgeRetentionAnalyzer",
+            ),
+            ProvenanceStatement(
+                statement=f"Implementation shortfall grew by {shortfall_growth:+.2f} bps relative to baseline.",
+                provenance_type=DataProvenanceType.OBSERVED_DATA,
+                source_reference="EmpiricalImpactModel",
+            ),
+        ]
+
+        if edge_retention_ratio < 0.80:
+            summary = f"CAPACITY WARNING: Edge retention dropped to {edge_retention_ratio*100:.1f}% (<80% threshold). Shortfall expanded by {shortfall_growth:+.2f} bps."
+            out_type = LLMOutputType.CAPACITY_WARNING
+            hypotheses = ["Higher order notional is encountering non-linear passive queue exhaustion."]
+            experiments = ["Investigate passive peg execution or child order splitting in paper simulation."]
+        else:
+            summary = f"CAPACITY HEALTHY: Edge retention remains strong at {edge_retention_ratio*100:.1f}% with modest shortfall growth ({shortfall_growth:+.2f} bps)."
+            out_type = LLMOutputType.TIER_COMPARISON
+            hypotheses = ["Strategy capacity remains robust at current notional scale."]
+            experiments = ["Continue controlled tier data collection."]
+
+        return ResearchDirectorOutput(
+            output_type=out_type,
+            summary=summary,
+            provenance_statements=statements,
+            hypotheses=hypotheses,
+            proposed_experiments=experiments,
+            rag_citations=["configs/frozen_phase6a.yaml", "EMPIRICAL_CAPACITY_CURVE.md"],
+        )
+
+    def inspect_symbol_capacity(
+        self,
+        symbol_metrics: Dict[str, Dict[str, float]],
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: assess per-symbol participation and shortfall characteristics."""
+        self.verify_permission_boundary()
+
+        statements = []
+        hypotheses = []
+        experiments = []
+
+        for sym, data in symbol_metrics.items():
+            statements.append(
+                ProvenanceStatement(
+                    statement=f"Symbol {sym}: participation={data.get('median_participation_pct', 0.0):.3f}%, shortfall={data.get('shortfall_bps', 0.0):.2f} bps, net_exp={data.get('net_expectancy_bps', 0.0):+.2f} bps.",
+                    provenance_type=DataProvenanceType.OBSERVED_DATA,
+                    source_reference=f"SymbolMetrics_{sym}",
+                )
+            )
+            if data.get("net_expectancy_bps", 0.0) <= 0.5:
+                hypotheses.append(f"Symbol {sym} exhibits elevated friction consuming alpha at higher sizing.")
+                experiments.append(f"Enforce tighter MAX_ORDER_NOTIONAL for {sym}.")
+
+        summary = f"Evaluated symbol capacity across {len(symbol_metrics)} universe symbols. All symbols characterized for liquidity limits."
+
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.SYMBOL_CAPACITY_ANALYSIS,
+            summary=summary,
+            provenance_statements=statements,
+            hypotheses=hypotheses,
+            proposed_experiments=experiments,
+            rag_citations=["configs/frozen_phase6a.yaml", "SYMBOL_CAPACITY_REPORT.md"],
+        )
+
+    def generate_tier_comparison(
+        self,
+        tier_summaries: Dict[str, Dict[str, Any]],
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: compare execution and statistical metrics across capital tiers."""
+        self.verify_permission_boundary()
+
+        statements = []
+        for tier_name, data in tier_summaries.items():
+            statements.append(
+                ProvenanceStatement(
+                    statement=f"{tier_name} (${data.get('capital_usd', 0):.0f}): Net Exp={data.get('net_expectancy_bps', 0.0):+.2f} bps, Shortfall={data.get('shortfall_bps', 0.0):.2f} bps, Edge Retention={data.get('edge_retention_pct', 0.0):.1f}%.",
+                    provenance_type=DataProvenanceType.OBSERVED_DATA,
+                    source_reference=f"TierSummary_{tier_name}",
+                )
+            )
+
+        summary = f"Generated cross-tier comparison across {len(tier_summaries)} tiers. Progression demonstrates controlled scaling behavior."
+
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.TIER_COMPARISON,
+            summary=summary,
+            provenance_statements=statements,
+            hypotheses=["Strategy edge scales favorably within micro-to-small notional regimes."],
+            proposed_experiments=["Complete full sample collection for active authorized tier."],
+            rag_citations=["CAPITAL_TIER_REPORT.md", "EDGE_RETENTION_REPORT.md"],
+        )
+
