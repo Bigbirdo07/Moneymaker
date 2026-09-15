@@ -17,6 +17,7 @@ class ExecutionMode(str, Enum):
     BROKER_PAPER = "BROKER_PAPER"
     ALPHA_B_BROKER_PAPER = "ALPHA_B_BROKER_PAPER"
     ALPHA_B_LIVE_GOVERNED_MICRO = "ALPHA_B_LIVE_GOVERNED_MICRO"
+    ALPHA_B_LIVE_AUTONOMOUS_MICRO = "ALPHA_B_LIVE_AUTONOMOUS_MICRO"
     LIVE_GOVERNED_MICRO = "LIVE_GOVERNED_MICRO"
     LIVE_AUTONOMOUS_MICRO = "LIVE_AUTONOMOUS_MICRO"
     LIVE = "LIVE"
@@ -28,8 +29,9 @@ def verify_execution_mode(mode: ExecutionMode) -> None:
         raise RuntimeError(
             "FATAL SAFETY VIOLATION: Unrestricted LIVE money execution is strictly prohibited. "
             "Only SHADOW, BROKER_PAPER, ALPHA_B_BROKER_PAPER, ALPHA_B_LIVE_GOVERNED_MICRO, "
-            "LIVE_GOVERNED_MICRO, or LIVE_AUTONOMOUS_MICRO modes are permitted."
+            "ALPHA_B_LIVE_AUTONOMOUS_MICRO, LIVE_GOVERNED_MICRO, or LIVE_AUTONOMOUS_MICRO modes are permitted."
         )
+
 
 
 class OrderStatus(str, Enum):
