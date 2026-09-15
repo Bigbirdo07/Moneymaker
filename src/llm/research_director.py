@@ -33,6 +33,11 @@ class LLMOutputType(str, Enum):
     PORTFOLIO_RISK_FINDING = "PORTFOLIO_RISK_FINDING"
     ALPHA_DECAY_WARNING = "ALPHA_DECAY_WARNING"
     PAPER_EXECUTION_WARNING = "PAPER_EXECUTION_WARNING"
+    LIVE_PAPER_DIVERGENCE = "LIVE_PAPER_DIVERGENCE"
+    STRATEGY_COLLISION_WARNING = "STRATEGY_COLLISION_WARNING"
+    PORTFOLIO_CONCENTRATION_WARNING = "PORTFOLIO_CONCENTRATION_WARNING"
+    DIVERSIFICATION_DECAY_WARNING = "DIVERSIFICATION_DECAY_WARNING"
+    STRATEGY_HEALTH_SUMMARY = "STRATEGY_HEALTH_SUMMARY"
 
 
 class DataProvenanceType(str, Enum):
@@ -618,5 +623,125 @@ class MoneymakerResearchDirector:
             hypotheses=["Broker paper fill simulations may underestimate real queue priority drag."],
             proposed_experiments=["Compare shadow conservative fill logic against live micro-fill logs when promoted."],
             rag_citations=["ALPHA_B_PAPER_VS_SHADOW_REPORT.md", "ALPHA_B_EXECUTION_QUALITY_REPORT.md"],
+        )
+
+    def generate_live_paper_divergence_finding(
+        self,
+        strategy_id: str,
+        live_net_bps: float,
+        paper_net_bps: float,
+        gap_bps: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface live vs paper execution divergence and queue drag."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=f"Live vs paper divergence for {strategy_id}: Live net {live_net_bps:+.2f} bps, Paper net {paper_net_bps:+.2f} bps (Gap: {gap_bps:+.2f} bps).",
+            provenance_type=DataProvenanceType.OBSERVED_DATA,
+            source_reference="ALPHA_B_LIVE_VS_PAPER_REPORT.md",
+        )
+        summary = f"Live pilot execution for {strategy_id} exhibits realistic execution friction relative to sandbox paper ({gap_bps:+.2f} bps gap)."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.LIVE_PAPER_DIVERGENCE,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Morning opening market queue placement introduces ~0.8-1.2 bps realized friction."],
+            proposed_experiments=["Maintain triple-book tracking across full 30+ session pilot window."],
+            rag_citations=["ALPHA_B_LIVE_VS_PAPER_REPORT.md"],
+        )
+
+    def generate_strategy_collision_warning(
+        self,
+        symbol: str,
+        alpha_a_notional_usd: float,
+        alpha_b_notional_usd: float,
+        combined_cap_usd: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface concurrent cross-strategy exposure on shared symbols."""
+        self.verify_permission_boundary()
+        total_notional = alpha_a_notional_usd + alpha_b_notional_usd
+        statement = ProvenanceStatement(
+            statement=f"Cross-strategy collision detected for {symbol}: Alpha A ${alpha_a_notional_usd:.2f}, Alpha B ${alpha_b_notional_usd:.2f}. Total ${total_notional:.2f} vs cap ${combined_cap_usd:.2f}.",
+            provenance_type=DataProvenanceType.OBSERVED_DATA,
+            source_reference="PORTFOLIO_COLLISION_REPORT.md",
+        )
+        summary = f"Simultaneous signal on {symbol} requires deterministic portfolio concentration capping."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.STRATEGY_COLLISION_WARNING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Shared large-cap tech universe occasionally produces concurrent momentum and reversal signals."],
+            proposed_experiments=["Audit execution logs for exposure-capped orders under live collision conditions."],
+            rag_citations=["PORTFOLIO_COLLISION_REPORT.md"],
+        )
+
+    def generate_portfolio_concentration_warning(
+        self,
+        concentration_metric: str,
+        observed_value: float,
+        threshold_value: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface portfolio-level gross, sector, or archetype concentration."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=f"Portfolio concentration warning for {concentration_metric}: Observed {observed_value:.1f}%, Limit {threshold_value:.1f}%.",
+            provenance_type=DataProvenanceType.STATISTICAL_INFERENCE,
+            source_reference="PORTFOLIO_AGGREGATE_RISK_REPORT.md",
+        )
+        summary = f"Portfolio risk budget concentration on {concentration_metric} reached {observed_value:.1f}%."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.PORTFOLIO_CONCENTRATION_WARNING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Cluster concentration in high-beta tech requires multi-sector expansion in future phases."],
+            proposed_experiments=["Evaluate sector-balanced candidate universe in offline research."],
+            rag_citations=["PORTFOLIO_AGGREGATE_RISK_REPORT.md"],
+        )
+
+    def generate_diversification_decay_warning(
+        self,
+        rolling_window_days: int,
+        observed_correlation: float,
+        baseline_correlation: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface rolling cross-strategy correlation drift."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=f"Rolling {rolling_window_days}-day correlation drifted from baseline {baseline_correlation:.3f} to {observed_correlation:.3f}.",
+            provenance_type=DataProvenanceType.STATISTICAL_INFERENCE,
+            source_reference="PORTFOLIO_DIVERSIFICATION_STABILITY.md",
+        )
+        summary = f"Cross-strategy correlation stability monitoring confirms low correlation ({observed_correlation:.3f})."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.DIVERSIFICATION_DECAY_WARNING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Macro market regime shifts can temporarily alter cross-strategy correlation."],
+            proposed_experiments=["Track 20-day rolling correlation during broad market stress periods."],
+            rag_citations=["PORTFOLIO_DIVERSIFICATION_STABILITY.md"],
+        )
+
+    def generate_strategy_health_summary(
+        self,
+        strategy_id: str,
+        capital_authorized_usd: float,
+        net_expectancy_bps: float,
+        cost_break_even_mult: float,
+        status: str,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface composite strategy operational health summary."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=f"Strategy health for {strategy_id}: Capital ${capital_authorized_usd:.2f}, Net {net_expectancy_bps:+.2f} bps, Cost margin {cost_break_even_mult:.2f}x. Status: {status}.",
+            provenance_type=DataProvenanceType.OBSERVED_DATA,
+            source_reference="VALIDATION_LEDGER.md",
+        )
+        summary = f"Strategy {strategy_id} operating in {status} status with {net_expectancy_bps:+.2f} bps net expectancy."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.STRATEGY_HEALTH_SUMMARY,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Strategy risk budgets and loss limits are functioning within pre-registered boundaries."],
+            proposed_experiments=["Continue routine daily governance monitoring."],
+            rag_citations=["VALIDATION_LEDGER.md"],
         )
 

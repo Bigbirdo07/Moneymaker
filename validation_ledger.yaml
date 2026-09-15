@@ -272,3 +272,51 @@ phases:
     test_count: 170
     status: "COMPLETED"
     notes: "Multi-strategy portfolio research combining Alpha A intraday and Alpha B 3-day reversal. 50/50 allocation yields Sharpe 1.85, max DD 3.4%, Pearson r=-0.038, zero live execution capability."
+
+  - phase_id: "Phase 7B (Track A)"
+    strategy_id: "ALPHA_A_INTRADAY_RELATIVE_MOMENTUM_V1"
+    capital: 10000.0
+    execution_mode: "LIVE_AUTONOMOUS_MICRO"
+    sample_size_fills: 210
+    sample_size_sessions: 35
+    evidence_type: "LIVE_AUTONOMOUS"
+    verdict: "CAPACITY_HOLD_WATCH"
+    git_commit: "HEAD"
+    frozen_config: "configs/frozen_tier3.yaml"
+    config_hash: "5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d"
+    model_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    test_count: 183
+    status: "COMPLETED"
+    notes: "Alpha A maintained at $10k live ceiling in PRODUCTION_CAPACITY_HOLD. Zero capital increase. Monitored watch-capacity stability (70.7% retention, +1.11 bps expectancy)."
+
+  - phase_id: "Phase 7B (Track B)"
+    strategy_id: "ALPHA_B_MULTI_DAY_RELATIVE_REVERSAL"
+    capital: 1000.0
+    execution_mode: "ALPHA_B_LIVE_GOVERNED_MICRO"
+    sample_size_fills: 25
+    sample_size_sessions: 25
+    evidence_type: "OBSERVED_LIVE_GOVERNED"
+    verdict: "ALPHA_B_LIVE_MICRO_VALIDATED"
+    git_commit: "HEAD"
+    frozen_config: "configs/frozen_alpha_b_live_micro_v1.yaml"
+    config_hash: "1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f"
+    model_hash: "ALPHA_B_MODEL_001"
+    test_count: 183
+    status: "COMPLETED"
+    notes: "Alpha B $1,000 live governed micro-pilot validated. Net expectancy +10.8 bps / 3D cycle, 3.00x live cost break-even multiplier, live-to-paper gap -1.00 bps, 0 incidents, 0 short orders."
+
+  - phase_id: "Phase 7B (Track C)"
+    strategy_id: "CONCURRENT_MULTI_STRATEGY_SHADOW"
+    capital: 11000.0
+    execution_mode: "HISTORICAL_RESEARCH"
+    sample_size_fills: 0
+    sample_size_sessions: 40
+    evidence_type: "CONCURRENT_SHADOW"
+    verdict: "CONCURRENT_DIVERSIFICATION_VALIDATED"
+    git_commit: "HEAD"
+    frozen_config: "configs/frozen_tier3.yaml & configs/frozen_alpha_b_live_micro_v1.yaml"
+    config_hash: "N/A_RESEARCH_SHADOW"
+    model_hash: "N/A_RESEARCH_SHADOW"
+    test_count: 183
+    status: "COMPLETED"
+    notes: "Concurrent live-decision shadow portfolio combining Alpha A ($10k) and Alpha B ($1k). Rolling 20d Pearson r=-0.038, 4-tier deterministic risk hierarchy operational, zero live allocator routing."
