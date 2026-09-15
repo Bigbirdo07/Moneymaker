@@ -281,7 +281,7 @@ phases:
     sample_size_sessions: 35
     evidence_type: "LIVE_AUTONOMOUS"
     verdict: "CAPACITY_HOLD_WATCH"
-    git_commit: "HEAD"
+    git_commit: "eea0468"
     frozen_config: "configs/frozen_tier3.yaml"
     config_hash: "5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d"
     model_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
@@ -297,7 +297,7 @@ phases:
     sample_size_sessions: 25
     evidence_type: "OBSERVED_LIVE_GOVERNED"
     verdict: "ALPHA_B_LIVE_MICRO_VALIDATED"
-    git_commit: "HEAD"
+    git_commit: "eea0468"
     frozen_config: "configs/frozen_alpha_b_live_micro_v1.yaml"
     config_hash: "1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f"
     model_hash: "ALPHA_B_MODEL_001"
@@ -313,10 +313,59 @@ phases:
     sample_size_sessions: 40
     evidence_type: "CONCURRENT_SHADOW"
     verdict: "CONCURRENT_DIVERSIFICATION_VALIDATED"
-    git_commit: "HEAD"
+    git_commit: "eea0468"
     frozen_config: "configs/frozen_tier3.yaml & configs/frozen_alpha_b_live_micro_v1.yaml"
     config_hash: "N/A_RESEARCH_SHADOW"
     model_hash: "N/A_RESEARCH_SHADOW"
     test_count: 183
     status: "COMPLETED"
     notes: "Concurrent live-decision shadow portfolio combining Alpha A ($10k) and Alpha B ($1k). Rolling 20d Pearson r=-0.038, 4-tier deterministic risk hierarchy operational, zero live allocator routing."
+
+  - phase_id: "Phase 7C (Track A)"
+    strategy_id: "ALPHA_A_INTRADAY_RELATIVE_MOMENTUM_V1"
+    capital: 10000.0
+    execution_mode: "LIVE_AUTONOMOUS_MICRO"
+    sample_size_fills: 210
+    sample_size_sessions: 35
+    evidence_type: "LIVE_AUTONOMOUS"
+    verdict: "CAPACITY_HOLD_WATCH"
+    git_commit: "HEAD"
+    frozen_config: "configs/frozen_tier3.yaml"
+    config_hash: "5e4d3c2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d"
+    model_hash: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    test_count: 202
+    status: "COMPLETED"
+    notes: "Alpha A maintained at $10k live ceiling in PRODUCTION_CAPACITY_HOLD. Gross alpha +4.870 bps, friction 3.760 bps, net expectancy +1.110 bps, 70.7% retention, zero capital scaling."
+
+  - phase_id: "Phase 7C (Track B)"
+    strategy_id: "ALPHA_B_MULTI_DAY_RELATIVE_REVERSAL"
+    capital: 1000.0
+    execution_mode: "ALPHA_B_LIVE_GOVERNED_MICRO"
+    sample_size_fills: 75
+    sample_size_sessions: 75
+    evidence_type: "OBSERVED_LIVE_GOVERNED"
+    verdict: "ALPHA_B_AUTONOMOUS_RESEARCH_CANDIDATE"
+    git_commit: "HEAD"
+    frozen_config: "configs/frozen_alpha_b_live_micro_v1.yaml"
+    config_hash: "1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f"
+    model_hash: "ALPHA_B_MODEL_001"
+    test_count: 202
+    status: "COMPLETED"
+    notes: "Cumulative 75 sessions (72 cohorts). Gross alpha +16.10 bps, friction 5.42 bps, net +10.68 bps. Model intrinsic edge +10.70 bps vs human discretionary +0.08 bps (p=0.785). Book D autonomy gap +0.02 bps. Autonomy candidate established; live autonomy not activated."
+
+  - phase_id: "Phase 7C (Track C)"
+    strategy_id: "CONCURRENT_MULTI_STRATEGY_SHADOW"
+    capital: 11000.0
+    execution_mode: "HISTORICAL_RESEARCH"
+    sample_size_fills: 0
+    sample_size_sessions: 75
+    evidence_type: "CONCURRENT_SHADOW"
+    verdict: "PORTFOLIO_RISK_AGGREGATOR_VALIDATED"
+    git_commit: "HEAD"
+    frozen_config: "configs/frozen_tier3.yaml & configs/frozen_alpha_b_live_micro_v1.yaml"
+    config_hash: "N/A_RESEARCH_SHADOW"
+    model_hash: "N/A_RESEARCH_SHADOW"
+    test_count: 202
+    status: "COMPLETED"
+    notes: "75-session concurrent portfolio shadow (Alpha A $10k + Alpha B $1k). Mean rolling 20d Pearson r=-0.036 (max 0.084 < 0.30), Sharpe 3.52, max DD 1.53%. 4-tier aggregator issued 8 clean vetoes (net efficacy +$76.50). Veto-only architecture confirmed."
+
