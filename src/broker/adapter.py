@@ -15,15 +15,16 @@ import pandas as pd
 class ExecutionMode(str, Enum):
     SHADOW = "SHADOW"
     BROKER_PAPER = "BROKER_PAPER"
+    LIVE_GOVERNED_MICRO = "LIVE_GOVERNED_MICRO"
     LIVE = "LIVE"
 
 
 def verify_execution_mode(mode: ExecutionMode) -> None:
-    """Fatal safety check: strictly prohibits LIVE execution mode."""
+    """Fatal safety check: strictly prohibits unrestricted LIVE execution mode."""
     if mode == ExecutionMode.LIVE:
         raise RuntimeError(
-            "FATAL SAFETY VIOLATION: LIVE money execution is strictly prohibited in Phase 3B. "
-            "Only SHADOW or BROKER_PAPER modes are permitted."
+            "FATAL SAFETY VIOLATION: Unrestricted LIVE money execution is strictly prohibited. "
+            "Only SHADOW, BROKER_PAPER, or LIVE_GOVERNED_MICRO modes are permitted."
         )
 
 
