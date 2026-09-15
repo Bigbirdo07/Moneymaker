@@ -1,59 +1,91 @@
 # Universe Configuration
-# V1: ~20 Highly Liquid US Equities & Broad Market ETFs
+# Phase 2.5: Expanded Multi-Sector Research Universe (~36 Liquid US Equities + ETFs)
 
 universe:
-  name: "us_liquid_largecap_v1"
-  description: "Core liquid universe for intraday quantitative research and baseline models"
+  name: "us_liquid_multisector_v2_5"
+  description: "Cross-sectional research universe spanning 8 sectors and major index ETFs"
   
   benchmarks:
     broad_market: "SPY"
     tech_growth: "QQQ"
+    small_cap: "IWM"
 
   sectors:
+    broad_market_etfs:
+      etf: "SPY"
+      symbols: ["SPY", "QQQ", "IWM"]
     technology:
       etf: "XLK"
-      symbols: ["AAPL", "MSFT", "NVDA", "AMD", "AVGO"]
+      symbols: ["AAPL", "MSFT", "NVDA", "AMD", "AVGO", "ORCL", "CSCO", "INTC"]
     communication_services:
       etf: "XLC"
-      symbols: ["GOOGL", "META"]
+      symbols: ["GOOGL", "META", "NFLX", "DIS"]
     consumer_discretionary:
       etf: "XLY"
-      symbols: ["AMZN", "TSLA"]
+      symbols: ["AMZN", "TSLA", "HD", "NKE", "MCD"]
+    consumer_staples:
+      etf: "XLP"
+      symbols: ["PG", "KO", "PEP", "COST", "WMT"]
     financials:
       etf: "XLF"
-      symbols: ["JPM", "BAC", "GS"]
+      symbols: ["JPM", "BAC", "GS", "MS", "WFC"]
     healthcare:
       etf: "XLV"
-      symbols: ["UNH", "JNJ", "LLY"]
+      symbols: ["UNH", "JNJ", "LLY", "ABBV", "MRK", "PFE"]
     industrials:
       etf: "XLI"
-      symbols: ["CAT", "GE"]
+      symbols: ["CAT", "GE", "HON", "BA", "UPS"]
     energy:
       etf: "XLE"
-      symbols: ["XOM", "CVX"]
+      symbols: ["XOM", "CVX", "SLB", "COP"]
 
-  # Flat list of active trading symbols (including benchmarks)
+  # Full flat list of universe symbols
   symbols:
     - "SPY"
     - "QQQ"
+    - "IWM"
     - "AAPL"
     - "MSFT"
     - "NVDA"
     - "AMD"
     - "AVGO"
+    - "ORCL"
+    - "CSCO"
+    - "INTC"
     - "GOOGL"
     - "META"
+    - "NFLX"
+    - "DIS"
     - "AMZN"
     - "TSLA"
+    - "HD"
+    - "NKE"
+    - "MCD"
+    - "PG"
+    - "KO"
+    - "PEP"
+    - "COST"
+    - "WMT"
     - "JPM"
     - "BAC"
     - "GS"
+    - "MS"
+    - "WFC"
     - "UNH"
     - "JNJ"
     - "LLY"
+    - "ABBV"
+    - "MRK"
+    - "PFE"
     - "CAT"
     - "GE"
+    - "HON"
+    - "BA"
+    - "UPS"
     - "XOM"
+    - "CVX"
+    - "SLB"
+    - "COP"
 
   filters:
     min_average_daily_volume: 1000000

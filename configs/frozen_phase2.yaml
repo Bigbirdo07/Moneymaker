@@ -1,0 +1,70 @@
+# Frozen Phase 2 Research Hypothesis Configuration
+# DO NOT MODIFY DURING PHASE 2.5 VALIDATION
+
+frozen_hypothesis:
+  name: "phase_2_frozen_xgb_baseline"
+  timestamp: "2026-09-15T12:00:00Z"
+  target:
+    name: "target_class_up_60m"
+    horizon_bars: 12 # 60 minutes
+    threshold_return_bps: 10.0 # 0.10%
+
+  features:
+    allowlist:
+      - "feature_return_1b"
+      - "feature_return_3b"
+      - "feature_return_6b"
+      - "feature_return_12b"
+      - "feature_log_return_1b"
+      - "feature_rsi_14"
+      - "feature_macd_line"
+      - "feature_macd_signal"
+      - "feature_macd_hist"
+      - "feature_dist_ema_9"
+      - "feature_dist_ema_21"
+      - "feature_dist_ema_50"
+      - "feature_dist_sma_20"
+      - "feature_dist_sma_50"
+      - "feature_ema_cross_9_21"
+      - "feature_realized_vol_20b"
+      - "feature_atr_14"
+      - "feature_atr_pct"
+      - "feature_garman_klass_vol"
+      - "feature_bb_width"
+      - "feature_bb_pct"
+      - "feature_relative_volume_20b"
+      - "feature_volume_zscore_20b"
+      - "feature_volume_acceleration"
+      - "feature_vwap_deviation"
+      - "feature_price_volume_corr_5b"
+      - "feature_day_of_week"
+      - "feature_minutes_from_open"
+      - "feature_minutes_to_close"
+      - "feature_SPY_return_1b"
+      - "feature_SPY_return_6b"
+      - "feature_rel_strength_SPY_1b"
+      - "feature_rel_strength_SPY_6b"
+
+  model:
+    type: "XGBoost"
+    n_estimators: 100
+    max_depth: 4
+    learning_rate: 0.05
+    subsample: 0.80
+    colsample_bytree: 0.80
+    random_state: 42
+
+  calibration:
+    method: "sigmoid" # Platt Scaling fit on validation fold only
+
+  strategy_thresholds:
+    frozen_confidence_threshold: 0.58
+    min_expected_return_bps: 15.0
+    stop_loss_pct: 0.005 # 0.50%
+    take_profit_pct: 0.010 # 1.00%
+    max_holding_bars: 12 # 60 minutes
+
+  costs:
+    half_spread_bps: 1.5
+    base_slippage_bps: 2.0
+    commission_per_trade: 0.0
