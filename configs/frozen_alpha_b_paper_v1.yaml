@@ -1,0 +1,71 @@
+# Frozen Alpha B Broker Paper Strategy Specification v1.0
+strategy_id: "ALPHA_B_MULTI_DAY_RELATIVE_REVERSAL"
+candidate_version: "v1.0.0-paper"
+frozen_timestamp: "2026-09-15T18:15:00Z"
+status: "BROKER_PAPER_CANDIDATE"
+
+target_book:
+  book_type: "BOOK_B1_LONG_ONLY"
+  selection_rule: "TOP_2_LONG_ONLY"
+  short_selling_permitted: false
+  deployability_scope: "DEPLOYABLE_PROTOTYPE"
+
+hypothesis:
+  target_profile: "3_TRADING_DAYS_RELATIVE_REVERSAL"
+  core_mechanism: "Cross-sectional mean reversion following multi-day idiosyncratic overextension"
+  holding_period_days: 3
+  rebalance_frequency: "DAILY_CLOSE"
+  signal_generation_cutoff: "16:05_EST"
+  execution_policy: "NEXT_SESSION_OPEN_OR_VWAP"
+
+features:
+  - name: "reversal_3d"
+    formula: "-1.0 * (close / shift(close, 3) - 1.0)"
+    description: "Inverted 3-day cumulative return"
+  - name: "reversal_5d"
+    formula: "-1.0 * (close / shift(close, 5) - 1.0)"
+    description: "Inverted 5-day cumulative return"
+  - name: "rel_strength_3d"
+    formula: "return_3d(symbol) - return_3d(universe_equal_weight)"
+    description: "3-day relative strength difference"
+  - name: "overnight_gap"
+    formula: "(open - shift(close, 1)) / shift(close, 1)"
+    description: "Overnight opening gap return"
+
+ranking_and_selection:
+  universe:
+    - "NVDA"
+    - "AMD"
+    - "TSLA"
+    - "AAPL"
+    - "MSFT"
+    - "META"
+    - "GOOGL"
+    - "AMZN"
+  ranking_engine: "CROSS_SECTIONAL_SPEARMAN"
+  top_k: 2
+  rebalance_time: "16:05_EST"
+
+paper_risk_and_capital:
+  nominal_paper_capital_usd: 10000.0
+  max_single_symbol_pct: 0.25
+  max_single_symbol_usd: 2500.0
+  max_gross_exposure_pct: 1.00
+  max_overlapping_cohorts: 6
+  order_type: "MARKETABLE_OR_CONSERVATIVE_LIMIT"
+
+cost_and_friction_model:
+  spread_bps: 2.0
+  slippage_bps: 1.5
+  impact_bps: 1.0
+  fees_commissions_bps: 0.5
+  total_modeled_roundtrip_friction_bps: 5.0
+  turnover_per_rebalance_pct: 18.0
+
+governance_and_permissions:
+  live_execution_permitted: false
+  broker_paper_permitted: true
+  forward_shadow_permitted: true
+  allowed_modes:
+    - "ALPHA_B_BROKER_PAPER"
+    - "SHADOW"

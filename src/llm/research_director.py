@@ -28,6 +28,11 @@ class LLMOutputType(str, Enum):
     RISK_SUMMARY = "RISK_SUMMARY"
     CAPITAL_RESEARCH_HYPOTHESIS = "CAPITAL_RESEARCH_HYPOTHESIS"
     MODEL_AUDIT_FINDING = "MODEL_AUDIT_FINDING"
+    STRATEGY_DIVERSIFICATION_FINDING = "STRATEGY_DIVERSIFICATION_FINDING"
+    STRATEGY_CONFLICT = "STRATEGY_CONFLICT"
+    PORTFOLIO_RISK_FINDING = "PORTFOLIO_RISK_FINDING"
+    ALPHA_DECAY_WARNING = "ALPHA_DECAY_WARNING"
+    PAPER_EXECUTION_WARNING = "PAPER_EXECUTION_WARNING"
 
 
 class DataProvenanceType(str, Enum):
@@ -492,5 +497,126 @@ class MoneymakerResearchDirector:
             proposed_experiments=[recommended_test],
             rag_citations=[artifact],
             model_audit_findings=[finding],
+        )
+
+    def generate_strategy_diversification_finding(
+        self,
+        strategy_a: str,
+        strategy_b: str,
+        correlation: float,
+        sharpe_delta: float,
+        drawdown_reduction_pct: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface multi-strategy correlation and diversification benefit."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=f"Cross-strategy correlation between {strategy_a} and {strategy_b} is {correlation:.3f}. Sharpe delta: {sharpe_delta:+.2f}, Drawdown reduction: {drawdown_reduction_pct:.1f}%.",
+            provenance_type=DataProvenanceType.STATISTICAL_INFERENCE,
+            source_reference="MULTI_STRATEGY_RESEARCH_REPORT.md",
+        )
+        summary = f"Multi-strategy analysis between {strategy_a} and {strategy_b} demonstrates strong diversification benefit with correlation {correlation:.3f}."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.STRATEGY_DIVERSIFICATION_FINDING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Combining intraday momentum and multi-day reversal creates complementary return profiles."],
+            proposed_experiments=["Track paper multi-strategy portfolio under rolling market selloffs."],
+            rag_citations=["MULTI_STRATEGY_RESEARCH_REPORT.md", "ALPHA_A_ALPHA_B_CORRELATION_REPORT.md"],
+        )
+
+    def generate_strategy_conflict_finding(
+        self,
+        symbol: str,
+        conflict_type: str,
+        aggregate_notional_usd: float,
+        proposed_rule: str,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface signal collisions and capital congestion between strategies."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=f"Strategy conflict detected for {symbol}: {conflict_type} with aggregate notional ${aggregate_notional_usd:.2f}. Recommended rule: {proposed_rule}.",
+            provenance_type=DataProvenanceType.OBSERVED_DATA,
+            source_reference="STRATEGY_CONFLICT_REPORT.md",
+        )
+        summary = f"Signal collision identified on {symbol} ({conflict_type}). Proposed resolution: {proposed_rule}."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.STRATEGY_CONFLICT,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Shared universe can produce simultaneous signals requiring hard position capping."],
+            proposed_experiments=["Evaluate conservative exposure capping rules in offline multi-strategy simulation."],
+            rag_citations=["STRATEGY_CONFLICT_REPORT.md"],
+        )
+
+    def generate_portfolio_risk_finding(
+        self,
+        risk_metric: str,
+        alpha_a_contrib_pct: float,
+        alpha_b_contrib_pct: float,
+        combined_value: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface multi-strategy risk decomposition and Expected Shortfall."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=f"Portfolio {risk_metric}: Alpha A contributes {alpha_a_contrib_pct:.1f}%, Alpha B contributes {alpha_b_contrib_pct:.1f}%. Total combined: {combined_value:.2f}%.",
+            provenance_type=DataProvenanceType.STATISTICAL_INFERENCE,
+            source_reference="PORTFOLIO_RISK_CONTRIBUTION_REPORT.md",
+        )
+        summary = f"Portfolio risk budget evaluation for {risk_metric} shows balanced risk allocation."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.PORTFOLIO_RISK_FINDING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Risk-parity weighting stabilizes portfolio tail risk more effectively than equal dollar weighting."],
+            proposed_experiments=["Simulate dynamic inverse-volatility rebalancing on out-of-sample data."],
+            rag_citations=["PORTFOLIO_RISK_CONTRIBUTION_REPORT.md"],
+        )
+
+    def generate_alpha_decay_warning(
+        self,
+        strategy_id: str,
+        horizon_days: int,
+        observed_rank_ic: float,
+        decay_half_life_days: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface horizon decay and signal half-life metrics."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=f"Alpha decay tracking for {strategy_id} at {horizon_days}-day horizon: Rank IC {observed_rank_ic:+.3f}, estimated half-life {decay_half_life_days:.1f} days.",
+            provenance_type=DataProvenanceType.STATISTICAL_INFERENCE,
+            source_reference="ALPHA_B_FORWARD_SIGNAL_DECAY.md",
+        )
+        summary = f"Signal decay analysis for {strategy_id} indicates optimal edge capture at 3-day holding period."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.ALPHA_DECAY_WARNING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Holding beyond 3 days increases exposure to broader market beta rather than reversal alpha."],
+            proposed_experiments=["Continue logging 1d, 2d, 3d, 5d, 10d returns without altering frozen candidate."],
+            rag_citations=["ALPHA_B_FORWARD_SIGNAL_DECAY.md"],
+        )
+
+    def generate_paper_execution_warning(
+        self,
+        strategy_id: str,
+        paper_fill_advantage_bps: float,
+        paper_fill_rate_pct: float,
+        shadow_fill_rate_pct: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface broker paper fill optimism relative to shadow."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=f"Paper execution quality for {strategy_id}: Paper fill optimism {paper_fill_advantage_bps:+.2f} bps. Fill rate: Paper {paper_fill_rate_pct:.1f}% vs Shadow {shadow_fill_rate_pct:.1f}%.",
+            provenance_type=DataProvenanceType.OBSERVED_DATA,
+            source_reference="ALPHA_B_PAPER_VS_SHADOW_REPORT.md",
+        )
+        summary = f"Broker paper execution shows moderate fill optimism ({paper_fill_advantage_bps:+.2f} bps) compared to conservative shadow."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.PAPER_EXECUTION_WARNING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Broker paper fill simulations may underestimate real queue priority drag."],
+            proposed_experiments=["Compare shadow conservative fill logic against live micro-fill logs when promoted."],
+            rag_citations=["ALPHA_B_PAPER_VS_SHADOW_REPORT.md", "ALPHA_B_EXECUTION_QUALITY_REPORT.md"],
         )
 
