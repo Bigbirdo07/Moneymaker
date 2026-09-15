@@ -27,6 +27,7 @@ class LLMOutputType(str, Enum):
     SYMBOL_CAPACITY_ANALYSIS = "SYMBOL_CAPACITY_ANALYSIS"
     RISK_SUMMARY = "RISK_SUMMARY"
     CAPITAL_RESEARCH_HYPOTHESIS = "CAPITAL_RESEARCH_HYPOTHESIS"
+    MODEL_AUDIT_FINDING = "MODEL_AUDIT_FINDING"
 
 
 class DataProvenanceType(str, Enum):
@@ -110,6 +111,20 @@ class ChallengerProposal:
 
 
 @dataclass
+class ModelAuditFinding:
+    """Read-only structured finding representing model/report discrepancies or inconsistencies."""
+    severity: str  # "LOW", "MEDIUM", "HIGH", "CRITICAL"
+    artifact: str
+    metric: str
+    expected_value: Any
+    observed_value: Any
+    discrepancy: Any
+    possible_causes: List[str]
+    recommended_test: str
+    audit_timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+
+@dataclass
 class ResearchDirectorOutput:
     output_type: LLMOutputType
     summary: str
@@ -118,6 +133,7 @@ class ResearchDirectorOutput:
     proposed_experiments: List[str] = field(default_factory=list)
     rag_citations: List[str] = field(default_factory=list)
     challenger_proposals: List[ChallengerProposal] = field(default_factory=list)
+    model_audit_findings: List[ModelAuditFinding] = field(default_factory=list)
     generated_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
     def to_dict(self) -> Dict[str, Any]:
@@ -136,6 +152,7 @@ class ResearchDirectorOutput:
             "proposed_experiments": self.proposed_experiments,
             "rag_citations": self.rag_citations,
             "challenger_proposals": [p.__dict__ for p in self.challenger_proposals],
+            "model_audit_findings": [f.__dict__ for f in self.model_audit_findings],
             "generated_at": self.generated_at,
         }
 
@@ -432,5 +449,48 @@ class MoneymakerResearchDirector:
             hypotheses=["Strategy edge scales favorably within micro-to-small notional regimes."],
             proposed_experiments=["Complete full sample collection for active authorized tier."],
             rag_citations=["CAPITAL_TIER_REPORT.md", "EDGE_RETENTION_REPORT.md"],
+        )
+
+    def generate_model_audit_finding(
+        self,
+        severity: str,
+        artifact: str,
+        metric: str,
+        expected_value: Any,
+        observed_value: Any,
+        discrepancy: Any,
+        possible_causes: List[str],
+        recommended_test: str,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface structured model/accounting discrepancies in reports and ledgers."""
+        self.verify_permission_boundary()
+
+        finding = ModelAuditFinding(
+            severity=severity,
+            artifact=artifact,
+            metric=metric,
+            expected_value=expected_value,
+            observed_value=observed_value,
+            discrepancy=discrepancy,
+            possible_causes=possible_causes,
+            recommended_test=recommended_test,
+        )
+
+        statement = ProvenanceStatement(
+            statement=f"Audit finding for {artifact} ({metric}): Expected {expected_value}, Observed {observed_value} (Discrepancy: {discrepancy}). Severity: {severity}.",
+            provenance_type=DataProvenanceType.OBSERVED_DATA,
+            source_reference=artifact,
+        )
+
+        summary = f"Model audit finding flagged for {artifact} ({metric}) with severity {severity}."
+
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.MODEL_AUDIT_FINDING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=[f"Discrepancy in {metric} may stem from {possible_causes[0]}." if possible_causes else "Review accounting."],
+            proposed_experiments=[recommended_test],
+            rag_citations=[artifact],
+            model_audit_findings=[finding],
         )
 
