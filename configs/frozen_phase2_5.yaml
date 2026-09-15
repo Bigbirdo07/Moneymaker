@@ -1,0 +1,47 @@
+# Frozen Phase 2.5 Research Hypothesis & Audit Configuration
+# IMMUTABLE BASELINE ARTIFACT
+
+frozen_phase2_5:
+  timestamp: "2026-09-15T12:40:00Z"
+  verdict: "WEAK_EVIDENCE"
+  
+  findings:
+    xgboost_roc_auc: 0.542
+    permutation_roc_auc_p: 0.039
+    net_return_permutation_p: 0.029
+    base_roundtrip_friction_bps: 7.0
+    break_even_friction_bps: 7.82
+    cost_multiplier_tolerance: 1.11
+    nvda_profit_share_pct: 65.0
+    ex_nvda_net_return_pct: 0.02
+    signal_peak_minutes: "15-30"
+    execution_delay_1bar_return_pct: -0.08
+    deflated_sharpe_p_value: 0.641
+
+  target:
+    name: "target_class_up_60m"
+    horizon_bars: 12
+    threshold_return_bps: 10.0
+
+  model:
+    type: "XGBoost"
+    n_estimators: 100
+    max_depth: 4
+    learning_rate: 0.05
+    subsample: 0.80
+    colsample_bytree: 0.80
+    random_state: 42
+
+  thresholds:
+    frozen_confidence_threshold: 0.58
+    min_expected_return_bps: 15.0
+
+  universe:
+    name: "us_liquid_multisector_v2_5"
+    size: 36
+
+  split_design:
+    type: "PURGED_WALK_FORWARD"
+    n_splits: 5
+    purge_duration_minutes: 60
+    embargo_duration_minutes: 60
