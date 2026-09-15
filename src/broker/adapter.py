@@ -16,6 +16,7 @@ class ExecutionMode(str, Enum):
     SHADOW = "SHADOW"
     BROKER_PAPER = "BROKER_PAPER"
     LIVE_GOVERNED_MICRO = "LIVE_GOVERNED_MICRO"
+    LIVE_AUTONOMOUS_MICRO = "LIVE_AUTONOMOUS_MICRO"
     LIVE = "LIVE"
 
 
@@ -24,7 +25,7 @@ def verify_execution_mode(mode: ExecutionMode) -> None:
     if mode == ExecutionMode.LIVE:
         raise RuntimeError(
             "FATAL SAFETY VIOLATION: Unrestricted LIVE money execution is strictly prohibited. "
-            "Only SHADOW, BROKER_PAPER, or LIVE_GOVERNED_MICRO modes are permitted."
+            "Only SHADOW, BROKER_PAPER, LIVE_GOVERNED_MICRO, or LIVE_AUTONOMOUS_MICRO modes are permitted."
         )
 
 

@@ -1,7 +1,8 @@
 """
 Moneymaker Research Director: Read-Only LLM Research & Governance Observer.
 Strictly isolated from broker execution, order routing, credentials, and configuration mutations.
-Provides structured session reviews, anomaly detection, drift surfacing, and challenger research hypotheses.
+Provides structured session reviews, anomaly detection, drift surfacing, challenger research hypotheses,
+and formal challenger proposal generation for offline research queue.
 """
 
 from dataclasses import dataclass, field
@@ -87,6 +88,22 @@ class RiskSummary:
 
 
 @dataclass
+class ChallengerProposal:
+    """Structured research specification queued for offline validation."""
+    proposal_id: str
+    hypothesis: str
+    motivation: str
+    data_required: List[str]
+    experimental_design: str
+    primary_metric: str
+    null_hypothesis: str
+    validation_split: str
+    risk_of_overfitting: str
+    promotion_requirement: str
+    queued_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+
+@dataclass
 class ResearchDirectorOutput:
     output_type: LLMOutputType
     summary: str
@@ -94,6 +111,7 @@ class ResearchDirectorOutput:
     hypotheses: List[str] = field(default_factory=list)
     proposed_experiments: List[str] = field(default_factory=list)
     rag_citations: List[str] = field(default_factory=list)
+    challenger_proposals: List[ChallengerProposal] = field(default_factory=list)
     generated_at: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
     def to_dict(self) -> Dict[str, Any]:
@@ -111,6 +129,7 @@ class ResearchDirectorOutput:
             "hypotheses": self.hypotheses,
             "proposed_experiments": self.proposed_experiments,
             "rag_citations": self.rag_citations,
+            "challenger_proposals": [p.__dict__ for p in self.challenger_proposals],
             "generated_at": self.generated_at,
         }
 
@@ -124,6 +143,7 @@ class MoneymakerResearchDirector:
     def __init__(self, knowledge_base: Optional[RAGKnowledgeBase] = None):
         self.kb = knowledge_base or RAGKnowledgeBase()
         self._is_read_only = True
+        self.research_queue: List[ChallengerProposal] = []
 
     @property
     def is_read_only(self) -> bool:
@@ -173,7 +193,7 @@ class MoneymakerResearchDirector:
         ]
 
         summary_text = (
-            f"Session {session.session_date} completed successfully with {session.executed_fills} governed fills. "
+            f"Session {session.session_date} completed successfully with {session.executed_fills} autonomous fills. "
             f"Net edge remained positive (+{session.net_expectancy_bps:.2f} bps) with healthy Rank IC (+{model_health.spearman_rank_ic:.3f}). "
             f"Capital controls were 100% compliant with zero reconciliation errors and zero safety breaches."
         )
@@ -184,7 +204,7 @@ class MoneymakerResearchDirector:
             provenance_statements=statements,
             hypotheses=[],
             proposed_experiments=[],
-            rag_citations=["configs/frozen_phase5a.yaml", "PHASE_5A_REPORT.md"],
+            rag_citations=["configs/frozen_phase5b.yaml", "PHASE_5B_REPORT.md"],
         )
 
     def detect_anomalies_and_drift(
@@ -199,6 +219,7 @@ class MoneymakerResearchDirector:
         anomalies: List[ProvenanceStatement] = []
         hypotheses: List[str] = []
         experiments: List[str] = []
+        challengers: List[ChallengerProposal] = []
 
         if exec_qual.live_slippage_penalty_bps > 0.50:
             anomalies.append(
@@ -208,8 +229,25 @@ class MoneymakerResearchDirector:
                     source_reference="ExecutionQualitySummary",
                 )
             )
-            hypotheses.append("Spread expansion during morning opening rotation is increasing implementation friction.")
-            experiments.append("Evaluate time-of-day execution filter (e.g. restrict entries to 10:00 - 15:30 ET) in Paper/Shadow challenger book.")
+            hyp = "Spread expansion during morning opening rotation is increasing implementation friction."
+            hypotheses.append(hyp)
+            experiments.append("Evaluate time-of-day execution filter (10:00 - 15:30 ET) in Paper/Shadow challenger book.")
+            
+            # Formulate structured challenger proposal
+            prop = ChallengerProposal(
+                proposal_id=f"CHALL_TOD_{len(self.research_queue)+1:03d}",
+                hypothesis=hyp,
+                motivation="Reduce execution shortfall penalty by avoiding opening 30-minute spread expansion.",
+                data_required=["5m_bars_2026", "tick_quotes_2026"],
+                experimental_design="Purged 5-fold cross validation with time-of-day entry filter restricting orders to 10:00-15:30 ET.",
+                primary_metric="Net Expectancy (bps/trade) after 3.5 bps friction",
+                null_hypothesis="Time-of-day restriction yields no statistically significant improvement in net expectancy (p >= 0.05).",
+                validation_split="Purged Walk-Forward 2026-Q1/Q2/Q3",
+                risk_of_overfitting="High if fine-grained minute buckets are selected; low if broad 30-minute block filter.",
+                promotion_requirement="Statistically significant net alpha improvement of >= +0.30 bps/trade with Deflated Sharpe Ratio p < 0.05.",
+            )
+            challengers.append(prop)
+            self.research_queue.append(prop)
 
         if model_health.feature_drift_detected or model_health.cusum_alarm_active:
             anomalies.append(
@@ -219,7 +257,8 @@ class MoneymakerResearchDirector:
                     source_reference=f"ModelHealth_{model_health.model_version}",
                 )
             )
-            hypotheses.append("Volatility regime transition may be shifting feature distributions away from training baseline.")
+            hyp = "Volatility regime transition may be shifting feature distributions away from training baseline."
+            hypotheses.append(hyp)
             experiments.append("Run offline feature permutation importance audit across recent 30 trading sessions on historical data.")
 
         if not anomalies:
@@ -233,7 +272,8 @@ class MoneymakerResearchDirector:
             provenance_statements=anomalies,
             hypotheses=hypotheses,
             proposed_experiments=experiments,
-            rag_citations=["LIVE_RISK_REPORT.md", "LIVE_EXECUTION_REPORT.md"],
+            rag_citations=["AUTONOMOUS_RISK_REPORT.md", "AUTONOMOUS_LIVE_EXECUTION_REPORT.md"],
+            challenger_proposals=challengers,
         )
 
     def answer_governance_query(self, query: str) -> Dict[str, Any]:
@@ -259,4 +299,26 @@ class MoneymakerResearchDirector:
             "answer": answer,
             "citations": citations,
             "provenance": DataProvenanceType.OBSERVED_DATA.value,
+        }
+
+    def inspect_symbol_performance(self, symbol_pnls: Dict[str, float]) -> Dict[str, Any]:
+        """Analytical tool: evaluate PnL concentration across traded universe."""
+        self.verify_permission_boundary()
+        total = sum(symbol_pnls.values())
+        if total <= 0:
+            return {"total_pnl": total, "concentration_pct": {}}
+        return {
+            "total_pnl": total,
+            "concentration_pct": {sym: (pnl / total) * 100.0 for sym, pnl in symbol_pnls.items()},
+            "is_concentrated": any((pnl / total) > 0.60 for pnl in symbol_pnls.values()),
+        }
+
+    def inspect_regime_performance(self, regime_pnls: Dict[str, float]) -> Dict[str, Any]:
+        """Analytical tool: inspect strategy returns across volatility/trend regimes."""
+        self.verify_permission_boundary()
+        positive_regimes = [reg for reg, pnl in regime_pnls.items() if pnl > 0]
+        return {
+            "total_regimes_evaluated": len(regime_pnls),
+            "profitable_regimes": positive_regimes,
+            "all_regimes_profitable": len(positive_regimes) == len(regime_pnls),
         }
