@@ -1,0 +1,31 @@
+# Trading Configuration
+
+trading:
+  timeframe: "5m"
+  default_mode: "BACKTEST"  # Options: BACKTEST, PAPER_FORWARD, LIVE (disabled)
+  live_execution_enabled: false
+
+  market:
+    exchange: "NYSE_NASDAQ"
+    timezone: "UTC"
+    market_timezone: "America/New_York"
+    regular_hours_only: true
+    open_time: "09:30:00"
+    close_time: "16:00:00"
+    force_close_minutes_before_end: 10  # Intraday flat at 15:50 ET
+
+  execution:
+    initial_cash: 1000.0  # USD
+    order_type: "MARKET"
+    allow_shorting: false
+    allow_leverage: false
+    allow_options: false
+    slippage_bps: 2.0     # 2 basis points default slippage
+    half_spread_bps: 1.5  # 1.5 bps half-spread cost
+    commission_per_trade: 0.0 # Zero commission broker assumption, but tracked
+
+  thresholds:
+    min_model_confidence: 0.55
+    min_expected_return_bps: 15.0 # 0.15% min edge
+    min_expected_return_after_costs_bps: 5.0
+    min_risk_reward_ratio: 1.5

@@ -1,0 +1,61 @@
+# Universe Configuration
+# V1: ~20 Highly Liquid US Equities & Broad Market ETFs
+
+universe:
+  name: "us_liquid_largecap_v1"
+  description: "Core liquid universe for intraday quantitative research and baseline models"
+  
+  benchmarks:
+    broad_market: "SPY"
+    tech_growth: "QQQ"
+
+  sectors:
+    technology:
+      etf: "XLK"
+      symbols: ["AAPL", "MSFT", "NVDA", "AMD", "AVGO"]
+    communication_services:
+      etf: "XLC"
+      symbols: ["GOOGL", "META"]
+    consumer_discretionary:
+      etf: "XLY"
+      symbols: ["AMZN", "TSLA"]
+    financials:
+      etf: "XLF"
+      symbols: ["JPM", "BAC", "GS"]
+    healthcare:
+      etf: "XLV"
+      symbols: ["UNH", "JNJ", "LLY"]
+    industrials:
+      etf: "XLI"
+      symbols: ["CAT", "GE"]
+    energy:
+      etf: "XLE"
+      symbols: ["XOM", "CVX"]
+
+  # Flat list of active trading symbols (including benchmarks)
+  symbols:
+    - "SPY"
+    - "QQQ"
+    - "AAPL"
+    - "MSFT"
+    - "NVDA"
+    - "AMD"
+    - "AVGO"
+    - "GOOGL"
+    - "META"
+    - "AMZN"
+    - "TSLA"
+    - "JPM"
+    - "BAC"
+    - "GS"
+    - "UNH"
+    - "JNJ"
+    - "LLY"
+    - "CAT"
+    - "GE"
+    - "XOM"
+
+  filters:
+    min_average_daily_volume: 1000000
+    min_share_price: 10.0
+    require_us_regular_hours: true
