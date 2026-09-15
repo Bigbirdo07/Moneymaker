@@ -1,0 +1,97 @@
+# Frozen Configuration: Phase 3A Champion Baseline
+# Status: IMMUTABLE CHAMPION SPECIFICATION FOR PHASE 3B
+# Created: Phase 3A Completion & Verification
+# Purpose: Exact frozen reference for Phase 3B Broker Paper-Trading Validation
+
+phase: "3A"
+champion_name: "CHAMPION_SHADOW_MODEL"
+freeze_timestamp: "2026-09-15T13:30:00Z"
+verdict: "PAPER_EXECUTION_CANDIDATE"
+
+execution_mode: "BROKER_PAPER" # Valid: SHADOW, BROKER_PAPER. (LIVE is fatal error)
+
+model_specification:
+  primary_model:
+    architecture: "XGBoostClassifier"
+    hyperparameters:
+      n_estimators: 100
+      max_depth: 3
+      learning_rate: 0.05
+      subsample: 0.8
+      colsample_bytree: 0.8
+      random_state: 42
+    calibration: "PlattScaling"
+    confidence_threshold: 0.58
+
+  meta_label_model:
+    architecture: "XGBoostClassifier"
+    purpose: "Trade Filtering (TAKE_TRADE vs REJECT_TRADE)"
+    hyperparameters:
+      n_estimators: 50
+      max_depth: 2
+      learning_rate: 0.05
+      random_state: 42
+    features:
+      - "model_confidence"
+      - "expected_move_bps"
+      - "realized_volatility_bps"
+      - "rvol_14"
+      - "spread_bps"
+      - "regime_volatility"
+      - "vwap_distance_bps"
+      - "signal_agreement"
+    take_threshold: 0.52
+
+  ranking_model:
+    architecture: "CostAwareOpportunityRanker"
+    score_formula: "expected_return_bps - estimated_roundtrip_cost_bps - lambda * expected_volatility_bps"
+    lambda_risk_penalty: 0.05
+    candidate_selection: "Top-1 / Top-3"
+    top_k: 3
+
+target_specification:
+  primary_horizon: "15m"
+  horizon_bars: 3  # 3 x 5-minute bars
+  decay_half_life_minutes: 34
+  economic_buffer_bps: 5.0
+
+universe_and_archetypes:
+  primary_archetype: "HIGH_BETA_HIGH_VOL"
+  min_beta: 1.5
+  min_annualized_volatility: 0.35
+  max_median_spread_bps: 3.0
+  active_symbols:
+    - "NVDA"
+    - "AMD"
+    - "TSLA"
+  benchmark_symbols:
+    - "SPY"
+    - "QQQ"
+
+broker_and_execution:
+  execution_mode: "BROKER_PAPER"
+  limit_order_policy:
+    passive_placement: "at_bid_for_buy"
+    cancellation_timeout_bars: 1
+  trade_cooldown_bars: 4  # 20 minutes between trades on same symbol
+  max_execution_delay_seconds: 90
+  reconciliation_interval_seconds: 60
+
+risk_and_portfolio_rules:
+  initial_capital: 1000.0  # USD
+  max_position_pct: 0.10   # 10% ($100 per trade)
+  max_concurrent_positions: 3
+  max_daily_loss_pct: 0.03 # 3% ($30 daily loss lockout)
+  max_portfolio_drawdown_pct: 0.15 # 15% ($150 max drawdown lockout)
+  max_symbol_exposure_pct: 0.10
+  max_sector_exposure_pct: 0.20
+  allow_shorting: false
+  allow_leverage: false
+
+exit_rules:
+  time_exit_bars: 3  # 15 minutes
+  signal_deterioration_exit: true
+  stop_loss_pct: 0.015
+  take_profit_pct: 0.030
+  end_of_day_liquidation: true
+  eod_cutoff_time: "15:50:00"
