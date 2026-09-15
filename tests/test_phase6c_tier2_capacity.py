@@ -42,7 +42,10 @@ from src.llm.research_director import (
 
 def test_tier2_authorization_and_tier3_locking():
     """Verify Tier 2 requires explicit authorization and Tier 3 is permanently locked."""
-    manager = CapitalTierManager(initial_tier=CapitalTier.TIER_1_2K5)
+    manager = CapitalTierManager(
+        initial_tier=CapitalTier.TIER_1_2K5,
+        locked_tiers={CapitalTier.TIER_3_10K, CapitalTier.TIER_4_25K, CapitalTier.TIER_5_50K},
+    )
     assert manager.current_tier == CapitalTier.TIER_1_2K5
 
     # 1. Attempting Tier 2 promotion without valid token fails

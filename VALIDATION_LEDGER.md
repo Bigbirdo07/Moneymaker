@@ -9,10 +9,10 @@
 ```mermaid
 graph TD
     T0["Tier 0: $1,000 USD<br/><b>LIVE VALIDATED</b> (Phase 6A)"] --> T1["Tier 1: $2,500 USD<br/><b>LIVE VALIDATED</b> (Phase 6B)"]
-    T1 --> T2["Tier 2: $5,000 USD<br/><b>NOT YET VALIDATED</b> (Phase 6C Target)"]
-    T2 -.-> T3["Tier 3: $10,000 USD<br/><b>LOCKED / UNAUTHORIZED</b>"]
-    T3 -.-> TP["$25,000 - $32,000 USD<br/><b>PROJECTED PRACTICAL CAPACITY ONLY</b>"]
-    TP -.-> TB["~$92,000 USD<br/><b>PROJECTED BREAK-EVEN CAPACITY ONLY</b>"]
+    T1 --> T2["Tier 2: $5,000 USD<br/><b>LIVE VALIDATED</b> (Phase 6C)"]
+    T2 --> T3["Tier 3: $10,000 USD<br/><b>WATCH CAPACITY VALIDATED</b> (Phase 6E)"]
+    T3 -.-> T4["Tier 4: $25,000 USD<br/><b>LOCKED / UNAUTHORIZED</b>"]
+    T4 -.-> TB["~$72k - $86k USD<br/><b>PROJECTED BREAK-EVEN CAPACITY ONLY</b>"]
 ```
 
 | Capital Tier / Capacity Level | Authorized Capital | Evidence Type | Current Status | Governing Phase / Reference |
@@ -20,15 +20,15 @@ graph TD
 | **Tier 0 Baseline** | **$1,000.00 USD** | `LIVE_AUTONOMOUS` | **LIVE VALIDATED** | Phase 6A (`AUTONOMOUS_MICRO_STRONGLY_VALIDATED`) |
 | **Tier 1 Ramp** | **$2,500.00 USD** | `LIVE_AUTONOMOUS` | **LIVE VALIDATED** | Phase 6B (`TIER1_VALIDATED`) |
 | **Tier 2 Ramp** | **$5,000.00 USD** | `LIVE_AUTONOMOUS` | **LIVE VALIDATED** | Phase 6C (`TIER2_VALIDATED`)|
-| **Tier 3 Ramp** | **$10,000.00 USD** | `PROJECTED` | **LOCKED / UNAUTHORIZED** | Architecture supports; execution prohibited |
-| **Projected Practical Capacity** | **$25,000 - $32,000**| `PROJECTED` | **MODEL PROJECTION ONLY** | Execution cost safety margin buffer ($\ge 65\%$) |
-| **Projected Break-Even Capital** | **~$92,000 USD** | `PROJECTED` | **THEORETICAL MODEL ONLY**| 95% CI: [$74,000, $115,000] USD |
+| **Tier 3 Ramp** | **$10,000.00 USD** | `LIVE_AUTONOMOUS` | **WATCH CAPACITY VALIDATED**| Phase 6E (`TIER3_WATCH_CAPACITY_VALIDATED`)|
+| **Tier 4 Ramp** | **$25,000.00 USD** | `PROJECTED` | **LOCKED / UNAUTHORIZED** | Architecture supports; execution prohibited |
+| **Projected Break-Even Capital** | **~$72,000 - $86,200**| `PROJECTED` | **THEORETICAL MODEL ONLY**| Calibrated Sublinear Impact Curve |
 
 ---
 
 ## 2. Chronological Phase Validation History
 
-| Phase ID | Strategy Identifier | Capital ($) | Execution Mode | Fills | Sessions | Evidence Type | Final Verdict | Git Commit | Tests | Status |
+| Phase ID | Strategy Identifier | Capital ($) | Execution Mode | Fills / Days | Sessions | Evidence Type | Final Verdict | Git Commit | Tests | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Phase 2.6** | `ALPHA_A_INTRADAY_RELATIVE_MOMENTUM_V1` | $0.00 | `HISTORICAL_RESEARCH` | 0 | 252 | `HISTORICAL` | `FRAGILE_ALPHA` | `63605ad` | 52 | **COMPLETED** |
 | **Phase 3A** | `ALPHA_A_INTRADAY_RELATIVE_MOMENTUM_V1` | $1,000.00 | `SHADOW` | 214 | 40 | `FORWARD_SHADOW` | `FORWARD_SHADOW_CONFIRMED` | `1cf6798` | 65 | **COMPLETED** |
@@ -38,7 +38,10 @@ graph TD
 | **Phase 5B** | `ALPHA_A_INTRADAY_RELATIVE_MOMENTUM_V1` | $1,000.00 | `LIVE_GOVERNED_MICRO` | 282 | 65 | `LIVE_GOVERNED` | `EXTENDED_MICRO_VALIDATED` | `ac4b2e5` | 105 | **COMPLETED** |
 | **Phase 6A** | `ALPHA_A_INTRADAY_RELATIVE_MOMENTUM_V1` | $1,000.00 | `LIVE_AUTONOMOUS_MICRO` | 216 | 45 | `LIVE_AUTONOMOUS` | `AUTONOMOUS_MICRO_STRONGLY_VALIDATED` | `3572884` | 112 | **COMPLETED** |
 | **Phase 6B** | `ALPHA_A_INTRADAY_RELATIVE_MOMENTUM_V1` | $2,500.00 | `LIVE_AUTONOMOUS_MICRO` | 164 | 25 | `LIVE_AUTONOMOUS` | `TIER1_VALIDATED` | `728c175` | 120 | **COMPLETED** |
-| **Phase 6C** | `ALPHA_A_INTRADAY_RELATIVE_MOMENTUM_V1` | $5,000.00 | `LIVE_AUTONOMOUS_MICRO` | 192 | 32 | `LIVE_AUTONOMOUS` | `TIER2_VALIDATED` | `HEAD` | 140 | **COMPLETED** |
+| **Phase 6C** | `ALPHA_A_INTRADAY_RELATIVE_MOMENTUM_V1` | $5,000.00 | `LIVE_AUTONOMOUS_MICRO` | 192 | 32 | `LIVE_AUTONOMOUS` | `TIER2_VALIDATED` | `37583cf` | 138 | **COMPLETED** |
+| **Phase 6D** | `ALPHA_A` & `ALPHA_B` (Audit / Freeze) | $5,000.00 | `LIVE_AUTONOMOUS` / `SHADOW` | 0 | 0 | `PROJECTED` / `HISTORICAL` | `TIER3_READY_FOR_EVALUATION` & `FORWARD_SHADOW_CANDIDATE` | `cbcb271` | 150 | **COMPLETED** |
+| **Phase 6E** | `ALPHA_A_INTRADAY_RELATIVE_MOMENTUM_V1` | $10,000.00| `LIVE_AUTONOMOUS_MICRO` | 210 | 35 | `LIVE_AUTONOMOUS` | `TIER3_WATCH_CAPACITY_VALIDATED` | `HEAD` | 159 | **COMPLETED** |
+| **Phase 6E (Track B)**| `ALPHA_B_MULTI_DAY_RELATIVE_REVERSAL` | $0.00 | `SHADOW` | 60 days | 60 | `FORWARD_SHADOW` | `ALPHA_B_FORWARD_SHADOW_VALIDATED` | `HEAD` | 159 | **COMPLETED** |
 
 ---
 

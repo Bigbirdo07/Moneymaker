@@ -724,7 +724,12 @@ class CapitalTierManager:
     validates tier promotion criteria, and enables instantaneous scale-down.
     """
 
-    def __init__(self, initial_tier: CapitalTier = CapitalTier.TIER_0_1K):
+    def __init__(
+        self,
+        initial_tier: CapitalTier = CapitalTier.TIER_0_1K,
+        locked_tiers: Optional[Set[CapitalTier]] = None,
+    ):
+        self.locked_tiers = locked_tiers if locked_tiers is not None else {CapitalTier.TIER_4_25K, CapitalTier.TIER_5_50K}
         self.tiers: Dict[CapitalTier, CapitalTierConfig] = {
             CapitalTier.TIER_0_1K: CapitalTierConfig(
                 tier=CapitalTier.TIER_0_1K,
@@ -805,8 +810,8 @@ class CapitalTierManager:
         Promotes system to next tier ONLY upon verified human authorization and report hash validation.
         Autonomous systems cannot call this without valid external auth token.
         """
-        if target_tier in (CapitalTier.TIER_3_10K, CapitalTier.TIER_4_25K, CapitalTier.TIER_5_50K):
-            raise PermissionError(f"FATAL: {target_tier.value} is LOCKED and cannot be authorized in Phase 6C.")
+        if target_tier in self.locked_tiers:
+            raise PermissionError(f"FATAL: {target_tier.value} is LOCKED and cannot be authorized.")
 
         if not human_auth_token or len(human_auth_token) < 16:
             raise PermissionError("FATAL: Human authorization token invalid or missing for tier promotion.")

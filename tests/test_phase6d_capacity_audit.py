@@ -93,8 +93,10 @@ def test_explicit_retention_thresholds_audit():
 
 def test_tier3_locked_and_forecast_frozen():
     """Verify Tier 3 ($10,000) cannot be promoted and forecast is frozen."""
-    manager = CapitalTierManager()
-    manager.current_tier = CapitalTier.TIER_2_5K
+    manager = CapitalTierManager(
+        initial_tier=CapitalTier.TIER_2_5K,
+        locked_tiers={CapitalTier.TIER_3_10K, CapitalTier.TIER_4_25K, CapitalTier.TIER_5_50K},
+    )
 
     # Direct activation of Tier 3 must raise PermissionError
     with pytest.raises(PermissionError, match="LOCKED"):
