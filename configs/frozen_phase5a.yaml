@@ -1,0 +1,102 @@
+# Frozen Configuration: Phase 5A Governed Micro-Pilot Baseline
+# Status: IMMUTABLE SPECIFICATION FOR PHASE 5B EXTENDED PILOT & HUMAN-ALPHA DECOMPOSITION
+# Created: Phase 5A Completion & Verification
+# Purpose: Exact frozen reference for Phase 5B Extended Micro-Capital Pilot & Four-Book Validation
+
+phase: "5A"
+champion_name: "CHAMPION_GOVERNED_MICRO_MODEL"
+freeze_timestamp: "2026-09-15T14:00:00Z"
+verdict: "LIVE_MICRO_EDGE_CONFIRMED"
+
+execution_mode: "LIVE_GOVERNED_MICRO" # Prohibits unrestricted LIVE
+
+pilot_specification:
+  pilot_name: "PHASE_5B_EXTENDED_MICRO_PILOT"
+  max_live_capital_usd: 1000.0   # Absolute hard ceiling ($1,000 USD, NO SCALING)
+  staged_exposure_tiers:
+    stage_a_trades: 10
+    stage_a_max_order_usd: 25.0
+    stage_b_trades: 30
+    stage_b_max_order_usd: 50.0
+    stage_c_max_order_usd: 100.0  # Maximum order cap (10% of $1,000 account)
+  max_single_order_usd: 100.0
+  max_concurrent_positions: 2     # Ultra-conservative (1-2 positions)
+  max_daily_loss_usd: 20.0        # Stricter 2.0% daily circuit breaker ($20)
+  max_weekly_loss_usd: 40.0       # Stricter 4.0% weekly loss limit ($40)
+  max_pilot_drawdown_usd: 50.0    # Stricter 5.0% pilot termination limit ($50)
+  prohibit_margin: true
+  prohibit_shorting: true
+  prohibit_options: true
+  prohibit_leverage: true
+  prohibit_unrelated_assets: true
+
+human_approval_specification:
+  approval_timeout_seconds: 30.0 # 30-second immutable approval expiration window
+  recheck_stale_before_submit: true
+  max_quote_staleness_sec: 15.0
+  max_allowed_spread_bps: 3.0
+  prohibit_risk_override: true
+  experimental_blinded_ratio: 0.50 # 50% Full-Information vs 50% Safety-Only
+
+model_specification:
+  primary_model:
+    architecture: "XGBoostClassifier"
+    hyperparameters:
+      n_estimators: 100
+      max_depth: 3
+      learning_rate: 0.05
+      subsample: 0.8
+      colsample_bytree: 0.8
+      random_state: 42
+    calibration: "PlattScaling"
+    confidence_threshold: 0.58
+
+  meta_label_model:
+    architecture: "XGBoostClassifier"
+    purpose: "Trade Filtering (TAKE_TRADE vs REJECT_TRADE)"
+    hyperparameters:
+      n_estimators: 50
+      max_depth: 2
+      learning_rate: 0.05
+      random_state: 42
+    features:
+      - "model_confidence"
+      - "expected_move_bps"
+      - "realized_volatility_bps"
+      - "rvol_14"
+      - "spread_bps"
+      - "regime_volatility"
+      - "vwap_distance_bps"
+      - "signal_agreement"
+    take_threshold: 0.52
+
+  ranking_model:
+    architecture: "CostAwareOpportunityRanker"
+    score_formula: "expected_return_bps - estimated_roundtrip_cost_bps - lambda * expected_volatility_bps"
+    lambda_risk_penalty: 0.05
+    candidate_selection: "Top-1 / Top-3"
+    top_k: 3
+
+target_specification:
+  primary_horizon: "15m"
+  horizon_bars: 3  # 3 x 5-minute bars
+  decay_half_life_minutes: 34
+  economic_buffer_bps: 5.0
+
+universe_and_archetypes:
+  primary_archetype: "HIGH_BETA_HIGH_VOL"
+  symbol_allow_list:
+    - "NVDA"
+    - "AMD"
+    - "TSLA"
+  benchmark_symbols:
+    - "SPY"
+    - "QQQ"
+
+exit_rules:
+  time_exit_bars: 3  # 15 minutes
+  signal_deterioration_exit: true
+  stop_loss_pct: 0.015
+  take_profit_pct: 0.030
+  end_of_day_liquidation: true
+  eod_cutoff_time: "15:50:00"
