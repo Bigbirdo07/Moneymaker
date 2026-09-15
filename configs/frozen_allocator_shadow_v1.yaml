@@ -1,0 +1,37 @@
+# Frozen Allocator Shadow Specification v1.0 (Phase 7F Forward Shadow Track)
+allocator_id: "STRATEGY_ALLOCATION_FORWARD_SHADOW"
+candidate_version: "v1.0.0-shadow"
+frozen_timestamp: "2026-09-15T19:30:00Z"
+status: "CONFIRMATORY_FORWARD_SHADOW"
+
+candidate_policies:
+  - name: "STATIC_CURRENT"
+    description: "66.7% Alpha A, 33.3% Alpha B (Matches Phase 7F Live Partition: $10k / $5k)"
+  - name: "STATIC_80_20"
+    description: "80.0% Alpha A, 20.0% Alpha B (Matches Phase 7E Live Partition: $10k / $2.5k)"
+  - name: "CAPPED_INVERSE_VOL"
+    description: "Walk-forward inverse volatility with bounded strategy weights and cash residual"
+  - name: "CAPPED_RISK_PARITY"
+    description: "Walk-forward Euler marginal risk parity with bounded strategy weights and cash residual"
+
+estimation_framework:
+  covariance_windows_days: [20, 40, 60]
+  rebalance_frequency: "WEEKLY_CLOSE"
+  past_only_covariance: true
+  zero_future_leakage: true
+
+weight_and_capacity_bounds:
+  alpha_a_bounds_pct: [0.50, 0.95]
+  alpha_b_bounds_pct: [0.05, 0.50]
+  cash_bounds_pct: [0.00, 0.50]
+  alpha_a_capacity_ceiling_usd: 10000.0
+  alpha_b_capacity_ceiling_usd: 5000.0
+  excess_capital_action: "ROUTE_TO_CASH_RESIDUAL"
+  prohibit_dynamic_cross_strategy_lending: true
+
+execution_firewall:
+  is_executable: false
+  prohibit_broker_adapter_imports: true
+  prohibit_live_capital_mutations: true
+  prohibit_order_generation: true
+  prohibit_leverage: true
