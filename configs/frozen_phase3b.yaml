@@ -1,0 +1,90 @@
+# Frozen Configuration: Phase 3B Validated Baseline
+# Status: IMMUTABLE SPECIFICATION FOR PHASE 4 CAPITAL-RISK AUDIT
+# Created: Phase 3B Completion & Verification
+# Purpose: Exact frozen reference for Capital Risk, Capacity, Stress Testing, and Safety Architecture
+
+phase: "3B"
+champion_name: "CHAMPION_SHADOW_MODEL"
+freeze_timestamp: "2026-09-15T13:45:00Z"
+verdict: "REAL_MONEY_RESEARCH_CANDIDATE"
+
+execution_mode: "BROKER_PAPER" # Note: LIVE is strictly prohibited in Phase 4
+
+model_specification:
+  primary_model:
+    architecture: "XGBoostClassifier"
+    hyperparameters:
+      n_estimators: 100
+      max_depth: 3
+      learning_rate: 0.05
+      subsample: 0.8
+      colsample_bytree: 0.8
+      random_state: 42
+    calibration: "PlattScaling"
+    confidence_threshold: 0.58
+
+  meta_label_model:
+    architecture: "XGBoostClassifier"
+    purpose: "Trade Filtering (TAKE_TRADE vs REJECT_TRADE)"
+    hyperparameters:
+      n_estimators: 50
+      max_depth: 2
+      learning_rate: 0.05
+      random_state: 42
+    features:
+      - "model_confidence"
+      - "expected_move_bps"
+      - "realized_volatility_bps"
+      - "rvol_14"
+      - "spread_bps"
+      - "regime_volatility"
+      - "vwap_distance_bps"
+      - "signal_agreement"
+    take_threshold: 0.52
+
+  ranking_model:
+    architecture: "CostAwareOpportunityRanker"
+    score_formula: "expected_return_bps - estimated_roundtrip_cost_bps - lambda * expected_volatility_bps"
+    lambda_risk_penalty: 0.05
+    candidate_selection: "Top-1 / Top-3"
+    top_k: 3
+
+target_specification:
+  primary_horizon: "15m"
+  horizon_bars: 3  # 3 x 5-minute bars
+  decay_half_life_minutes: 34
+  economic_buffer_bps: 5.0
+
+universe_and_archetypes:
+  primary_archetype: "HIGH_BETA_HIGH_VOL"
+  min_beta: 1.5
+  min_annualized_volatility: 0.35
+  max_median_spread_bps: 3.0
+  max_archetype_exposure_pct: 0.20 # Cluster exposure constraint
+  active_symbols:
+    - "NVDA"
+    - "AMD"
+    - "TSLA"
+  benchmark_symbols:
+    - "SPY"
+    - "QQQ"
+
+risk_and_portfolio_rules:
+  baseline_capital: 1000.0  # USD
+  max_position_pct: 0.10   # 10% ($100 per trade at $1,000)
+  max_concurrent_positions: 3
+  max_daily_loss_pct: 0.03 # 3% ($30 daily loss lockout)
+  max_portfolio_drawdown_pct: 0.15 # 15% ($150 max drawdown lockout)
+  max_symbol_exposure_pct: 0.10
+  max_sector_exposure_pct: 0.20
+  trade_cooldown_bars: 4  # 20 minutes between trades on same symbol
+  allow_shorting: false
+  allow_leverage: false
+
+exit_rules:
+  time_exit_bars: 3  # 15 minutes
+  signal_deterioration_exit: true
+  stop_loss_pct: 0.015
+  take_profit_pct: 0.030
+  end_of_day_liquidation: true
+  eod_cutoff_time: "15:50:00"
