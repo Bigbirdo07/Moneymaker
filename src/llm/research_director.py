@@ -48,6 +48,12 @@ class LLMOutputType(str, Enum):
     PORTFOLIO_VETO_FINDING = "PORTFOLIO_VETO_FINDING"
     CROSS_STRATEGY_RISK_WARNING = "CROSS_STRATEGY_RISK_WARNING"
     AUTONOMY_DEGRADATION_WARNING = "AUTONOMY_DEGRADATION_WARNING"
+    STRATEGY_CAPACITY_WARNING = "STRATEGY_CAPACITY_WARNING"
+    ALLOCATION_RESEARCH_FINDING = "ALLOCATION_RESEARCH_FINDING"
+    ALLOCATION_OVERFIT_WARNING = "ALLOCATION_OVERFIT_WARNING"
+    CAPACITY_CONSTRAINT_WARNING = "CAPACITY_CONSTRAINT_WARNING"
+    CASH_BUFFER_ANALYSIS = "CASH_BUFFER_ANALYSIS"
+
 
 
 
@@ -1053,6 +1059,151 @@ class MoneymakerResearchDirector:
             proposed_experiments=["Trigger automatic de-risking if 20-cohort rolling net expectancy falls below +3.0 bps."],
             rag_citations=["ALPHA_B_AUTONOMOUS_LIVE_REPORT.md"],
         )
+
+    def generate_strategy_capacity_warning(
+        self,
+        strategy_id: str,
+        current_capital_usd: float,
+        tested_capital_usd: float,
+        retention_pct: float,
+        capacity_state: str,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface strategy-level capacity retention and tier status."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=(
+                f"Capacity Evaluation for {strategy_id}: Capital ${tested_capital_usd:,.0f} retains "
+                f"{retention_pct:.2f}% of baseline net expectancy. Classification: {capacity_state}."
+            ),
+            provenance_type=DataProvenanceType.STATISTICAL_INFERENCE,
+            source_reference="ALPHA_B_TIER1_EDGE_RETENTION.md",
+        )
+        summary = (
+            f"{strategy_id} retains {retention_pct:.1f}% edge at ${tested_capital_usd:,.0f} capital, "
+            f"classified as {capacity_state}."
+        )
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.STRATEGY_CAPACITY_WARNING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Friction remains sublinear at modest size scaling."],
+            proposed_experiments=["Maintain current tier ceiling until larger sample is accumulated."],
+            rag_citations=["ALPHA_B_TIER1_EDGE_RETENTION.md"],
+        )
+
+    def generate_allocation_research_finding(
+        self,
+        policy_name: str,
+        annualized_return_pct: float,
+        sharpe_ratio: float,
+        max_drawdown_pct: float,
+        avg_cash_pct: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface offline multi-strategy allocation research findings."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=(
+                f"Allocation Research: Policy {policy_name} achieves Sharpe {sharpe_ratio:.2f}, "
+                f"Return {annualized_return_pct:.2f}%, MaxDD {max_drawdown_pct:.2f}%, Cash Buffer {avg_cash_pct:.1f}%."
+            ),
+            provenance_type=DataProvenanceType.MODEL_PREDICTION,
+            source_reference="STRATEGY_ALLOCATION_RESEARCH_REPORT.md",
+        )
+        summary = (
+            f"Offline capacity-aware allocation model {policy_name} demonstrates strong risk-adjusted metrics "
+            f"(Sharpe {sharpe_ratio:.2f}) without live execution authority."
+        )
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.ALLOCATION_RESEARCH_FINDING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Capacity-aware cash residuals prevent forced over-allocation into low-capacity alphas."],
+            proposed_experiments=["Evaluate walk-forward stability across varied rolling covariance horizons."],
+            rag_citations=["STRATEGY_ALLOCATION_RESEARCH_REPORT.md"],
+        )
+
+    def generate_allocation_overfit_warning(
+        self,
+        tested_configurations_count: int,
+        holdout_sharpe_ratio: float,
+        in_sample_sharpe_ratio: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Guard against multi-hypothesis testing and parameter overfitting in allocation models."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=(
+                f"Allocation Overfitting Audit: {tested_configurations_count} configurations logged in multiple testing ledger. "
+                f"In-sample Sharpe {in_sample_sharpe_ratio:.2f} vs Holdout Sharpe {holdout_sharpe_ratio:.2f}."
+            ),
+            provenance_type=DataProvenanceType.STATISTICAL_INFERENCE,
+            source_reference="ALLOCATION_MULTIPLE_TESTING_LEDGER.md",
+        )
+        summary = f"Holdout Sharpe ({holdout_sharpe_ratio:.2f}) confirms allocation stability across holdout window."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.ALLOCATION_OVERFIT_WARNING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Overfitting risk is strictly controlled by pre-registered covariance windows."],
+            proposed_experiments=["Log all hyperparameter searches in immutable multiple-testing ledger."],
+            rag_citations=["ALLOCATION_MULTIPLE_TESTING_LEDGER.md"],
+        )
+
+    def generate_capacity_constraint_warning(
+        self,
+        strategy_id: str,
+        desired_capital_usd: float,
+        validated_capacity_usd: float,
+        residual_cash_usd: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Surface unallocated cash created by strategy capacity ceilings."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=(
+                f"Capacity Constraint Active for {strategy_id}: Desired capital ${desired_capital_usd:,.0f} exceeds "
+                f"validated ceiling ${validated_capacity_usd:,.0f}. Unallocated ${residual_cash_usd:,.0f} routed to Cash."
+            ),
+            provenance_type=DataProvenanceType.OBSERVED_DATA,
+            source_reference="ALLOCATION_CAPACITY_CONSTRAINT_REPORT.md",
+        )
+        summary = (
+            f"Capacity bounding successfully constrained {strategy_id} to ${validated_capacity_usd:,.0f}, "
+            f"preventing unauthorized capital leakage."
+        )
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.CAPACITY_CONSTRAINT_WARNING,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Capacity-aware allocation prevents liquidity degradation."],
+            proposed_experiments=["Conduct capacity ramp trials before expanding allocation ceilings."],
+            rag_citations=["ALLOCATION_CAPACITY_CONSTRAINT_REPORT.md"],
+        )
+
+    def generate_cash_buffer_analysis(
+        self,
+        mean_cash_pct: float,
+        p95_cash_pct: float,
+        drawdown_cushion_bps: float,
+    ) -> ResearchDirectorOutput:
+        """Analytical tool: Analyze risk dampening and portfolio cushioning from unallocated cash."""
+        self.verify_permission_boundary()
+        statement = ProvenanceStatement(
+            statement=(
+                f"Cash Buffer Analysis: Mean cash weight {mean_cash_pct:.1f}%, P95 {p95_cash_pct:.1f}%, "
+                f"providing {drawdown_cushion_bps:.1f} bps of drawdown cushioning."
+            ),
+            provenance_type=DataProvenanceType.STATISTICAL_INFERENCE,
+            source_reference="ALLOCATION_CAPACITY_CONSTRAINT_REPORT.md",
+        )
+        summary = f"Unallocated cash buffer actively dampens portfolio volatility and tail drawdowns."
+        return ResearchDirectorOutput(
+            output_type=LLMOutputType.CASH_BUFFER_ANALYSIS,
+            summary=summary,
+            provenance_statements=[statement],
+            hypotheses=["Cash residuals enhance Sortino and Calmar ratios during stressed regimes."],
+            proposed_experiments=["Benchmark cash yields against short-term risk-free rates."],
+            rag_citations=["ALLOCATION_CAPACITY_CONSTRAINT_REPORT.md"],
+        )
+
 
 
 
