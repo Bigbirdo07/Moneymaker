@@ -8,7 +8,7 @@ import os
 
 
 def test_slurm_job_records_exist_and_match_hardware():
-    job_dir = "artifacts/provenance/unity_jobs"
+    job_dir = "artifacts/invalid_synthetic/phase8c1/unity_jobs"
     expected_jobs = ["4892011", "4892408", "4892815", "4893102"]
 
     for jid in expected_jobs:
@@ -24,3 +24,6 @@ def test_slurm_job_records_exist_and_match_hardware():
         assert data["elapsed_seconds"] > 0
         assert "raw_sacct" in data
         assert "raw_scontrol" in data
+
+    # Real Unity logs must exist in artifacts/provenance/real_unity/
+    assert os.path.exists("artifacts/provenance/real_unity/sacct_reported_jobs.txt")

@@ -291,6 +291,7 @@ export interface ResearchModelRecord {
   benchmark_details: Record<string, any>;
   created_at: string;
   approval_state: string;
+  provenance_state?: string;
   approval_notes?: string;
   is_workstation_active: boolean;
 }

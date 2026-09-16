@@ -22,6 +22,13 @@ class ModelApprovalState(str, Enum):
     ARCHIVED = "ARCHIVED"
 
 
+class ModelProvenanceState(str, Enum):
+    SYNTHETIC_INVALID = "SYNTHETIC_INVALID"
+    UNVERIFIED = "UNVERIFIED"
+    PARTIALLY_VERIFIED = "PARTIALLY_VERIFIED"
+    EMPIRICALLY_VERIFIED = "EMPIRICALLY_VERIFIED"
+
+
 @dataclass
 class ResearchModelRecord:
     model_id: str
@@ -35,6 +42,7 @@ class ResearchModelRecord:
     benchmark_details: Dict[str, Any]
     created_at: str
     approval_state: ModelApprovalState = ModelApprovalState.EXPERIMENTAL
+    provenance_state: ModelProvenanceState = ModelProvenanceState.UNVERIFIED
     approval_notes: Optional[str] = None
     is_workstation_active: bool = False
 
@@ -51,6 +59,7 @@ class ResearchModelRecord:
             "benchmark_details": self.benchmark_details,
             "created_at": self.created_at,
             "approval_state": self.approval_state.value,
+            "provenance_state": self.provenance_state.value,
             "approval_notes": self.approval_notes,
             "is_workstation_active": self.is_workstation_active,
         }
@@ -69,6 +78,7 @@ class ResearchModelRecord:
             benchmark_details=data["benchmark_details"],
             created_at=data["created_at"],
             approval_state=ModelApprovalState(data["approval_state"]),
+            provenance_state=ModelProvenanceState(data.get("provenance_state", ModelProvenanceState.UNVERIFIED.value)),
             approval_notes=data.get("approval_notes"),
             is_workstation_active=data.get("is_workstation_active", False),
         )
@@ -108,6 +118,7 @@ class ModelRegistry:
             benchmark_score=78.5,
             benchmark_details={"tool_selection": 82.5, "trade_reasoning": 77.0, "risk_comprehension": 79.5},
             approval_state=ModelApprovalState.VALIDATED,
+            provenance_state=ModelProvenanceState.EMPIRICALLY_VERIFIED,
             is_workstation_active=True,
         )
 
@@ -122,6 +133,8 @@ class ModelRegistry:
             benchmark_score=94.2,
             benchmark_details={"tool_selection": 97.5, "trade_reasoning": 95.0, "risk_comprehension": 95.0, "provenance_accuracy": 98.5},
             approval_state=ModelApprovalState.CANDIDATE,
+            provenance_state=ModelProvenanceState.UNVERIFIED,
+            approval_notes="Phase 8C.2 Audit: Job IDs 4892011/4892408 unverified on Unity. Prototype dataset has 17 examples. Promotion blocked pending real training.",
             is_workstation_active=False,
         )
 
@@ -142,6 +155,7 @@ class ModelRegistry:
         benchmark_score: float,
         benchmark_details: Dict[str, Any],
         approval_state: ModelApprovalState = ModelApprovalState.EXPERIMENTAL,
+        provenance_state: ModelProvenanceState = ModelProvenanceState.UNVERIFIED,
         approval_notes: Optional[str] = None,
         is_workstation_active: bool = False,
     ) -> ResearchModelRecord:
@@ -157,6 +171,7 @@ class ModelRegistry:
             benchmark_details=benchmark_details,
             created_at=datetime.now(timezone.utc).isoformat(),
             approval_state=approval_state,
+            provenance_state=provenance_state,
             approval_notes=approval_notes,
             is_workstation_active=is_workstation_active,
         )
@@ -188,17 +203,30 @@ class ModelRegistry:
                 "verified": True,
             }
 
+        # Check real adapter presence and size
+        has_real_adapter = False
+        if os.path.exists(model.checkpoint_path):
+            safe_p = os.path.join(model.checkpoint_path, "adapter_model.safetensors")
+            if os.path.exists(safe_p) and os.path.getsize(safe_p) > 1_000_000:
+                has_real_adapter = True
+
+        # Check real Slurm remote logs
+        has_real_slurm_logs = os.path.exists("artifacts/provenance/real_unity/sacct_reported_jobs.txt")
+
         checks = {
-            "has_valid_dataset_hash": len(model.dataset_hash) == 64,
+            "has_valid_dataset_hash": len(model.dataset_hash) == 64 and model.dataset_hash != "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
             "has_training_config": bool(model.training_config.get("method")),
-            "has_adapter_checkpoint": bool(model.checkpoint_path),
+            "has_real_adapter_checkpoint": has_real_adapter,
             "benchmark_score_valid": model.benchmark_score > 0.0,
             "has_provenance_accuracy": model.benchmark_details.get("provenance_accuracy", 0.0) >= 90.0,
+            "has_real_slurm_accounting": has_real_slurm_logs,
         }
 
+        # Provenance is UNVERIFIED until real adapter > 1MB and real Slurm logs match
         all_passed = all(checks.values())
+        status = "PROVENANCE_VERIFIED" if all_passed else "PROVENANCE_UNVERIFIED"
         return {
-            "status": "PROVENANCE_VERIFIED" if all_passed else "PROVENANCE_FAILED",
+            "status": status,
             "model_id": model_id,
             "checks": checks,
             "verified": all_passed,
@@ -211,7 +239,7 @@ class ModelRegistry:
         """
         audit = self.audit_model_training_provenance(model_id)
         if not audit.get("verified"):
-            raise PermissionError(f"Cannot promote {model_id}: provenance audit failed.")
+            raise PermissionError(f"Cannot promote {model_id}: provenance audit failed ({audit.get('status')}).")
 
         model = self.get_model(model_id)
         if not model:
@@ -226,7 +254,8 @@ class ModelRegistry:
 
     def promote_to_workstation_active(self, model_id: str, human_approved: bool = False) -> ResearchModelRecord:
         """
-        Promotes a candidate model to workstation active. Strict rule: requires explicit human sign-off.
+        Promotes a candidate model to workstation active. Strict rule: requires explicit human sign-off
+        and verified empirical provenance.
         """
         if not human_approved:
             raise PermissionError("FATAL: AI Models cannot auto-promote. Explicit human approval is required.")
@@ -237,6 +266,9 @@ class ModelRegistry:
 
         if model.approval_state != ModelApprovalState.CANDIDATE:
             raise ValueError(f"Model {model_id} must be in CANDIDATE state before workstation activation.")
+
+        if model.provenance_state != ModelProvenanceState.EMPIRICALLY_VERIFIED:
+            raise PermissionError(f"FATAL: Model {model_id} cannot be promoted while provenance is {model.provenance_state.value}.")
 
         # Deactivate previous active models
         for m in self._models.values():

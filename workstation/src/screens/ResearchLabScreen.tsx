@@ -450,23 +450,36 @@ export const ResearchLabScreen: React.FC = () => {
                     </div>
                     <div className="text-xs font-mono text-gray-400">{model.base_model_name}</div>
                   </div>
-                  <span
-                    className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold ${
-                      model.approval_state === 'VALIDATED'
-                        ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/30'
-                        : model.approval_state === 'CANDIDATE'
-                        ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/30'
-                        : 'bg-amber-950 text-amber-400 border border-amber-500/30'
-                    }`}
-                  >
-                    {model.approval_state}
-                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <span
+                      className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold ${
+                        model.provenance_state === 'EMPIRICALLY_VERIFIED'
+                          ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/30'
+                          : 'bg-amber-950 text-amber-400 border border-amber-500/30'
+                      }`}
+                    >
+                      {model.provenance_state || 'UNVERIFIED'}
+                    </span>
+                    <span
+                      className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold ${
+                        model.approval_state === 'VALIDATED'
+                          ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/30'
+                          : model.approval_state === 'CANDIDATE'
+                          ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/30'
+                          : 'bg-amber-950 text-amber-400 border border-amber-500/30'
+                      }`}
+                    >
+                      {model.approval_state}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 font-mono text-xs">
                   <div className="p-2 rounded bg-black/30 border border-white/5">
                     <span className="text-gray-400 text-[10px]">BENCHMARK SCORE</span>
-                    <div className="text-lg font-bold text-cyan-300">{model.benchmark_score.toFixed(1)} / 100</div>
+                    <div className="text-lg font-bold text-cyan-300">
+                      {model.provenance_state === 'EMPIRICALLY_VERIFIED' ? `${model.benchmark_score.toFixed(1)} / 100` : 'UNVERIFIED'}
+                    </div>
                   </div>
                   <div className="p-2 rounded bg-black/30 border border-white/5">
                     <span className="text-gray-400 text-[10px]">WORKSTATION ACTIVE</span>

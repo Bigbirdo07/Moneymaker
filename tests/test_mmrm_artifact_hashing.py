@@ -27,7 +27,7 @@ def test_dataset_hash_is_non_empty_and_deterministic():
 
 
 def test_adapter_artifact_hash_verification():
-    adapter_path = "checkpoints/MMRM-0.1-QLORA/adapter_model.safetensors"
+    adapter_path = "artifacts/invalid_synthetic/phase8c1/checkpoints/MMRM-0.1-QLORA/adapter_model.safetensors"
     assert os.path.exists(adapter_path)
 
     with open(adapter_path, "rb") as f:

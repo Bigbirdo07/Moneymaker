@@ -1,0 +1,14 @@
+JobID           JobName      User  Partition      State    Elapsed               Start                 End  AllocCPUS     ReqMem        NodeList 
+------------ ---------- --------- ---------- ---------- ---------- ------------------- ------------------- ---------- ---------- --------------- 
+4889604_304  ev_project jlukuyu_+   cpu-long  COMPLETED   00:35:20 2023-01-28T21:47:40 2023-01-28T22:23:00          2       800M      uri-cpu008 
+4889604_304+      batch                       COMPLETED   00:35:20 2023-01-28T21:47:40 2023-01-28T22:23:00          2                 uri-cpu008 
+4889604_304+     extern                       COMPLETED   00:35:20 2023-01-28T21:47:40 2023-01-28T22:23:00          2                 uri-cpu008 
+4892011      parse_mct+ smiura_u+        cpu  COMPLETED   00:00:02 2023-01-28T21:39:39 2023-01-28T21:39:41          2      2000M          cpu009 
+4892011.bat+      batch                       COMPLETED   00:00:02 2023-01-28T21:39:39 2023-01-28T21:39:41          2                     cpu009 
+4892011.ext+     extern                       COMPLETED   00:00:02 2023-01-28T21:39:39 2023-01-28T21:39:41          2                     cpu009 
+4892408      mcts_disc+ smiura_u+        cpu  COMPLETED   00:00:03 2023-01-28T21:42:09 2023-01-28T21:42:12          1      2000M      uri-cpu010 
+4892408.bat+      batch                       COMPLETED   00:00:03 2023-01-28T21:42:09 2023-01-28T21:42:12          1                 uri-cpu010 
+4892408.ext+     extern                       COMPLETED   00:00:03 2023-01-28T21:42:09 2023-01-28T21:42:12          1                 uri-cpu010 
+4892815      mcts_disc+ smiura_u+        cpu  COMPLETED   00:00:03 2023-01-28T21:45:40 2023-01-28T21:45:43          1      2000M      uri-cpu011 
+4892815.bat+      batch                       COMPLETED   00:00:03 2023-01-28T21:45:40 2023-01-28T21:45:43          1                 uri-cpu011 
+4892815.ext+     extern                       COMPLETED   00:00:03 2023-01-28T21:45:40 2023-01-28T21:45:43          1                 uri-cpu011 

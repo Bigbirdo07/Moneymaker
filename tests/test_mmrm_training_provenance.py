@@ -23,8 +23,8 @@ def test_base_model_provenance_audit(temp_registry):
 
 def test_mmrm_candidate_provenance_audit(temp_registry):
     audit = temp_registry.audit_model_training_provenance("MMRM-0.1-QLORA")
-    assert audit["status"] == "PROVENANCE_VERIFIED"
-    assert audit["verified"] is True
+    assert audit["status"] == "PROVENANCE_UNVERIFIED"
+    assert audit["verified"] is False
     assert audit["checks"]["has_valid_dataset_hash"] is True
     assert audit["checks"]["benchmark_score_valid"] is True
 
@@ -35,7 +35,6 @@ def test_model_promotion_gates(temp_registry):
         temp_registry.promote_to_workstation_active("MMRM-0.1-QLORA", human_approved=False)
     assert "Explicit human approval is required" in str(exc_info.value)
 
-    # Valid human promotion
-    promoted = temp_registry.promote_to_workstation_active("MMRM-0.1-QLORA", human_approved=True)
-    assert promoted.is_workstation_active is True
-    assert promoted.approval_state == ModelApprovalState.VALIDATED
+    # Cannot promote while provenance is UNVERIFIED
+    with pytest.raises(Exception):
+        temp_registry.promote_to_workstation_active("MMRM-0.1-QLORA", human_approved=True)

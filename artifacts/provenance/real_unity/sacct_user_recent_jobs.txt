@@ -1,0 +1,579 @@
+JobID           JobName  Partition      State    Elapsed               Start                 End  AllocCPUS                      AllocTRES        NodeList 
+------------ ---------- ---------- ---------- ---------- ------------------- ------------------- ---------- ------------------------------ --------------- 
+63862971     azera-deb+    uri-gpu  COMPLETED   00:12:56 2026-09-01T01:59:46 2026-09-01T02:12:42          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+63862971.ba+      batch             COMPLETED   00:12:56 2026-09-01T01:59:46 2026-09-01T02:12:42          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+63862971.ex+     extern             COMPLETED   00:12:56 2026-09-01T01:59:46 2026-09-01T02:12:42          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+63863133     azera-str+    uri-gpu  COMPLETED   01:27:19 2026-09-01T02:14:37 2026-09-01T03:41:56          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+63863133.ba+      batch             COMPLETED   01:27:19 2026-09-01T02:14:37 2026-09-01T03:41:56          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+63863133.ex+     extern             COMPLETED   01:27:19 2026-09-01T02:14:37 2026-09-01T03:41:56          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+63865183     grey_zone+    uri-cpu CANCELLED+   00:08:09 2026-09-01T03:21:18 2026-09-01T03:29:27          4 billing=4,cpu=4,mem=96G,node=1      uri-cpu043 
+63865183.ba+      batch             CANCELLED   00:08:10 2026-09-01T03:21:18 2026-09-01T03:29:28          4           cpu=4,mem=96G,node=1      uri-cpu043 
+63865183.ex+     extern             COMPLETED   00:08:11 2026-09-01T03:21:18 2026-09-01T03:29:29          4 billing=4,cpu=4,mem=96G,node=1      uri-cpu043 
+63865500     grey_zone+    uri-cpu  COMPLETED   00:10:19 2026-09-01T03:29:33 2026-09-01T03:39:52          4 billing=4,cpu=4,mem=96G,node=1      uri-cpu059 
+63865500.ba+      batch             COMPLETED   00:10:19 2026-09-01T03:29:33 2026-09-01T03:39:52          4           cpu=4,mem=96G,node=1      uri-cpu059 
+63865500.ex+     extern             COMPLETED   00:10:19 2026-09-01T03:29:33 2026-09-01T03:39:52          4 billing=4,cpu=4,mem=96G,node=1      uri-cpu059 
+63866221     azera-epi+    uri-gpu  COMPLETED   00:57:50 2026-09-01T03:53:04 2026-09-01T04:50:54          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63866221.ba+      batch             COMPLETED   00:57:50 2026-09-01T03:53:04 2026-09-01T04:50:54          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+63866221.ex+     extern             COMPLETED   00:57:50 2026-09-01T03:53:04 2026-09-01T04:50:54          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63869143     azera-pas+    uri-gpu  COMPLETED   00:55:55 2026-09-01T05:04:30 2026-09-01T06:00:25          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63869143.ba+      batch             COMPLETED   00:55:55 2026-09-01T05:04:30 2026-09-01T06:00:25          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+63869143.ex+     extern             COMPLETED   00:55:55 2026-09-01T05:04:30 2026-09-01T06:00:25          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63886626     azera-inf+    uri-gpu  COMPLETED   01:15:51 2026-09-01T19:03:53 2026-09-01T20:19:44          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63886626.ba+      batch             COMPLETED   01:15:51 2026-09-01T19:03:53 2026-09-01T20:19:44          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+63886626.ex+     extern             COMPLETED   01:15:51 2026-09-01T19:03:53 2026-09-01T20:19:44          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63888399     azera-obs+    uri-gpu  COMPLETED   00:05:15 2026-09-01T20:33:58 2026-09-01T20:39:13          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63888399.ba+      batch             COMPLETED   00:05:15 2026-09-01T20:33:58 2026-09-01T20:39:13          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+63888399.ex+     extern             COMPLETED   00:05:15 2026-09-01T20:33:58 2026-09-01T20:39:13          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63889494     azera-obs+    uri-gpu  COMPLETED   00:07:35 2026-09-01T21:13:59 2026-09-01T21:21:34          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+63889494.ba+      batch             COMPLETED   00:07:35 2026-09-01T21:13:59 2026-09-01T21:21:34          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu007 
+63889494.ex+     extern             COMPLETED   00:07:35 2026-09-01T21:13:59 2026-09-01T21:21:34          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+63891414     azera-exp+    uri-gpu  COMPLETED   02:19:21 2026-09-01T22:05:40 2026-09-02T00:25:01          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+63891414.ba+      batch             COMPLETED   02:19:21 2026-09-01T22:05:40 2026-09-02T00:25:01          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+63891414.ex+     extern             COMPLETED   02:19:21 2026-09-01T22:05:40 2026-09-02T00:25:01          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+63905951     azera-con+    uri-gpu  COMPLETED   00:02:40 2026-09-02T07:39:57 2026-09-02T07:42:37          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+63905951.ba+      batch             COMPLETED   00:02:40 2026-09-02T07:39:57 2026-09-02T07:42:37          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+63905951.ex+     extern             COMPLETED   00:02:40 2026-09-02T07:39:57 2026-09-02T07:42:37          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+63905960     azera-suf+    uri-gpu  COMPLETED   01:56:15 2026-09-02T07:43:22 2026-09-02T09:39:37          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+63905960.ba+      batch             COMPLETED   01:56:15 2026-09-02T07:43:22 2026-09-02T09:39:37          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+63905960.ex+     extern             COMPLETED   01:56:15 2026-09-02T07:43:22 2026-09-02T09:39:37          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+63944354     azera-suf+    uri-gpu  COMPLETED   00:03:35 2026-09-02T20:49:38 2026-09-02T20:53:13          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+63944354.ba+      batch             COMPLETED   00:03:35 2026-09-02T20:49:38 2026-09-02T20:53:13          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+63944354.ex+     extern             COMPLETED   00:03:35 2026-09-02T20:49:38 2026-09-02T20:53:13          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+63945766     azera-evi+    uri-gpu  COMPLETED   00:20:21 2026-09-02T21:11:45 2026-09-02T21:32:06          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63945766.ba+      batch             COMPLETED   00:20:21 2026-09-02T21:11:45 2026-09-02T21:32:06          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+63945766.ex+     extern             COMPLETED   00:20:21 2026-09-02T21:11:45 2026-09-02T21:32:06          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63947069     azera-pas+    uri-gpu  COMPLETED   00:10:24 2026-09-02T21:41:40 2026-09-02T21:52:04          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+63947069.ba+      batch             COMPLETED   00:10:24 2026-09-02T21:41:40 2026-09-02T21:52:04          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+63947069.ex+     extern             COMPLETED   00:10:24 2026-09-02T21:41:40 2026-09-02T21:52:04          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+63948817     azera-pha+    uri-gpu  COMPLETED   01:31:55 2026-09-02T23:08:28 2026-09-03T00:40:23          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu008 
+63948817.ba+      batch             COMPLETED   01:31:55 2026-09-02T23:08:28 2026-09-03T00:40:23          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu008 
+63948817.ex+     extern             COMPLETED   01:31:55 2026-09-02T23:08:28 2026-09-03T00:40:23          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu008 
+63951025     azera-pha+    uri-gpu  COMPLETED   02:15:18 2026-09-03T02:11:54 2026-09-03T04:27:12          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63951025.ba+      batch             COMPLETED   02:15:18 2026-09-03T02:11:54 2026-09-03T04:27:12          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+63951025.ex+     extern             COMPLETED   02:15:18 2026-09-03T02:11:54 2026-09-03T04:27:12          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63963829     azera-dim+    uri-gpu  COMPLETED   00:02:52 2026-09-03T18:33:44 2026-09-03T18:36:36          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+63963829.ba+      batch             COMPLETED   00:02:52 2026-09-03T18:33:44 2026-09-03T18:36:36          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+63963829.ex+     extern             COMPLETED   00:02:52 2026-09-03T18:33:44 2026-09-03T18:36:36          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+63966149     azera-dim+    uri-gpu  COMPLETED   00:07:26 2026-09-03T20:21:48 2026-09-03T20:29:14          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63966149.ba+      batch             COMPLETED   00:07:26 2026-09-03T20:21:48 2026-09-03T20:29:14          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+63966149.ex+     extern             COMPLETED   00:07:26 2026-09-03T20:21:48 2026-09-03T20:29:14          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63966374     azera-dim+    uri-gpu  COMPLETED   00:07:01 2026-09-03T20:43:40 2026-09-03T20:50:41          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63966374.ba+      batch             COMPLETED   00:07:01 2026-09-03T20:43:40 2026-09-03T20:50:41          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+63966374.ex+     extern             COMPLETED   00:07:01 2026-09-03T20:43:40 2026-09-03T20:50:41          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63966659     azera-dim+    uri-gpu  COMPLETED   00:04:42 2026-09-03T20:59:17 2026-09-03T21:03:59          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63966659.ba+      batch             COMPLETED   00:04:42 2026-09-03T20:59:17 2026-09-03T21:03:59          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+63966659.ex+     extern             COMPLETED   00:04:42 2026-09-03T20:59:17 2026-09-03T21:03:59          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63966838     azera-dim+    uri-gpu  COMPLETED   00:07:31 2026-09-03T21:12:54 2026-09-03T21:20:25          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63966838.ba+      batch             COMPLETED   00:07:31 2026-09-03T21:12:54 2026-09-03T21:20:25          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+63966838.ex+     extern             COMPLETED   00:07:31 2026-09-03T21:12:54 2026-09-03T21:20:25          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63967255     azera-dim+    uri-gpu  COMPLETED   00:16:06 2026-09-03T21:48:38 2026-09-03T22:04:44          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+63967255.ba+      batch             COMPLETED   00:16:06 2026-09-03T21:48:38 2026-09-03T22:04:44          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+63967255.ex+     extern             COMPLETED   00:16:06 2026-09-03T21:48:38 2026-09-03T22:04:44          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+63967733     azera-dim+    uri-gpu  COMPLETED   00:12:38 2026-09-03T22:27:56 2026-09-03T22:40:34          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63967733.ba+      batch             COMPLETED   00:12:38 2026-09-03T22:27:56 2026-09-03T22:40:34          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+63967733.ex+     extern             COMPLETED   00:12:38 2026-09-03T22:27:56 2026-09-03T22:40:34          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63968637     azera-dim+    uri-gpu  COMPLETED   00:17:08 2026-09-03T22:53:35 2026-09-03T23:10:43          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63968637.ba+      batch             COMPLETED   00:17:08 2026-09-03T22:53:35 2026-09-03T23:10:43          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+63968637.ex+     extern             COMPLETED   00:17:08 2026-09-03T22:53:35 2026-09-03T23:10:43          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63972658     azera-dim+    uri-gpu  COMPLETED   00:20:54 2026-09-04T02:00:10 2026-09-04T02:21:04          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63972658.ba+      batch             COMPLETED   00:20:54 2026-09-04T02:00:10 2026-09-04T02:21:04          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+63972658.ex+     extern             COMPLETED   00:20:54 2026-09-04T02:00:10 2026-09-04T02:21:04          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63977794     azera-dim+    uri-gpu  COMPLETED   00:14:22 2026-09-04T03:39:47 2026-09-04T03:54:09          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63977794.ba+      batch             COMPLETED   00:14:22 2026-09-04T03:39:47 2026-09-04T03:54:09          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+63977794.ex+     extern             COMPLETED   00:14:22 2026-09-04T03:39:47 2026-09-04T03:54:09          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63985521     azera-dim+    uri-gpu  COMPLETED   00:19:32 2026-09-04T07:12:18 2026-09-04T07:31:50          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63985521.ba+      batch             COMPLETED   00:19:32 2026-09-04T07:12:18 2026-09-04T07:31:50          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+63985521.ex+     extern             COMPLETED   00:19:32 2026-09-04T07:12:18 2026-09-04T07:31:50          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63985711     azera-dim+    uri-gpu  COMPLETED   00:17:55 2026-09-04T07:39:30 2026-09-04T07:57:25          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63985711.ba+      batch             COMPLETED   00:17:55 2026-09-04T07:39:30 2026-09-04T07:57:25          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+63985711.ex+     extern             COMPLETED   00:17:55 2026-09-04T07:39:30 2026-09-04T07:57:25          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+63985947     azera-dim+    uri-gpu  COMPLETED   00:08:58 2026-09-04T08:16:10 2026-09-04T08:25:08          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63985947.ba+      batch             COMPLETED   00:08:58 2026-09-04T08:16:10 2026-09-04T08:25:08          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+63985947.ex+     extern             COMPLETED   00:08:58 2026-09-04T08:16:10 2026-09-04T08:25:08          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63996216     azera-dim+    uri-gpu  COMPLETED   00:10:39 2026-09-04T19:04:17 2026-09-04T19:14:56          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63996216.ba+      batch             COMPLETED   00:10:39 2026-09-04T19:04:17 2026-09-04T19:14:56          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+63996216.ex+     extern             COMPLETED   00:10:39 2026-09-04T19:04:17 2026-09-04T19:14:56          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+63998153     azera-dim+    uri-gpu  COMPLETED   00:24:46 2026-09-04T19:43:19 2026-09-04T20:08:05          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+63998153.ba+      batch             COMPLETED   00:24:46 2026-09-04T19:43:19 2026-09-04T20:08:05          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+63998153.ex+     extern             COMPLETED   00:24:46 2026-09-04T19:43:19 2026-09-04T20:08:05          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+63999590     azera-dim+    uri-gpu  COMPLETED   00:04:43 2026-09-04T20:23:20 2026-09-04T20:28:03          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+63999590.ba+      batch             COMPLETED   00:04:43 2026-09-04T20:23:20 2026-09-04T20:28:03          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+63999590.ex+     extern             COMPLETED   00:04:43 2026-09-04T20:23:20 2026-09-04T20:28:03          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64000744     azera-dim+    uri-gpu  COMPLETED   00:03:21 2026-09-04T20:55:09 2026-09-04T20:58:30          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64000744.ba+      batch             COMPLETED   00:03:21 2026-09-04T20:55:09 2026-09-04T20:58:30          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64000744.ex+     extern             COMPLETED   00:03:21 2026-09-04T20:55:09 2026-09-04T20:58:30          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64004115     azera-voi+    uri-gpu  COMPLETED   00:10:46 2026-09-05T01:26:39 2026-09-05T01:37:25          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64004115.ba+      batch             COMPLETED   00:10:46 2026-09-05T01:26:39 2026-09-05T01:37:25          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64004115.ex+     extern             COMPLETED   00:10:46 2026-09-05T01:26:39 2026-09-05T01:37:25          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64004154     azera-voi+    uri-gpu  COMPLETED   00:11:54 2026-09-05T01:39:33 2026-09-05T01:51:27          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64004154.ba+      batch             COMPLETED   00:11:54 2026-09-05T01:39:33 2026-09-05T01:51:27          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64004154.ex+     extern             COMPLETED   00:11:54 2026-09-05T01:39:33 2026-09-05T01:51:27          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64004174     azera-voi+    uri-gpu  COMPLETED   00:13:00 2026-09-05T01:54:04 2026-09-05T02:07:04          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64004174.ba+      batch             COMPLETED   00:13:00 2026-09-05T01:54:04 2026-09-05T02:07:04          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64004174.ex+     extern             COMPLETED   00:13:01 2026-09-05T01:54:04 2026-09-05T02:07:05          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64004223     azera-voi+    uri-gpu  COMPLETED   00:12:58 2026-09-05T02:11:30 2026-09-05T02:24:28          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64004223.ba+      batch             COMPLETED   00:12:58 2026-09-05T02:11:30 2026-09-05T02:24:28          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64004223.ex+     extern             COMPLETED   00:12:58 2026-09-05T02:11:30 2026-09-05T02:24:28          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64004297     azera-voi+    uri-gpu CANCELLED+   00:00:00                None 2026-09-05T02:25:39          0                                  None assigned 
+64004298     azera-voi+    uri-gpu  COMPLETED   00:03:10 2026-09-05T02:28:07 2026-09-05T02:31:17          4 billing=4,cpu=4,gres/gpu:h100+      uri-gpu012 
+64004298.ba+      batch             COMPLETED   00:03:10 2026-09-05T02:28:07 2026-09-05T02:31:17          4 cpu=4,gres/gpu:h100=1,gres/gp+      uri-gpu012 
+64004298.ex+     extern             COMPLETED   00:03:10 2026-09-05T02:28:07 2026-09-05T02:31:17          4 billing=4,cpu=4,gres/gpu:h100+      uri-gpu012 
+64005118     azera-voi+    uri-gpu  COMPLETED   00:10:50 2026-09-05T05:01:40 2026-09-05T05:12:30          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64005118.ba+      batch             COMPLETED   00:10:50 2026-09-05T05:01:40 2026-09-05T05:12:30          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64005118.ex+     extern             COMPLETED   00:10:50 2026-09-05T05:01:40 2026-09-05T05:12:30          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64005326     azera-voi+    uri-gpu  COMPLETED   00:13:03 2026-09-05T05:14:08 2026-09-05T05:27:11          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64005326.ba+      batch             COMPLETED   00:13:03 2026-09-05T05:14:08 2026-09-05T05:27:11          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64005326.ex+     extern             COMPLETED   00:13:03 2026-09-05T05:14:08 2026-09-05T05:27:11          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64005329     azera-voi+    uri-gpu  COMPLETED   00:10:54 2026-09-05T05:15:42 2026-09-05T05:26:36          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64005329.ba+      batch             COMPLETED   00:10:54 2026-09-05T05:15:42 2026-09-05T05:26:36          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64005329.ex+     extern             COMPLETED   00:10:54 2026-09-05T05:15:42 2026-09-05T05:26:36          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64005471     azera-voi+    uri-gpu  COMPLETED   00:08:16 2026-09-05T05:33:54 2026-09-05T05:42:10          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu011 
+64005471.ba+      batch             COMPLETED   00:08:16 2026-09-05T05:33:54 2026-09-05T05:42:10          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64005471.ex+     extern             COMPLETED   00:08:16 2026-09-05T05:33:54 2026-09-05T05:42:10          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu011 
+64005472     azera-voi+    uri-gpu  COMPLETED   00:06:57 2026-09-05T05:42:12 2026-09-05T05:49:09          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu011 
+64005472.ba+      batch             COMPLETED   00:06:57 2026-09-05T05:42:12 2026-09-05T05:49:09          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64005472.ex+     extern             COMPLETED   00:06:57 2026-09-05T05:42:12 2026-09-05T05:49:09          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu011 
+64005687     azera-voi+    uri-gpu  COMPLETED   00:09:41 2026-09-05T05:53:27 2026-09-05T06:03:08          4 billing=4,cpu=4,gres/gpu:a100+      uri-gpu006 
+64005687.ba+      batch             COMPLETED   00:09:41 2026-09-05T05:53:27 2026-09-05T06:03:08          4 cpu=4,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64005687.ex+     extern             COMPLETED   00:09:41 2026-09-05T05:53:27 2026-09-05T06:03:08          4 billing=4,cpu=4,gres/gpu:a100+      uri-gpu006 
+64005834     azera-voi+    uri-gpu  COMPLETED   00:10:52 2026-09-05T06:05:31 2026-09-05T06:16:23          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64005834.ba+      batch             COMPLETED   00:10:52 2026-09-05T06:05:31 2026-09-05T06:16:23          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64005834.ex+     extern             COMPLETED   00:10:52 2026-09-05T06:05:31 2026-09-05T06:16:23          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64006104     azera-voi+    uri-gpu  COMPLETED   00:03:10 2026-09-05T06:17:55 2026-09-05T06:21:05          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64006104.ba+      batch             COMPLETED   00:03:10 2026-09-05T06:17:55 2026-09-05T06:21:05          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64006104.ex+     extern             COMPLETED   00:03:10 2026-09-05T06:17:55 2026-09-05T06:21:05          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64006259     azera-voi+    uri-gpu  COMPLETED   00:15:22 2026-09-05T06:46:13 2026-09-05T07:01:35          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64006259.ba+      batch             COMPLETED   00:15:22 2026-09-05T06:46:13 2026-09-05T07:01:35          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64006259.ex+     extern             COMPLETED   00:15:22 2026-09-05T06:46:13 2026-09-05T07:01:35          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64006260     azera-voi+    uri-gpu  COMPLETED   00:09:56 2026-09-05T06:46:19 2026-09-05T06:56:15          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu014 
+64006260.ba+      batch             COMPLETED   00:09:56 2026-09-05T06:46:19 2026-09-05T06:56:15          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64006260.ex+     extern             COMPLETED   00:09:56 2026-09-05T06:46:19 2026-09-05T06:56:15          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu014 
+64006262     azera-voi+    uri-gpu  COMPLETED   00:10:38 2026-09-05T06:48:07 2026-09-05T06:58:45          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64006262.ba+      batch             COMPLETED   00:10:38 2026-09-05T06:48:07 2026-09-05T06:58:45          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64006262.ex+     extern             COMPLETED   00:10:38 2026-09-05T06:48:07 2026-09-05T06:58:45          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64006263     azera-voi+    uri-gpu  COMPLETED   00:09:15 2026-09-05T06:48:56 2026-09-05T06:58:11          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64006263.ba+      batch             COMPLETED   00:09:15 2026-09-05T06:48:56 2026-09-05T06:58:11          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64006263.ex+     extern             COMPLETED   00:09:15 2026-09-05T06:48:56 2026-09-05T06:58:11          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64006266     azera-voi+    uri-gpu  COMPLETED   00:08:40 2026-09-05T06:49:00 2026-09-05T06:57:40          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu014 
+64006266.ba+      batch             COMPLETED   00:08:40 2026-09-05T06:49:00 2026-09-05T06:57:40          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64006266.ex+     extern             COMPLETED   00:08:40 2026-09-05T06:49:00 2026-09-05T06:57:40          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu014 
+64006268     azera-voi+    uri-gpu  COMPLETED   00:00:15 2026-09-05T06:54:21 2026-09-05T06:54:36          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64006268.ba+      batch             COMPLETED   00:00:15 2026-09-05T06:54:21 2026-09-05T06:54:36          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64006268.ex+     extern             COMPLETED   00:00:15 2026-09-05T06:54:21 2026-09-05T06:54:36          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64006269     azera-voi+    uri-gpu  COMPLETED   00:02:15 2026-09-05T06:54:37 2026-09-05T06:56:52          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64006269.ba+      batch             COMPLETED   00:02:15 2026-09-05T06:54:37 2026-09-05T06:56:52          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64006269.ex+     extern             COMPLETED   00:02:15 2026-09-05T06:54:37 2026-09-05T06:56:52          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64006371     azera-voi+    uri-gpu  COMPLETED   00:02:47 2026-09-05T07:17:13 2026-09-05T07:20:00          4 billing=4,cpu=4,gres/gpu:h100+      uri-gpu012 
+64006371.ba+      batch             COMPLETED   00:02:47 2026-09-05T07:17:13 2026-09-05T07:20:00          4 cpu=4,gres/gpu:h100=1,gres/gp+      uri-gpu012 
+64006371.ex+     extern             COMPLETED   00:02:47 2026-09-05T07:17:13 2026-09-05T07:20:00          4 billing=4,cpu=4,gres/gpu:h100+      uri-gpu012 
+64006372     azera-voi+    uri-gpu  COMPLETED   00:00:15 2026-09-05T07:18:05 2026-09-05T07:18:20          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu014 
+64006372.ba+      batch             COMPLETED   00:00:15 2026-09-05T07:18:05 2026-09-05T07:18:20          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64006372.ex+     extern             COMPLETED   00:00:15 2026-09-05T07:18:05 2026-09-05T07:18:20          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu014 
+64006381     azera-voi+    uri-gpu  COMPLETED   00:07:02 2026-09-05T07:18:33 2026-09-05T07:25:35          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu014 
+64006381.ba+      batch             COMPLETED   00:07:02 2026-09-05T07:18:33 2026-09-05T07:25:35          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64006381.ex+     extern             COMPLETED   00:07:02 2026-09-05T07:18:33 2026-09-05T07:25:35          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu014 
+64006445     azera-voi+    uri-gpu  COMPLETED   00:07:37 2026-09-05T07:39:25 2026-09-05T07:47:02          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64006445.ba+      batch             COMPLETED   00:07:37 2026-09-05T07:39:25 2026-09-05T07:47:02          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64006445.ex+     extern             COMPLETED   00:07:37 2026-09-05T07:39:25 2026-09-05T07:47:02          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64006450     azera-voi+    uri-gpu  COMPLETED   00:09:01 2026-09-05T07:40:08 2026-09-05T07:49:09          4 billing=4,cpu=4,gres/gpu:a100+      uri-gpu003 
+64006450.ba+      batch             COMPLETED   00:09:01 2026-09-05T07:40:08 2026-09-05T07:49:09          4 cpu=4,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64006450.ex+     extern             COMPLETED   00:09:01 2026-09-05T07:40:08 2026-09-05T07:49:09          4 billing=4,cpu=4,gres/gpu:a100+      uri-gpu003 
+64006597     azera-voi+    uri-gpu CANCELLED+   00:00:12 2026-09-05T08:08:55 2026-09-05T08:09:07          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64006597.ba+      batch             CANCELLED   00:00:13 2026-09-05T08:08:55 2026-09-05T08:09:08          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64006597.ex+     extern             COMPLETED   00:00:13 2026-09-05T08:08:55 2026-09-05T08:09:08          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu013 
+64026793     azera-rea+    uri-gpu  COMPLETED   00:20:48 2026-09-06T02:21:16 2026-09-06T02:42:04          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64026793.ba+      batch             COMPLETED   00:20:48 2026-09-06T02:21:16 2026-09-06T02:42:04          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64026793.ex+     extern             COMPLETED   00:20:48 2026-09-06T02:21:16 2026-09-06T02:42:04          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64027096     azera-reb+    uri-gpu  COMPLETED   00:59:08 2026-09-06T03:23:59 2026-09-06T04:23:07          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64027096.ba+      batch             COMPLETED   00:59:08 2026-09-06T03:23:59 2026-09-06T04:23:07          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64027096.ex+     extern             COMPLETED   00:59:08 2026-09-06T03:23:59 2026-09-06T04:23:07          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64028705     azera-pa-+    uri-gpu  COMPLETED   00:43:43 2026-09-06T05:42:40 2026-09-06T06:26:23          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64028705.ba+      batch             COMPLETED   00:43:43 2026-09-06T05:42:40 2026-09-06T06:26:23          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64028705.ex+     extern             COMPLETED   00:43:43 2026-09-06T05:42:40 2026-09-06T06:26:23          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64044036     azera-dim+    uri-gpu  COMPLETED   00:31:31 2026-09-07T02:14:54 2026-09-07T02:46:25          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64044036.ba+      batch             COMPLETED   00:31:31 2026-09-07T02:14:54 2026-09-07T02:46:25          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64044036.ex+     extern             COMPLETED   00:31:31 2026-09-07T02:14:54 2026-09-07T02:46:25          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64072532     azera-50p+    uri-gpu  COMPLETED   00:28:37 2026-09-08T01:39:09 2026-09-08T02:07:46          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64072532.ba+      batch             COMPLETED   00:28:37 2026-09-08T01:39:09 2026-09-08T02:07:46          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64072532.ex+     extern             COMPLETED   00:28:37 2026-09-08T01:39:09 2026-09-08T02:07:46          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64075867     azera-tra+    uri-gpu  COMPLETED   00:02:13 2026-09-08T02:29:30 2026-09-08T02:31:43          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64075867.ba+      batch             COMPLETED   00:02:13 2026-09-08T02:29:30 2026-09-08T02:31:43          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64075867.ex+     extern             COMPLETED   00:02:13 2026-09-08T02:29:30 2026-09-08T02:31:43          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64094217     azera-evi+    uri-gpu  COMPLETED   01:06:54 2026-09-08T14:20:29 2026-09-08T15:27:23          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64094217.ba+      batch             COMPLETED   01:06:54 2026-09-08T14:20:29 2026-09-08T15:27:23          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64094217.ex+     extern             COMPLETED   01:06:54 2026-09-08T14:20:29 2026-09-08T15:27:23          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64098296     azera-bc-+    uri-gpu  COMPLETED   00:36:14 2026-09-08T17:02:11 2026-09-08T17:38:25          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu008 
+64098296.ba+      batch             COMPLETED   00:36:14 2026-09-08T17:02:11 2026-09-08T17:38:25          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu008 
+64098296.ex+     extern             COMPLETED   00:36:14 2026-09-08T17:02:11 2026-09-08T17:38:25          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu008 
+64108847     azera-res+    uri-gpu  COMPLETED   00:40:01 2026-09-08T20:20:54 2026-09-08T21:00:55          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64108847.ba+      batch             COMPLETED   00:40:01 2026-09-08T20:20:54 2026-09-08T21:00:55          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64108847.ex+     extern             COMPLETED   00:40:01 2026-09-08T20:20:54 2026-09-08T21:00:55          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64127184     azera-bou+    uri-gpu  COMPLETED   00:15:34 2026-09-09T01:35:30 2026-09-09T01:51:04          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64127184.ba+      batch             COMPLETED   00:15:34 2026-09-09T01:35:30 2026-09-09T01:51:04          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64127184.ex+     extern             COMPLETED   00:15:34 2026-09-09T01:35:30 2026-09-09T01:51:04          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64128500     azera-bou+    uri-gpu  COMPLETED   00:02:07 2026-09-09T02:17:16 2026-09-09T02:19:23          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64128500.ba+      batch             COMPLETED   00:02:07 2026-09-09T02:17:16 2026-09-09T02:19:23          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64128500.ex+     extern             COMPLETED   00:02:07 2026-09-09T02:17:16 2026-09-09T02:19:23          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64129116     azera-cro+    uri-gpu  COMPLETED   00:15:30 2026-09-09T03:04:52 2026-09-09T03:20:22          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64129116.ba+      batch             COMPLETED   00:15:30 2026-09-09T03:04:52 2026-09-09T03:20:22          8 cpu=8,gres/gpu:h100=1,gres/gp+      uri-gpu012 
+64129116.ex+     extern             COMPLETED   00:15:30 2026-09-09T03:04:52 2026-09-09T03:20:22          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64130947     azera-bid+    uri-gpu  COMPLETED   00:21:50 2026-09-09T04:12:30 2026-09-09T04:34:20          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64130947.ba+      batch             COMPLETED   00:21:50 2026-09-09T04:12:30 2026-09-09T04:34:20          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64130947.ex+     extern             COMPLETED   00:21:50 2026-09-09T04:12:30 2026-09-09T04:34:20          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64132171     azera-bid+    uri-gpu  COMPLETED   00:21:17 2026-09-09T04:37:55 2026-09-09T04:59:12          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64132171.ba+      batch             COMPLETED   00:21:17 2026-09-09T04:37:55 2026-09-09T04:59:12          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64132171.ex+     extern             COMPLETED   00:21:17 2026-09-09T04:37:55 2026-09-09T04:59:12          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64157178     azera-obs+    uri-gpu  COMPLETED   00:39:03 2026-09-09T18:21:23 2026-09-09T19:00:26          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64157178.ba+      batch             COMPLETED   00:39:03 2026-09-09T18:21:23 2026-09-09T19:00:26          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64157178.ex+     extern             COMPLETED   00:39:03 2026-09-09T18:21:23 2026-09-09T19:00:26          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64160018     azera-obs+    uri-gpu  COMPLETED   00:19:51 2026-09-09T19:09:22 2026-09-09T19:29:13          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64160018.ba+      batch             COMPLETED   00:19:51 2026-09-09T19:09:22 2026-09-09T19:29:13          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64160018.ex+     extern             COMPLETED   00:19:51 2026-09-09T19:09:22 2026-09-09T19:29:13          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64194089     azera-raw+    uri-gpu  COMPLETED   00:38:05 2026-09-10T05:22:05 2026-09-10T06:00:10          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64194089.ba+      batch             COMPLETED   00:38:05 2026-09-10T05:22:05 2026-09-10T06:00:10          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64194089.ex+     extern             COMPLETED   00:38:05 2026-09-10T05:22:05 2026-09-10T06:00:10          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64196311     azera-pha+    uri-gpu  COMPLETED   04:04:33 2026-09-10T06:11:35 2026-09-10T10:16:08          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64196311.ba+      batch             COMPLETED   04:04:33 2026-09-10T06:11:35 2026-09-10T10:16:08          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64196311.ex+     extern             COMPLETED   04:04:33 2026-09-10T06:11:35 2026-09-10T10:16:08          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64246122     azera-des+    uri-gpu  COMPLETED   00:24:39 2026-09-10T22:02:47 2026-09-10T22:27:26          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64246122.ba+      batch             COMPLETED   00:24:39 2026-09-10T22:02:47 2026-09-10T22:27:26          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64246122.ex+     extern             COMPLETED   00:24:39 2026-09-10T22:02:47 2026-09-10T22:27:26          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64246163     azera-wtl+    uri-gpu  COMPLETED   00:51:43 2026-09-10T22:04:11 2026-09-10T22:55:54          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64246163.ba+      batch             COMPLETED   00:51:43 2026-09-10T22:04:11 2026-09-10T22:55:54          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64246163.ex+     extern             COMPLETED   00:51:43 2026-09-10T22:04:11 2026-09-10T22:55:54          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64249249     azera-des+    uri-gpu  COMPLETED   00:00:29 2026-09-10T23:42:14 2026-09-10T23:42:43          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64249249.ba+      batch             COMPLETED   00:00:29 2026-09-10T23:42:14 2026-09-10T23:42:43          4 cpu=4,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64249249.ex+     extern             COMPLETED   00:00:29 2026-09-10T23:42:14 2026-09-10T23:42:43          4 billing=4,cpu=4,gres/gpu:l40s+      uri-gpu010 
+64249362     azera-des+    uri-gpu     FAILED   00:00:24 2026-09-10T23:47:02 2026-09-10T23:47:26          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64249362.ba+      batch                FAILED   00:00:24 2026-09-10T23:47:02 2026-09-10T23:47:26          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64249362.ex+     extern             COMPLETED   00:00:24 2026-09-10T23:47:02 2026-09-10T23:47:26          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64249399     azera-des+    uri-gpu  COMPLETED   00:40:01 2026-09-10T23:48:30 2026-09-11T00:28:31          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64249399.ba+      batch             COMPLETED   00:40:01 2026-09-10T23:48:30 2026-09-11T00:28:31          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64249399.ex+     extern             COMPLETED   00:40:01 2026-09-10T23:48:30 2026-09-11T00:28:31          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64257938     azera-vis+    uri-gpu  COMPLETED   04:01:38 2026-09-11T03:40:24 2026-09-11T07:42:02          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64257938.ba+      batch             COMPLETED   04:01:38 2026-09-11T03:40:24 2026-09-11T07:42:02          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu007 
+64257938.ex+     extern             COMPLETED   04:01:38 2026-09-11T03:40:24 2026-09-11T07:42:02          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64268857     azera-vis+    uri-gpu  COMPLETED   05:06:06 2026-09-11T07:52:01 2026-09-11T12:58:07          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64268857.ba+      batch             COMPLETED   05:06:06 2026-09-11T07:52:01 2026-09-11T12:58:07          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64268857.ex+     extern             COMPLETED   05:06:06 2026-09-11T07:52:01 2026-09-11T12:58:07          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64295433     azera-vis+    uri-gpu  COMPLETED   00:02:36 2026-09-11T18:02:12 2026-09-11T18:04:48          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64295433.ba+      batch             COMPLETED   00:02:36 2026-09-11T18:02:12 2026-09-11T18:04:48          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64295433.ex+     extern             COMPLETED   00:02:36 2026-09-11T18:02:12 2026-09-11T18:04:48          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64296042     azera-mul+    uri-gpu     FAILED   00:00:19 2026-09-11T18:17:02 2026-09-11T18:17:21          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64296042.ba+      batch                FAILED   00:00:19 2026-09-11T18:17:02 2026-09-11T18:17:21          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64296042.ex+     extern             COMPLETED   00:00:19 2026-09-11T18:17:02 2026-09-11T18:17:21          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64296214     azera-mul+    uri-gpu  COMPLETED   01:35:57 2026-09-11T18:19:47 2026-09-11T19:55:44          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64296214.ba+      batch             COMPLETED   01:35:57 2026-09-11T18:19:47 2026-09-11T19:55:44          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64296214.ex+     extern             COMPLETED   01:35:57 2026-09-11T18:19:47 2026-09-11T19:55:44          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64300731     azera-pha+    uri-gpu  COMPLETED   00:05:01 2026-09-11T20:55:23 2026-09-11T21:00:24          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64300731.ba+      batch             COMPLETED   00:05:01 2026-09-11T20:55:23 2026-09-11T21:00:24          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64300731.ex+     extern             COMPLETED   00:05:01 2026-09-11T20:55:23 2026-09-11T21:00:24          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64301096     azera-pha+    uri-gpu CANCELLED+   00:46:22 2026-09-11T21:00:54 2026-09-11T21:47:16          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64301096.ba+      batch             CANCELLED   00:46:24 2026-09-11T21:00:54 2026-09-11T21:47:18          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64301096.ex+     extern             COMPLETED   00:46:24 2026-09-11T21:00:54 2026-09-11T21:47:18          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64302734     azera-pha+    uri-gpu  COMPLETED   00:02:28 2026-09-11T21:52:16 2026-09-11T21:54:44          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64302734.ba+      batch             COMPLETED   00:02:28 2026-09-11T21:52:16 2026-09-11T21:54:44          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64302734.ex+     extern             COMPLETED   00:02:28 2026-09-11T21:52:16 2026-09-11T21:54:44          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64302946     azera-pha+    uri-gpu  COMPLETED   02:22:40 2026-09-11T21:56:52 2026-09-12T00:19:32          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64302946.ba+      batch             COMPLETED   02:22:40 2026-09-11T21:56:52 2026-09-12T00:19:32          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64302946.ex+     extern             COMPLETED   02:22:40 2026-09-11T21:56:52 2026-09-12T00:19:32          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64310441     download-+    uri-cpu  COMPLETED   00:00:49 2026-09-12T00:39:34 2026-09-12T00:40:23          2 billing=2,cpu=2,mem=16G,node=1      uri-cpu061 
+64310441.ba+      batch             COMPLETED   00:00:49 2026-09-12T00:39:34 2026-09-12T00:40:23          2           cpu=2,mem=16G,node=1      uri-cpu061 
+64310441.ex+     extern             COMPLETED   00:00:49 2026-09-12T00:39:34 2026-09-12T00:40:23          2 billing=2,cpu=2,mem=16G,node=1      uri-cpu061 
+64310742     azera-qwe+    uri-gpu  COMPLETED   00:01:06 2026-09-12T00:49:02 2026-09-12T00:50:08          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64310742.ba+      batch             COMPLETED   00:01:06 2026-09-12T00:49:02 2026-09-12T00:50:08          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64310742.ex+     extern             COMPLETED   00:01:06 2026-09-12T00:49:02 2026-09-12T00:50:08          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64310911     azera-qwe+    uri-gpu  COMPLETED   00:01:02 2026-09-12T00:58:47 2026-09-12T00:59:49          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64310911.ba+      batch             COMPLETED   00:01:02 2026-09-12T00:58:47 2026-09-12T00:59:49          8 cpu=8,gres/gpu:h100=1,gres/gp+      uri-gpu012 
+64310911.ex+     extern             COMPLETED   00:01:02 2026-09-12T00:58:47 2026-09-12T00:59:49          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64316553     azera-qwe+    uri-gpu  COMPLETED   00:01:54 2026-09-12T03:29:22 2026-09-12T03:31:16          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64316553.ba+      batch             COMPLETED   00:01:54 2026-09-12T03:29:22 2026-09-12T03:31:16          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64316553.ex+     extern             COMPLETED   00:01:54 2026-09-12T03:29:22 2026-09-12T03:31:16          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64317408     azera-vr-+    uri-gpu  COMPLETED   00:01:31 2026-09-12T03:53:51 2026-09-12T03:55:22          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64317408.ba+      batch             COMPLETED   00:01:31 2026-09-12T03:53:51 2026-09-12T03:55:22          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64317408.ex+     extern             COMPLETED   00:01:31 2026-09-12T03:53:51 2026-09-12T03:55:22          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64317481     azera-vis+    uri-gpu  COMPLETED   00:12:06 2026-09-12T03:56:13 2026-09-12T04:08:19          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64317481.ba+      batch             COMPLETED   00:12:06 2026-09-12T03:56:13 2026-09-12T04:08:19          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64317481.ex+     extern             COMPLETED   00:12:07 2026-09-12T03:56:13 2026-09-12T04:08:20          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64317874     azera-vr-+    uri-gpu  COMPLETED   00:06:39 2026-09-12T04:10:00 2026-09-12T04:16:39          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64317874.ba+      batch             COMPLETED   00:06:39 2026-09-12T04:10:00 2026-09-12T04:16:39          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64317874.ex+     extern             COMPLETED   00:06:39 2026-09-12T04:10:00 2026-09-12T04:16:39          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64317973     azera-vr-+    uri-gpu  COMPLETED   00:09:26 2026-09-12T04:18:12 2026-09-12T04:27:38          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64317973.ba+      batch             COMPLETED   00:09:26 2026-09-12T04:18:12 2026-09-12T04:27:38          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64317973.ex+     extern             COMPLETED   00:09:26 2026-09-12T04:18:12 2026-09-12T04:27:38          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64320280     azera-vr-+    uri-gpu  COMPLETED   00:02:20 2026-09-12T04:58:22 2026-09-12T05:00:42          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64320280.ba+      batch             COMPLETED   00:02:20 2026-09-12T04:58:22 2026-09-12T05:00:42          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64320280.ex+     extern             COMPLETED   00:02:20 2026-09-12T04:58:22 2026-09-12T05:00:42          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64320426     azera-vr-+    uri-gpu  COMPLETED   00:10:40 2026-09-12T05:07:37 2026-09-12T05:18:17          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64320426.ba+      batch             COMPLETED   00:10:40 2026-09-12T05:07:37 2026-09-12T05:18:17          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64320426.ex+     extern             COMPLETED   00:10:40 2026-09-12T05:07:37 2026-09-12T05:18:17          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64320879     azera-vr-+    uri-gpu  COMPLETED   00:05:02 2026-09-12T05:22:52 2026-09-12T05:27:54          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64320879.ba+      batch             COMPLETED   00:05:02 2026-09-12T05:22:52 2026-09-12T05:27:54          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64320879.ex+     extern             COMPLETED   00:05:03 2026-09-12T05:22:52 2026-09-12T05:27:55          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64321872     azera-vr-+    uri-gpu     FAILED   00:18:09 2026-09-12T06:15:56 2026-09-12T06:34:05          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64321872.ba+      batch                FAILED   00:18:09 2026-09-12T06:15:56 2026-09-12T06:34:05          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64321872.ex+     extern             COMPLETED   00:18:09 2026-09-12T06:15:56 2026-09-12T06:34:05          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64321873     azera-vr-+    uri-gpu     FAILED   00:14:41 2026-09-12T06:16:35 2026-09-12T06:31:16          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64321873.ba+      batch                FAILED   00:14:41 2026-09-12T06:16:35 2026-09-12T06:31:16          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64321873.ex+     extern             COMPLETED   00:14:41 2026-09-12T06:16:35 2026-09-12T06:31:16          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64321874     azera-vr-+    uri-gpu     FAILED   00:13:43 2026-09-12T06:24:12 2026-09-12T06:37:55          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64321874.ba+      batch                FAILED   00:13:43 2026-09-12T06:24:12 2026-09-12T06:37:55          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64321874.ex+     extern             COMPLETED   00:13:43 2026-09-12T06:24:12 2026-09-12T06:37:55          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64321875     azera-vr-+    uri-gpu     FAILED   00:26:00 2026-09-12T06:26:22 2026-09-12T06:52:22          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64321875.ba+      batch                FAILED   00:26:00 2026-09-12T06:26:22 2026-09-12T06:52:22          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64321875.ex+     extern             COMPLETED   00:26:00 2026-09-12T06:26:22 2026-09-12T06:52:22          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64321876     azera-vr-+    uri-gpu     FAILED   00:29:39 2026-09-12T06:27:06 2026-09-12T06:56:45          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64321876.ba+      batch                FAILED   00:29:39 2026-09-12T06:27:06 2026-09-12T06:56:45          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64321876.ex+     extern             COMPLETED   00:29:39 2026-09-12T06:27:06 2026-09-12T06:56:45          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64321877     azera-vr-+    uri-gpu     FAILED   00:17:58 2026-09-12T06:31:19 2026-09-12T06:49:17          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64321877.ba+      batch                FAILED   00:17:58 2026-09-12T06:31:19 2026-09-12T06:49:17          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64321877.ex+     extern             COMPLETED   00:17:58 2026-09-12T06:31:19 2026-09-12T06:49:17          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64321878     azera-vr-+    uri-gpu     FAILED   00:20:01 2026-09-12T06:33:13 2026-09-12T06:53:14          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64321878.ba+      batch                FAILED   00:20:01 2026-09-12T06:33:13 2026-09-12T06:53:14          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64321878.ex+     extern             COMPLETED   00:20:02 2026-09-12T06:33:13 2026-09-12T06:53:15          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64321879     azera-vr-+    uri-gpu     FAILED   00:24:32 2026-09-12T06:34:06 2026-09-12T06:58:38          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64321879.ba+      batch                FAILED   00:24:32 2026-09-12T06:34:06 2026-09-12T06:58:38          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64321879.ex+     extern             COMPLETED   00:24:32 2026-09-12T06:34:06 2026-09-12T06:58:38          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64321880     azera-vr-+    uri-gpu     FAILED   00:26:17 2026-09-12T06:37:56 2026-09-12T07:04:13          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64321880.ba+      batch                FAILED   00:26:17 2026-09-12T06:37:56 2026-09-12T07:04:13          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64321880.ex+     extern             COMPLETED   00:26:17 2026-09-12T06:37:56 2026-09-12T07:04:13          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64321881     azera-vr-+    uri-gpu     FAILED   00:20:34 2026-09-12T06:38:24 2026-09-12T06:58:58          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64321881.ba+      batch                FAILED   00:20:34 2026-09-12T06:38:24 2026-09-12T06:58:58          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64321881.ex+     extern             COMPLETED   00:20:34 2026-09-12T06:38:24 2026-09-12T06:58:58          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64321882     azera-vr-+    uri-gpu     FAILED   00:13:42 2026-09-12T06:41:19 2026-09-12T06:55:01          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64321882.ba+      batch                FAILED   00:13:42 2026-09-12T06:41:19 2026-09-12T06:55:01          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64321882.ex+     extern             COMPLETED   00:13:42 2026-09-12T06:41:19 2026-09-12T06:55:01          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64321883     azera-vr-+    uri-gpu     FAILED   00:21:47 2026-09-12T06:41:46 2026-09-12T07:03:33          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64321883.ba+      batch                FAILED   00:21:47 2026-09-12T06:41:46 2026-09-12T07:03:33          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64321883.ex+     extern             COMPLETED   00:21:47 2026-09-12T06:41:46 2026-09-12T07:03:33          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64321884     azera-vr-+    uri-gpu     FAILED   00:07:57 2026-09-12T06:41:46 2026-09-12T06:49:43          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64321884.ba+      batch                FAILED   00:07:57 2026-09-12T06:41:46 2026-09-12T06:49:43          8 cpu=8,gres/gpu:h100=1,gres/gp+      uri-gpu012 
+64321884.ex+     extern             COMPLETED   00:07:57 2026-09-12T06:41:46 2026-09-12T06:49:43          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64321885     azera-vr-+    uri-gpu  COMPLETED   00:09:46 2026-09-12T06:43:21 2026-09-12T06:53:07          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64321885.ba+      batch             COMPLETED   00:09:46 2026-09-12T06:43:21 2026-09-12T06:53:07          8 cpu=8,gres/gpu:h100=1,gres/gp+      uri-gpu012 
+64321885.ex+     extern             COMPLETED   00:09:46 2026-09-12T06:43:21 2026-09-12T06:53:07          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64321886     azera-vr-+    uri-gpu     FAILED   00:27:46 2026-09-12T06:44:04 2026-09-12T07:11:50          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64321886.ba+      batch                FAILED   00:27:46 2026-09-12T06:44:04 2026-09-12T07:11:50          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64321886.ex+     extern             COMPLETED   00:27:46 2026-09-12T06:44:04 2026-09-12T07:11:50          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64321887     azera-vr-+    uri-gpu     FAILED   00:56:23 2026-09-12T06:48:32 2026-09-12T07:44:55          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64321887.ba+      batch                FAILED   00:56:23 2026-09-12T06:48:32 2026-09-12T07:44:55          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu007 
+64321887.ex+     extern             COMPLETED   00:56:23 2026-09-12T06:48:32 2026-09-12T07:44:55          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64321888     azera-vr-+    uri-gpu     FAILED   00:28:17 2026-09-12T06:49:18 2026-09-12T07:17:35          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64321888.ba+      batch                FAILED   00:28:17 2026-09-12T06:49:18 2026-09-12T07:17:35          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64321888.ex+     extern             COMPLETED   00:28:17 2026-09-12T06:49:18 2026-09-12T07:17:35          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64321889     azera-vr-+    uri-gpu     FAILED   00:05:38 2026-09-12T06:49:47 2026-09-12T06:55:25          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64321889.ba+      batch                FAILED   00:05:38 2026-09-12T06:49:47 2026-09-12T06:55:25          8 cpu=8,gres/gpu:h100=1,gres/gp+      uri-gpu012 
+64321889.ex+     extern             COMPLETED   00:05:38 2026-09-12T06:49:47 2026-09-12T06:55:25          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64321890     azera-vr-+    uri-gpu     FAILED   00:38:08 2026-09-12T06:52:27 2026-09-12T07:30:35          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64321890.ba+      batch                FAILED   00:38:08 2026-09-12T06:52:27 2026-09-12T07:30:35          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64321890.ex+     extern             COMPLETED   00:38:08 2026-09-12T06:52:27 2026-09-12T07:30:35          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64325723     azera-vr-+    uri-gpu  COMPLETED   00:26:28 2026-09-12T07:54:09 2026-09-12T08:20:37          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64325723.ba+      batch             COMPLETED   00:26:28 2026-09-12T07:54:09 2026-09-12T08:20:37          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64325723.ex+     extern             COMPLETED   00:26:28 2026-09-12T07:54:09 2026-09-12T08:20:37          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64325724     azera-vr-+    uri-gpu  COMPLETED   00:09:29 2026-09-12T07:54:37 2026-09-12T08:04:06          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64325724.ba+      batch             COMPLETED   00:09:29 2026-09-12T07:54:37 2026-09-12T08:04:06          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64325724.ex+     extern             COMPLETED   00:09:29 2026-09-12T07:54:37 2026-09-12T08:04:06          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64325725     azera-vr-+    uri-gpu  COMPLETED   00:18:27 2026-09-12T07:55:42 2026-09-12T08:14:09          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64325725.ba+      batch             COMPLETED   00:18:27 2026-09-12T07:55:42 2026-09-12T08:14:09          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64325725.ex+     extern             COMPLETED   00:18:27 2026-09-12T07:55:42 2026-09-12T08:14:09          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64325726     azera-vr-+    uri-gpu  COMPLETED   00:24:59 2026-09-12T07:55:55 2026-09-12T08:20:54          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64325726.ba+      batch             COMPLETED   00:24:59 2026-09-12T07:55:55 2026-09-12T08:20:54          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64325726.ex+     extern             COMPLETED   00:24:59 2026-09-12T07:55:55 2026-09-12T08:20:54          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64325727     azera-vr-+    uri-gpu  COMPLETED   00:22:25 2026-09-12T07:56:59 2026-09-12T08:19:24          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64325727.ba+      batch             COMPLETED   00:22:25 2026-09-12T07:56:59 2026-09-12T08:19:24          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64325727.ex+     extern             COMPLETED   00:22:25 2026-09-12T07:56:59 2026-09-12T08:19:24          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64325728     azera-vr-+    uri-gpu  COMPLETED   00:17:13 2026-09-12T07:58:18 2026-09-12T08:15:31          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64325728.ba+      batch             COMPLETED   00:17:13 2026-09-12T07:58:18 2026-09-12T08:15:31          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64325728.ex+     extern             COMPLETED   00:17:13 2026-09-12T07:58:18 2026-09-12T08:15:31          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64325729     azera-vr-+    uri-gpu  COMPLETED   00:21:31 2026-09-12T08:00:54 2026-09-12T08:22:25          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64325729.ba+      batch             COMPLETED   00:21:31 2026-09-12T08:00:54 2026-09-12T08:22:25          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu007 
+64325729.ex+     extern             COMPLETED   00:21:31 2026-09-12T08:00:54 2026-09-12T08:22:25          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64325730     azera-vr-+    uri-gpu  COMPLETED   00:31:59 2026-09-12T08:02:46 2026-09-12T08:34:45          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64325730.ba+      batch             COMPLETED   00:31:59 2026-09-12T08:02:46 2026-09-12T08:34:45          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64325730.ex+     extern             COMPLETED   00:31:59 2026-09-12T08:02:46 2026-09-12T08:34:45          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64325731     azera-vr-+    uri-gpu  COMPLETED   00:26:51 2026-09-12T08:04:08 2026-09-12T08:30:59          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64325731.ba+      batch             COMPLETED   00:26:51 2026-09-12T08:04:08 2026-09-12T08:30:59          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64325731.ex+     extern             COMPLETED   00:26:51 2026-09-12T08:04:08 2026-09-12T08:30:59          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64325732     azera-vr-+    uri-gpu  COMPLETED   00:19:37 2026-09-12T08:09:42 2026-09-12T08:29:19          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64325732.ba+      batch             COMPLETED   00:19:37 2026-09-12T08:09:42 2026-09-12T08:29:19          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64325732.ex+     extern             COMPLETED   00:19:37 2026-09-12T08:09:42 2026-09-12T08:29:19          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64325733     azera-vr-+    uri-gpu  COMPLETED   00:18:24 2026-09-12T08:09:54 2026-09-12T08:28:18          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64325733.ba+      batch             COMPLETED   00:18:24 2026-09-12T08:09:54 2026-09-12T08:28:18          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64325733.ex+     extern             COMPLETED   00:18:24 2026-09-12T08:09:54 2026-09-12T08:28:18          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64325734     azera-vr-+    uri-gpu  COMPLETED   00:31:48 2026-09-12T08:09:54 2026-09-12T08:41:42          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64325734.ba+      batch             COMPLETED   00:31:48 2026-09-12T08:09:54 2026-09-12T08:41:42          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu007 
+64325734.ex+     extern             COMPLETED   00:31:48 2026-09-12T08:09:54 2026-09-12T08:41:42          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64325735     azera-vr-+    uri-gpu  COMPLETED   00:07:51 2026-09-12T08:09:54 2026-09-12T08:17:45          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64325735.ba+      batch             COMPLETED   00:07:51 2026-09-12T08:09:54 2026-09-12T08:17:45          8 cpu=8,gres/gpu:h100=1,gres/gp+      uri-gpu012 
+64325735.ex+     extern             COMPLETED   00:07:51 2026-09-12T08:09:54 2026-09-12T08:17:45          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64325736     azera-vr-+    uri-gpu  COMPLETED   00:28:00 2026-09-12T08:11:56 2026-09-12T08:39:56          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64325736.ba+      batch             COMPLETED   00:28:00 2026-09-12T08:11:56 2026-09-12T08:39:56          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64325736.ex+     extern             COMPLETED   00:28:00 2026-09-12T08:11:56 2026-09-12T08:39:56          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64325737     azera-vr-+    uri-gpu  COMPLETED   00:48:31 2026-09-12T08:13:16 2026-09-12T09:01:47          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64325737.ba+      batch             COMPLETED   00:48:31 2026-09-12T08:13:16 2026-09-12T09:01:47          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64325737.ex+     extern             COMPLETED   00:48:31 2026-09-12T08:13:16 2026-09-12T09:01:47          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64325738     azera-vr-+    uri-gpu  COMPLETED   00:28:43 2026-09-12T08:14:11 2026-09-12T08:42:54          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64325738.ba+      batch             COMPLETED   00:28:43 2026-09-12T08:14:11 2026-09-12T08:42:54          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64325738.ex+     extern             COMPLETED   00:28:43 2026-09-12T08:14:11 2026-09-12T08:42:54          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64325739     azera-vr-+    uri-gpu  COMPLETED   00:12:46 2026-09-12T08:15:33 2026-09-12T08:28:19          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64325739.ba+      batch             COMPLETED   00:12:46 2026-09-12T08:15:33 2026-09-12T08:28:19          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64325739.ex+     extern             COMPLETED   00:12:46 2026-09-12T08:15:33 2026-09-12T08:28:19          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64325740     azera-vr-+    uri-gpu  COMPLETED   00:18:12 2026-09-12T08:17:47 2026-09-12T08:35:59          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64325740.ba+      batch             COMPLETED   00:18:12 2026-09-12T08:17:47 2026-09-12T08:35:59          8 cpu=8,gres/gpu:h100=1,gres/gp+      uri-gpu012 
+64325740.ex+     extern             COMPLETED   00:18:12 2026-09-12T08:17:47 2026-09-12T08:35:59          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64349482     azera-vr-+    uri-gpu  COMPLETED   00:16:33 2026-09-12T17:19:09 2026-09-12T17:35:42          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64349482.ba+      batch             COMPLETED   00:16:33 2026-09-12T17:19:09 2026-09-12T17:35:42          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64349482.ex+     extern             COMPLETED   00:16:33 2026-09-12T17:19:09 2026-09-12T17:35:42          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64350458     azera-vr-+    uri-gpu  COMPLETED   00:07:10 2026-09-12T17:37:56 2026-09-12T17:45:06          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64350458.ba+      batch             COMPLETED   00:07:10 2026-09-12T17:37:56 2026-09-12T17:45:06          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64350458.ex+     extern             COMPLETED   00:07:10 2026-09-12T17:37:56 2026-09-12T17:45:06          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64350901     azera-vr-+    uri-gpu     FAILED   00:00:09 2026-09-12T17:47:34 2026-09-12T17:47:43          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64350901.ba+      batch                FAILED   00:00:09 2026-09-12T17:47:34 2026-09-12T17:47:43          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64350901.ex+     extern             COMPLETED   00:00:09 2026-09-12T17:47:34 2026-09-12T17:47:43          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64350939     azera-vr-+    uri-gpu  COMPLETED   00:14:20 2026-09-12T17:48:53 2026-09-12T18:03:13          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64350939.ba+      batch             COMPLETED   00:14:20 2026-09-12T17:48:53 2026-09-12T18:03:13          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64350939.ex+     extern             COMPLETED   00:14:20 2026-09-12T17:48:53 2026-09-12T18:03:13          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64351300     azera-vr-+    uri-gpu     FAILED   00:01:02 2026-09-12T18:10:49 2026-09-12T18:11:51          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64351300.ba+      batch                FAILED   00:01:02 2026-09-12T18:10:49 2026-09-12T18:11:51          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64351300.ex+     extern             COMPLETED   00:01:02 2026-09-12T18:10:49 2026-09-12T18:11:51          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64351695     azera-vr-+    uri-gpu  COMPLETED   00:08:04 2026-09-12T18:13:37 2026-09-12T18:21:41          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64351695.ba+      batch             COMPLETED   00:08:04 2026-09-12T18:13:37 2026-09-12T18:21:41          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64351695.ex+     extern             COMPLETED   00:08:04 2026-09-12T18:13:37 2026-09-12T18:21:41          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64354331     azera-v1-+    uri-gpu  COMPLETED   00:10:34 2026-09-12T19:09:36 2026-09-12T19:20:10          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64354331.ba+      batch             COMPLETED   00:10:34 2026-09-12T19:09:36 2026-09-12T19:20:10          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64354331.ex+     extern             COMPLETED   00:10:34 2026-09-12T19:09:36 2026-09-12T19:20:10          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64355026     azera-v1-+    uri-gpu  COMPLETED   00:40:49 2026-09-12T19:36:34 2026-09-12T20:17:23          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64355026.ba+      batch             COMPLETED   00:40:49 2026-09-12T19:36:34 2026-09-12T20:17:23          8 cpu=8,gres/gpu:h100=1,gres/gp+      uri-gpu012 
+64355026.ex+     extern             COMPLETED   00:40:49 2026-09-12T19:36:34 2026-09-12T20:17:23          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64357310     azera-v1-+    uri-gpu  COMPLETED   00:10:53 2026-09-12T20:35:39 2026-09-12T20:46:32          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64357310.ba+      batch             COMPLETED   00:10:53 2026-09-12T20:35:39 2026-09-12T20:46:32          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64357310.ex+     extern             COMPLETED   00:10:53 2026-09-12T20:35:39 2026-09-12T20:46:32          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64360158     azera-v1-+    uri-gpu  COMPLETED   01:30:37 2026-09-12T22:22:03 2026-09-12T23:52:40          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64360158.ba+      batch             COMPLETED   01:30:37 2026-09-12T22:22:03 2026-09-12T23:52:40          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64360158.ex+     extern             COMPLETED   01:30:37 2026-09-12T22:22:03 2026-09-12T23:52:40          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64365582     azera-v1-+    uri-gpu  COMPLETED   00:05:03 2026-09-13T00:17:46 2026-09-13T00:22:49          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64365582.ba+      batch             COMPLETED   00:05:03 2026-09-13T00:17:46 2026-09-13T00:22:49          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64365582.ex+     extern             COMPLETED   00:05:03 2026-09-13T00:17:46 2026-09-13T00:22:49          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64367845     azera-v1-+    uri-gpu  COMPLETED   00:26:20 2026-09-13T01:18:08 2026-09-13T01:44:28          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64367845.ba+      batch             COMPLETED   00:26:20 2026-09-13T01:18:08 2026-09-13T01:44:28          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64367845.ex+     extern             COMPLETED   00:26:20 2026-09-13T01:18:08 2026-09-13T01:44:28          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64404930     azera-v1-+    uri-gpu  COMPLETED   00:17:33 2026-09-13T20:40:12 2026-09-13T20:57:45          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64404930.ba+      batch             COMPLETED   00:17:33 2026-09-13T20:40:12 2026-09-13T20:57:45          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64404930.ex+     extern             COMPLETED   00:17:33 2026-09-13T20:40:12 2026-09-13T20:57:45          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64405688     azera-v1-+    uri-gpu  COMPLETED   02:05:01 2026-09-13T21:04:36 2026-09-13T23:09:37          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64405688.ba+      batch             COMPLETED   02:05:01 2026-09-13T21:04:36 2026-09-13T23:09:37          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64405688.ex+     extern             COMPLETED   02:05:01 2026-09-13T21:04:36 2026-09-13T23:09:37          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64465145     azera-v1-+    uri-gpu OUT_OF_ME+   00:12:07 2026-09-14T19:24:48 2026-09-14T19:36:55          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64465145.ba+      batch            OUT_OF_ME+   00:12:07 2026-09-14T19:24:48 2026-09-14T19:36:55          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64465145.ex+     extern             COMPLETED   00:12:07 2026-09-14T19:24:48 2026-09-14T19:36:55          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64466358     azera-v1-+    uri-gpu CANCELLED+   00:30:05 2026-09-14T19:57:34 2026-09-14T20:27:39          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64466358.ba+      batch             CANCELLED   00:30:06 2026-09-14T19:57:34 2026-09-14T20:27:40          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu007 
+64466358.ex+     extern             COMPLETED   00:30:07 2026-09-14T19:57:34 2026-09-14T20:27:41          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64466359     azera-v1-+    uri-gpu CANCELLED+   00:29:04 2026-09-14T19:58:35 2026-09-14T20:27:39          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64466359.ba+      batch             CANCELLED   00:29:05 2026-09-14T19:58:35 2026-09-14T20:27:40          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64466359.ex+     extern             COMPLETED   00:29:06 2026-09-14T19:58:35 2026-09-14T20:27:41          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64468627     azera-v1-+    uri-gpu  COMPLETED   00:02:14 2026-09-14T20:33:56 2026-09-14T20:36:10          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64468627.ba+      batch             COMPLETED   00:02:14 2026-09-14T20:33:56 2026-09-14T20:36:10          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64468627.ex+     extern             COMPLETED   00:02:14 2026-09-14T20:33:56 2026-09-14T20:36:10          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64469670     azera-v1-+    uri-gpu  COMPLETED   00:02:09 2026-09-14T20:44:50 2026-09-14T20:46:59          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64469670.ba+      batch             COMPLETED   00:02:09 2026-09-14T20:44:50 2026-09-14T20:46:59          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64469670.ex+     extern             COMPLETED   00:02:09 2026-09-14T20:44:50 2026-09-14T20:46:59          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64470604     azera-v1-+    uri-gpu    TIMEOUT   08:00:22 2026-09-14T20:53:40 2026-09-15T04:54:02          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64470604.ba+      batch             CANCELLED   08:00:23 2026-09-14T20:53:40 2026-09-15T04:54:03          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64470604.ex+     extern             COMPLETED   08:00:23 2026-09-14T20:53:40 2026-09-15T04:54:03          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64470605     azera-v1-+    uri-gpu  COMPLETED   01:47:10 2026-09-14T20:56:37 2026-09-14T22:43:47          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64470605.ba+      batch             COMPLETED   01:47:10 2026-09-14T20:56:37 2026-09-14T22:43:47          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64470605.ex+     extern             COMPLETED   01:47:10 2026-09-14T20:56:37 2026-09-14T22:43:47          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64474654     azera-v1-+    uri-gpu  COMPLETED   00:18:09 2026-09-14T22:14:40 2026-09-14T22:32:49          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64474654.ba+      batch             COMPLETED   00:18:09 2026-09-14T22:14:40 2026-09-14T22:32:49          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64474654.ex+     extern             COMPLETED   00:18:09 2026-09-14T22:14:40 2026-09-14T22:32:49          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64491043     azera-v1-+    uri-gpu  COMPLETED   00:48:20 2026-09-15T14:52:59 2026-09-15T15:41:19          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64491043.ba+      batch             COMPLETED   00:48:20 2026-09-15T14:52:59 2026-09-15T15:41:19          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu004 
+64491043.ex+     extern             COMPLETED   00:48:20 2026-09-15T14:52:59 2026-09-15T15:41:19          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu004 
+64492132     azera-v1-+    uri-gpu  COMPLETED   00:40:26 2026-09-15T16:01:26 2026-09-15T16:41:52          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64492132.ba+      batch             COMPLETED   00:40:26 2026-09-15T16:01:26 2026-09-15T16:41:52          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu005 
+64492132.ex+     extern             COMPLETED   00:40:26 2026-09-15T16:01:26 2026-09-15T16:41:52          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu005 
+64492953     azera-v1-+    uri-gpu     FAILED   00:00:08 2026-09-15T16:55:41 2026-09-15T16:55:49          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64492953.ba+      batch                FAILED   00:00:08 2026-09-15T16:55:41 2026-09-15T16:55:49          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu014 
+64492953.ex+     extern             COMPLETED   00:00:08 2026-09-15T16:55:41 2026-09-15T16:55:49          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu014 
+64492972     azera-v1-+    uri-gpu  COMPLETED   00:03:23 2026-09-15T16:58:02 2026-09-15T17:01:25          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64492972.ba+      batch             COMPLETED   00:03:23 2026-09-15T16:58:02 2026-09-15T17:01:25          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64492972.ex+     extern             COMPLETED   00:03:23 2026-09-15T16:58:02 2026-09-15T17:01:25          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64492982     download-+    uri-cpu  COMPLETED   00:02:41 2026-09-15T16:58:26 2026-09-15T17:01:07          2 billing=2,cpu=2,mem=16G,node=1      uri-cpu028 
+64492982.ba+      batch             COMPLETED   00:02:41 2026-09-15T16:58:26 2026-09-15T17:01:07          2           cpu=2,mem=16G,node=1      uri-cpu028 
+64492982.ex+     extern             COMPLETED   00:02:41 2026-09-15T16:58:26 2026-09-15T17:01:07          2 billing=2,cpu=2,mem=16G,node=1      uri-cpu028 
+64493215        python3    uri-gpu  COMPLETED   00:02:20 2026-09-15T17:18:16 2026-09-15T17:20:36          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64493215.ex+     extern             COMPLETED   00:02:20 2026-09-15T17:18:16 2026-09-15T17:20:36          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu011 
+64493215.0      python3             COMPLETED   00:02:20 2026-09-15T17:18:16 2026-09-15T17:20:36          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu011 
+64493333     azera-v1-+    uri-gpu  COMPLETED   00:08:50 2026-09-15T17:22:50 2026-09-15T17:31:40          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu008 
+64493333.ba+      batch             COMPLETED   00:08:50 2026-09-15T17:22:50 2026-09-15T17:31:40          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu008 
+64493333.ex+     extern             COMPLETED   00:08:50 2026-09-15T17:22:50 2026-09-15T17:31:40          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu008 
+64493810        python3    uri-gpu  COMPLETED   00:05:16 2026-09-15T17:49:53 2026-09-15T17:55:09          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64493810.ex+     extern             COMPLETED   00:05:16 2026-09-15T17:49:53 2026-09-15T17:55:09          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64493810.0      python3             COMPLETED   00:05:16 2026-09-15T17:49:53 2026-09-15T17:55:09          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64494260     v1_8-A-sm+    uri-gpu     FAILED   00:00:02 2026-09-15T18:03:25 2026-09-15T18:03:27          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64494260.ba+      batch                FAILED   00:00:02 2026-09-15T18:03:25 2026-09-15T18:03:27          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64494260.ex+     extern             COMPLETED   00:00:02 2026-09-15T18:03:25 2026-09-15T18:03:27          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64494497     v1_8-A-sm+    uri-gpu  COMPLETED   00:02:17 2026-09-15T18:13:39 2026-09-15T18:15:56          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64494497.ba+      batch             COMPLETED   00:02:17 2026-09-15T18:13:39 2026-09-15T18:15:56          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu010 
+64494497.ex+     extern             COMPLETED   00:02:17 2026-09-15T18:13:39 2026-09-15T18:15:56          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu010 
+64494798     v1_8-B-sm+    uri-gpu  COMPLETED   00:04:13 2026-09-15T18:24:24 2026-09-15T18:28:37          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64494798.ba+      batch             COMPLETED   00:04:13 2026-09-15T18:24:24 2026-09-15T18:28:37          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu006 
+64494798.ex+     extern             COMPLETED   00:04:13 2026-09-15T18:24:24 2026-09-15T18:28:37          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu006 
+64495063     v1_8-AB-s+    uri-gpu  COMPLETED   00:04:05 2026-09-15T18:38:48 2026-09-15T18:42:53          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64495063.ba+      batch             COMPLETED   00:04:05 2026-09-15T18:38:48 2026-09-15T18:42:53          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64495063.ex+     extern             COMPLETED   00:04:05 2026-09-15T18:38:48 2026-09-15T18:42:53          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64495064     v1_8-B-sm+    uri-gpu  COMPLETED   00:03:41 2026-09-15T18:39:34 2026-09-15T18:43:15          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64495064.ba+      batch             COMPLETED   00:03:41 2026-09-15T18:39:34 2026-09-15T18:43:15          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu007 
+64495064.ex+     extern             COMPLETED   00:03:41 2026-09-15T18:39:34 2026-09-15T18:43:15          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu007 
+64495262     azera-v1-+    uri-gpu CANCELLED+   01:22:32 2026-09-15T18:48:04 2026-09-15T20:10:36          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64495262.ba+      batch             CANCELLED   01:22:33 2026-09-15T18:48:04 2026-09-15T20:10:37          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64495262.ex+     extern             COMPLETED   01:22:34 2026-09-15T18:48:04 2026-09-15T20:10:38          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64495263     azera-v1-+    uri-gpu CANCELLED+   01:22:27 2026-09-15T18:48:09 2026-09-15T20:10:36          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64495263.ba+      batch             CANCELLED   01:22:28 2026-09-15T18:48:09 2026-09-15T20:10:37          8 cpu=8,gres/gpu:a100=1,gres/gp+      uri-gpu003 
+64495263.ex+     extern             COMPLETED   01:22:29 2026-09-15T18:48:09 2026-09-15T20:10:38          8 billing=8,cpu=8,gres/gpu:a100+      uri-gpu003 
+64497718     azera-v1-+    uri-gpu  COMPLETED   03:47:11 2026-09-15T20:10:49 2026-09-15T23:58:00          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64497718.ba+      batch             COMPLETED   03:47:11 2026-09-15T20:10:49 2026-09-15T23:58:00          8 cpu=8,gres/gpu:l40s=1,gres/gp+      uri-gpu013 
+64497718.ex+     extern             COMPLETED   03:47:11 2026-09-15T20:10:49 2026-09-15T23:58:00          8 billing=8,cpu=8,gres/gpu:l40s+      uri-gpu013 
+64497719     azera-v1-+    uri-gpu  COMPLETED   04:14:22 2026-09-15T20:11:42 2026-09-16T00:26:04          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64497719.ba+      batch             COMPLETED   04:14:22 2026-09-15T20:11:42 2026-09-16T00:26:04          8 cpu=8,gres/gpu:h100=1,gres/gp+      uri-gpu012 
+64497719.ex+     extern             COMPLETED   04:14:22 2026-09-15T20:11:42 2026-09-16T00:26:04          8 billing=8,cpu=8,gres/gpu:h100+      uri-gpu012 
+64499511     v1_8-C-sm+    uri-gpu  COMPLETED   00:09:55 2026-09-15T21:46:29 2026-09-15T21:56:24         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu006 
+64499511.ba+      batch             COMPLETED   00:09:55 2026-09-15T21:46:29 2026-09-15T21:56:24         16 cpu=16,gres/gpu:a100=2,gres/g+      uri-gpu006 
+64499511.ex+     extern             COMPLETED   00:09:55 2026-09-15T21:46:29 2026-09-15T21:56:24         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu006 
+64501762     v1_8-C-Pr+    uri-gpu    RUNNING   03:08:51 2026-09-15T23:48:40             Unknown         16 billing=16,cpu=16,gres/gpu:l4+      uri-gpu013 
+64501762.ba+      batch               RUNNING   03:08:51 2026-09-15T23:48:40             Unknown         16 cpu=16,gres/gpu:l40s=2,gres/g+      uri-gpu013 
+64501762.ex+     extern               RUNNING   03:08:51 2026-09-15T23:48:40             Unknown         16 billing=16,cpu=16,gres/gpu:l4+      uri-gpu013 
+64501763     v1_8-C-3r+    uri-gpu    RUNNING   02:45:08 2026-09-16T00:12:23             Unknown         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu005 
+64501763.ba+      batch               RUNNING   02:45:08 2026-09-16T00:12:23             Unknown         16 cpu=16,gres/gpu:a100=2,gres/g+      uri-gpu005 
+64501763.ex+     extern               RUNNING   02:45:08 2026-09-16T00:12:23             Unknown         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu005 
+64501764     v1_8-C-2n+    uri-gpu  COMPLETED   02:25:33 2026-09-16T00:28:18 2026-09-16T02:53:51         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu008 
+64501764.ba+      batch             COMPLETED   02:25:33 2026-09-16T00:28:18 2026-09-16T02:53:51         16 cpu=16,gres/gpu:a100=2,gres/g+      uri-gpu008 
+64501764.ex+     extern             COMPLETED   02:25:33 2026-09-16T00:28:18 2026-09-16T02:53:51         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu008 
+64501765     v1_8-C-5t+    uri-gpu    RUNNING   02:27:46 2026-09-16T00:29:45             Unknown         16 billing=16,cpu=16,gres/gpu:l4+      uri-gpu013 
+64501765.ba+      batch               RUNNING   02:27:46 2026-09-16T00:29:45             Unknown         16 cpu=16,gres/gpu:l40s=2,gres/g+      uri-gpu013 
+64501765.ex+     extern               RUNNING   02:27:46 2026-09-16T00:29:45             Unknown         16 billing=16,cpu=16,gres/gpu:l4+      uri-gpu013 
+64501766     v1_8-C-4t+    uri-gpu  COMPLETED   01:57:29 2026-09-16T00:33:49 2026-09-16T02:31:18         16 billing=16,cpu=16,gres/gpu:h1+      uri-gpu012 
+64501766.ba+      batch             COMPLETED   01:57:29 2026-09-16T00:33:49 2026-09-16T02:31:18         16 cpu=16,gres/gpu:h100=2,gres/g+      uri-gpu012 
+64501766.ex+     extern             COMPLETED   01:57:29 2026-09-16T00:33:49 2026-09-16T02:31:18         16 billing=16,cpu=16,gres/gpu:h1+      uri-gpu012 
+64501767     v1_8-C-7t+    uri-gpu  COMPLETED   01:09:58 2026-09-16T00:38:04 2026-09-16T01:48:02         16 billing=16,cpu=16,gres/gpu:h1+      uri-gpu012 
+64501767.ba+      batch             COMPLETED   01:09:58 2026-09-16T00:38:04 2026-09-16T01:48:02         16 cpu=16,gres/gpu:h100=2,gres/g+      uri-gpu012 
+64501767.ex+     extern             COMPLETED   01:09:58 2026-09-16T00:38:04 2026-09-16T01:48:02         16 billing=16,cpu=16,gres/gpu:h1+      uri-gpu012 
+64501768     v1_8-C-Hi+    uri-gpu    RUNNING   02:18:28 2026-09-16T00:39:03             Unknown         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu006 
+64501768.ba+      batch               RUNNING   02:18:28 2026-09-16T00:39:03             Unknown         16 cpu=16,gres/gpu:a100=2,gres/g+      uri-gpu006 
+64501768.ex+     extern               RUNNING   02:18:28 2026-09-16T00:39:03             Unknown         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu006 
+64503786     v1_8-D-sm+    uri-gpu    TIMEOUT   00:30:29 2026-09-16T01:09:39 2026-09-16T01:40:08         16 billing=16,cpu=16,gres/gpu:l4+      uri-gpu010 
+64503786.ba+      batch             CANCELLED   00:30:30 2026-09-16T01:09:39 2026-09-16T01:40:09         16 cpu=16,gres/gpu:l40s=2,gres/g+      uri-gpu010 
+64503786.ex+     extern             COMPLETED   00:30:30 2026-09-16T01:09:39 2026-09-16T01:40:09         16 billing=16,cpu=16,gres/gpu:l4+      uri-gpu010 
+64505802     v1_8-D-sm+    uri-gpu  COMPLETED   00:11:19 2026-09-16T02:12:50 2026-09-16T02:24:09         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu007 
+64505802.ba+      batch             COMPLETED   00:11:19 2026-09-16T02:12:50 2026-09-16T02:24:09         16 cpu=16,gres/gpu:a100=2,gres/g+      uri-gpu007 
+64505802.ex+     extern             COMPLETED   00:11:19 2026-09-16T02:12:50 2026-09-16T02:24:09         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu007 
+64506473     v1_8-D-Pr+    uri-gpu    RUNNING   00:01:18 2026-09-16T02:56:13             Unknown         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu003 
+64506473.ba+      batch               RUNNING   00:01:18 2026-09-16T02:56:13             Unknown         16 cpu=16,gres/gpu:a100=2,gres/g+      uri-gpu003 
+64506473.ex+     extern               RUNNING   00:01:18 2026-09-16T02:56:13             Unknown         16 billing=16,cpu=16,gres/gpu:a1+      uri-gpu003 
+64506474     v1_8-D-3r+    uri-gpu    PENDING   00:00:00             Unknown             Unknown          0                                  None assigned 
+64506475     v1_8-D-2n+    uri-gpu    PENDING   00:00:00             Unknown             Unknown          0                                  None assigned 
+64506476     v1_8-D-5t+    uri-gpu    PENDING   00:00:00             Unknown             Unknown          0                                  None assigned 
+64506477     v1_8-D-4t+    uri-gpu    PENDING   00:00:00             Unknown             Unknown          0                                  None assigned 
+64506478     v1_8-D-7t+    uri-gpu    PENDING   00:00:00             Unknown             Unknown          0                                  None assigned 
+64506479     v1_8-D-Hi+    uri-gpu    PENDING   00:00:00             Unknown             Unknown          0                                  None assigned 

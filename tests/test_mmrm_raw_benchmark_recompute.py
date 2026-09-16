@@ -9,7 +9,7 @@ import pytest
 
 
 def test_recompute_base_eval_from_raw_outputs():
-    raw_path = "outputs/evaluations/EXP_BASE_EVAL_001_raw.json"
+    raw_path = "artifacts/invalid_synthetic/phase8c1/evaluations/EXP_BASE_EVAL_001_raw.json"
     assert os.path.exists(raw_path)
 
     with open(raw_path, "r") as f:
@@ -23,7 +23,7 @@ def test_recompute_base_eval_from_raw_outputs():
 
 
 def test_recompute_mmrm_eval_from_raw_outputs():
-    raw_path = "outputs/evaluations/EXP_EVAL_MMRM_001_raw.json"
+    raw_path = "artifacts/invalid_synthetic/phase8c1/evaluations/EXP_EVAL_MMRM_001_raw.json"
     assert os.path.exists(raw_path)
 
     with open(raw_path, "r") as f:
