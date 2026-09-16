@@ -1,0 +1,69 @@
+{
+  "dataset_name": "DS_MM_LLM_V2",
+  "version": "2.0.0",
+  "created_at": "2026-09-16T03:10:28.710246+00:00",
+  "total_examples": 520,
+  "train_examples": 400,
+  "val_examples": 40,
+  "test_examples": 80,
+  "dataset_sha256": "66256e48bc5c26a156f8b041f34b5b12a3efcd4b2760717d6d92fc5c373e84bb",
+  "audit": {
+    "total_examples": 520,
+    "total_tokens_approx": 87789,
+    "synthetic_examples_count": 144,
+    "synthetic_ratio": 0.2769,
+    "human_curated_count": 360,
+    "human_curated_ratio": 0.6923,
+    "by_domain": {
+      "A_PLATFORM_COMPREHENSION": 26,
+      "B_ALPHA_A_REASONING": 26,
+      "C_ALPHA_B_REASONING": 26,
+      "D_TRADE_EXPLANATION": 26,
+      "E_PORTFOLIO_REASONING": 26,
+      "F_RISK_REASONING": 26,
+      "G_CAPACITY_REASONING": 26,
+      "H_EXECUTION_REASONING": 26,
+      "I_STATISTICAL_REASONING": 26,
+      "J_LEAKAGE_DETECTION": 26,
+      "K_OVERFITTING_DETECTION": 26,
+      "L_EXPERIMENT_DESIGN": 26,
+      "M_TOOL_SELECTION": 26,
+      "N_MULTI_TOOL_SEQUENCING": 26,
+      "O_PROVENANCE_CLASSIFICATION": 26,
+      "P_HALLUCINATION_RESISTANCE": 26,
+      "Q_GOVERNANCE_REFUSAL": 26,
+      "R_UNITY_ORCHESTRATION": 26,
+      "S_RESEARCH_INTERPRETATION": 26,
+      "T_DAILY_SUMMARIES": 26
+    },
+    "by_phase": {
+      "PHASE_8C3": 520
+    },
+    "by_strategy": {
+      "ALPHA_A": 52,
+      "ALPHA_B": 52,
+      "PORTFOLIO": 416
+    },
+    "by_evidence_class": {
+      "EMPIRICAL_LIVE": 198,
+      "SYNTHETIC_TRAINING": 144,
+      "GOVERNANCE_RULE": 124,
+      "STATISTICAL_TEST": 36,
+      "METHODOLOGICAL_AUDIT": 18
+    },
+    "by_generation_method": {
+      "ARTIFACT_DERIVED": 360,
+      "SYNTHETIC_PARAMETRIC": 160
+    },
+    "by_human_review_state": {
+      "VERIFIED_BY_HUMAN": 360,
+      "AUTOMATED_QUALITY_PASSED": 160
+    },
+    "tool_use_count": 338,
+    "refusal_count": 52,
+    "duplicates_count": 0,
+    "benchmark_leakage_count": 0,
+    "leakage_details": [],
+    "dataset_hash": "66256e48bc5c26a156f8b041f34b5b12a3efcd4b2760717d6d92fc5c373e84bb"
+  }
+}

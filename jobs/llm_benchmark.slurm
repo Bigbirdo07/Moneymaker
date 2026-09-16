@@ -1,12 +1,12 @@
 #!/bin/bash -l
-#SBATCH --job-name=mm_llm_finetune
+#SBATCH --job-name=mm_llm_benchmark
 #SBATCH --partition=uri-gpu
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
-#SBATCH --time=08:00:00
-#SBATCH --output=logs/llm_finetune_%j.out
-#SBATCH --error=logs/llm_finetune_%j.err
+#SBATCH --time=04:00:00
+#SBATCH --output=logs/llm_benchmark_%j.out
+#SBATCH --error=logs/llm_benchmark_%j.err
 
 set -euo pipefail
 
@@ -21,19 +21,13 @@ export QWEN_MODEL_PATH="/scratch4/workspace/alberto_paz_uri_edu-azera-voice/.cac
 
 echo "Node: $(hostname) | Job ID: $SLURM_JOB_ID | Base Model: Qwen 2.5 14B Instruct"
 
-EXPERIMENT_ID="${EXPERIMENT_ID:-EXP_MMRM_REAL_$(date +%Y%m%d_%H%M%S)}"
-DATASET_PATH="${DATASET_PATH:-data/moneymaker_llm/v2/train.jsonl}"
-VAL_DATASET_PATH="${VAL_DATASET_PATH:-data/moneymaker_llm/v2/val.jsonl}"
-OUTPUT_DIR="$PROJECT_ROOT/outputs/$EXPERIMENT_ID"
+ADAPTER_PATH="${ADAPTER_PATH:-}"
+CONDITION="${CONDITION:-BASE_ONLY}"
+OUTPUT_DIR="$PROJECT_ROOT/outputs/evaluations"
 mkdir -p "$OUTPUT_DIR"
 
-python3 -m src.research.runners.run_qlora_finetune \
+python3 -m src.research.runners.run_real_benchmark \
     --base-model-path "$QWEN_MODEL_PATH" \
-    --dataset-path "$DATASET_PATH" \
-    --val-dataset-path "$VAL_DATASET_PATH" \
+    --adapter-path "$ADAPTER_PATH" \
     --output-dir "$OUTPUT_DIR" \
-    --experiment-id "$EXPERIMENT_ID" \
-    --lora-r 16 \
-    --lora-alpha 32 \
-    --learning-rate 2e-4 \
-    --epochs 3
+    --condition "$CONDITION"

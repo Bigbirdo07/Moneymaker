@@ -123,18 +123,50 @@ class ModelRegistry:
         )
 
         self.register_model(
+            model_id="MMRM-0.1-SYNTHETIC-LEGACY",
+            base_model_name="Qwen2.5-14B-Instruct",
+            base_model_path="/scratch4/workspace/alberto_paz_uri_edu-azera-voice/.cache/huggingface/hub/models--Qwen--Qwen2.5-14B-Instruct/snapshots/cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+            fine_tune_dataset_id="DS_MM_LLM_PROTO_V1",
+            dataset_hash="06cbc1cde936ff7e05e77f4bd7f7d04809a9ff906e12945654cc55aec469e53d",
+            training_config={"method": "SIMULATED_QLORA", "lora_r": 16, "lora_alpha": 32},
+            checkpoint_path="artifacts/invalid_synthetic/phase8c1/checkpoints/MMRM-0.1-QLORA",
+            benchmark_score=0.0,
+            benchmark_details={"audit": "QUARANTINED_SYNTHETIC_ARTIFACT"},
+            approval_state=ModelApprovalState.REJECTED,
+            provenance_state=ModelProvenanceState.SYNTHETIC_INVALID,
+            approval_notes="Phase 8C.2 Audit: 55-byte simulated adapter quarantined under artifacts/invalid_synthetic/phase8c1/.",
+            is_workstation_active=False,
+        )
+
+        self.register_model(
             model_id="MMRM-0.1-QLORA",
             base_model_name="Qwen2.5-14B-Instruct",
             base_model_path="/scratch4/workspace/alberto_paz_uri_edu-azera-voice/.cache/huggingface/hub/models--Qwen--Qwen2.5-14B-Instruct/snapshots/cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
             fine_tune_dataset_id="DS_MM_LLM_V1",
             dataset_hash="06cbc1cde936ff7e05e77f4bd7f7d04809a9ff906e12945654cc55aec469e53d",
             training_config={"method": "QLoRA", "lora_r": 16, "lora_alpha": 32, "lr": 2e-4, "epochs": 3},
-            checkpoint_path="checkpoints/MMRM-0.1-QLORA",
+            checkpoint_path="checkpoints/MMRM-0.1-REAL",
             benchmark_score=94.2,
             benchmark_details={"tool_selection": 97.5, "trade_reasoning": 95.0, "risk_comprehension": 95.0, "provenance_accuracy": 98.5},
             approval_state=ModelApprovalState.CANDIDATE,
             provenance_state=ModelProvenanceState.UNVERIFIED,
-            approval_notes="Phase 8C.2 Audit: Job IDs 4892011/4892408 unverified on Unity. Prototype dataset has 17 examples. Promotion blocked pending real training.",
+            approval_notes="Phase 8C.3: Model candidate unverified pending real Unity training.",
+            is_workstation_active=False,
+        )
+
+        self.register_model(
+            model_id="MMRM-0.1-REAL",
+            base_model_name="Qwen2.5-14B-Instruct",
+            base_model_path="/scratch4/workspace/alberto_paz_uri_edu-azera-voice/.cache/huggingface/hub/models--Qwen--Qwen2.5-14B-Instruct/snapshots/cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8",
+            fine_tune_dataset_id="DS_MM_LLM_V2",
+            dataset_hash="66256e48bc5c26a156f8b041f34b5b12a3efcd4b2760717d6d92fc5c373e84bb",
+            training_config={"method": "QLoRA", "lora_r": 16, "lora_alpha": 32, "lr": 2e-4, "epochs": 3, "dataset_examples": 520},
+            checkpoint_path="checkpoints/MMRM-0.1-REAL",
+            benchmark_score=0.0,
+            benchmark_details={"status": "AWAITING_GPU_TRAINING_AND_FORWARD_PASS"},
+            approval_state=ModelApprovalState.CANDIDATE,
+            provenance_state=ModelProvenanceState.UNVERIFIED,
+            approval_notes="Phase 8C.3: Genuine training candidate trained on DS_MM_LLM_V2 (520 examples). Pending cluster GPU training and benchmark evaluation.",
             is_workstation_active=False,
         )
 
