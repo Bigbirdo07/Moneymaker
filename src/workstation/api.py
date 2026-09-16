@@ -13,6 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from src.research.dataset_versioning import DatasetRegistry
 from src.research.experiment_registry import ComputeTarget, ExperimentRegistry
+from src.research.llm_benchmark import MoneymakerLLMBenchmark
 from src.research.model_registry import ModelRegistry
 from src.research.research_memory import ResearchMemory
 from src.research.unity_client import UnityHPCClient
@@ -21,6 +22,9 @@ from src.workstation.copilot_tools import CopilotToolRegistry
 
 from src.workstation.models import (
     AccountSummary,
+    CopilotABCompareRequest,
+    CopilotABCompareResponse,
+    CopilotABFeedbackRequest,
     CopilotChatRequest,
     CopilotChatResponse,
     DailyBrief,
@@ -35,6 +39,7 @@ from src.workstation.models import (
     TradeExplanation,
     TradeRecord,
 )
+
 from src.workstation.provenance import DataProvenanceEngine
 from src.workstation.service import WorkstationService
 from src.workstation.streaming import streaming_hub
@@ -174,12 +179,30 @@ def create_workstation_app() -> FastAPI:
         return DataProvenanceEngine.audit_live_evidence(raw_trades)
 
     # =================================================================
-    # AI COPILOT ENDPOINTS
+    # AI COPILOT & A/B COMPARISON ENDPOINTS
     # =================================================================
+
+    ab_feedback_log: List[Dict[str, Any]] = []
 
     @app.post("/api/copilot/chat", response_model=CopilotChatResponse)
     def copilot_chat(request: CopilotChatRequest) -> CopilotChatResponse:
         return copilot_engine.handle_message(request)
+
+    @app.post("/api/copilot/ab_compare", response_model=CopilotABCompareResponse)
+    def copilot_ab_compare(request: CopilotABCompareRequest) -> CopilotABCompareResponse:
+        res = copilot_engine.handle_ab_compare(request.prompt)
+        return CopilotABCompareResponse(**res)
+
+    @app.post("/api/copilot/ab_feedback")
+    def record_ab_feedback(payload: CopilotABFeedbackRequest) -> Dict[str, Any]:
+        entry = {
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "prompt": payload.prompt,
+            "winner": payload.winner,
+            "notes": payload.notes,
+        }
+        ab_feedback_log.append(entry)
+        return {"success": True, "total_feedbacks": len(ab_feedback_log), "entry": entry}
 
     @app.post("/api/copilot/tool")
     def execute_copilot_tool(payload: Dict[str, Any]) -> Dict[str, Any]:
@@ -235,6 +258,14 @@ def create_workstation_app() -> FastAPI:
     def get_research_models() -> List[Dict[str, Any]]:
         return [m.to_dict() for m in model_registry.list_models()]
 
+    @app.get("/api/research/models/{model_id}/audit")
+    def audit_model(model_id: str) -> Dict[str, Any]:
+        return model_registry.audit_model_training_provenance(model_id)
+
+    @app.get("/api/research/benchmark/4way")
+    def get_4way_benchmark() -> Dict[str, Any]:
+        return MoneymakerLLMBenchmark.run_4way_comparison()
+
     @app.get("/api/research/datasets")
     def get_research_datasets() -> List[Dict[str, Any]]:
         return [d.to_dict() for d in dataset_registry.list_manifests()]
@@ -242,6 +273,7 @@ def create_workstation_app() -> FastAPI:
     @app.get("/api/research/memory")
     def get_research_memory(query: str = "") -> List[Dict[str, Any]]:
         return [d.to_dict() for d in research_memory.search(query)]
+
 
     # =================================================================
     # WEBSOCKET STREAMING

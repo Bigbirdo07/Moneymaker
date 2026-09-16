@@ -56,14 +56,19 @@ class CopilotToolRegistry:
         }
 
     def execute_tool(self, tool_name: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-        """Executes a registered tool securely."""
+        """Executes a registered tool securely, enforcing strict read-only execution firewall."""
         params = params or {}
-        # Security firewall: proactively intercept unauthorized write actions
         t_clean = tool_name.strip()
         t_upper = t_clean.upper()
+
+        # Proactive firewall intercept for unauthorized write/order/broker actions
         if t_clean not in self._tools:
-            forbidden_tokens = ["ORDER", "BUY", "SELL", "ALLOCATE", "MUTATE", "REARM", "CAPITAL", "SHORT", "CONFIG", "KILL", "PLACE"]
-            if any(f in t_upper for f in forbidden_tokens):
+            forbidden_tokens = [
+                "ORDER", "BUY", "SELL", "ALLOCATE", "MUTATE", "REARM", "CAPITAL", "SHORT",
+                "CONFIG", "KILL", "PLACE", "CANCEL", "DISABLE", "VETO", "LEVERAGE", "MARGIN",
+                "EXECUTE", "TRADE", "TRANSFER", "SET",
+            ]
+            if any(f in t_upper for f in forbidden_tokens) or not t_clean.startswith("get_"):
                 raise CopilotExecutionFirewallViolation(
                     f"FATAL: AI Copilot is strictly read-only. Action '{tool_name}' is prohibited by platform governance."
                 )

@@ -16,6 +16,10 @@ import {
   Server,
   RefreshCw,
   Award,
+  GitCompare,
+  ThumbsUp,
+  ThumbsDown,
+  ShieldCheck,
 } from 'lucide-react';
 import {
   HpcJob,
@@ -23,10 +27,12 @@ import {
   ResearchModelRecord,
   DatasetManifest,
   ResearchDocument,
+  CopilotABCompareResponse,
+  FourWayBenchmarkMatrix,
 } from '../types';
 import { api } from '../api';
 
-type ResearchSubTab = 'jobs' | 'experiments' | 'models' | 'datasets' | 'memory';
+type ResearchSubTab = 'jobs' | 'experiments' | 'models' | 'ab_eval' | 'datasets' | 'memory';
 
 export const ResearchLabScreen: React.FC = () => {
   const [activeSubTab, setActiveSubTab] = useState<ResearchSubTab>('jobs');
@@ -35,9 +41,17 @@ export const ResearchLabScreen: React.FC = () => {
   const [models, setModels] = useState<ResearchModelRecord[]>([]);
   const [datasets, setDatasets] = useState<DatasetManifest[]>([]);
   const [memoryDocs, setMemoryDocs] = useState<ResearchDocument[]>([]);
+  const [fourWayMatrix, setFourWayMatrix] = useState<FourWayBenchmarkMatrix | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [selectedLogs, setSelectedLogs] = useState<{ jobId: string; logs: string } | null>(null);
+
+  // A/B Comparison State
+  const [abPrompt, setAbPrompt] = useState('Why did we buy AMD and how healthy is Alpha A?');
+  const [abResult, setAbResult] = useState<CopilotABCompareResponse | null>(null);
+  const [abLoading, setAbLoading] = useState(false);
+  const [abFeedbackStatus, setAbFeedbackStatus] = useState<string | null>(null);
+
 
   // Job Submission Form State
   const [submitTemplate, setSubmitTemplate] = useState('jobs/gpu_training.slurm');
@@ -48,18 +62,20 @@ export const ResearchLabScreen: React.FC = () => {
   const refreshData = async () => {
     setLoading(true);
     try {
-      const [j, e, m, d, mem] = await Promise.all([
+      const [j, e, m, d, mem, fway] = await Promise.all([
         api.getResearchJobs().catch(() => []),
         api.getResearchExperiments().catch(() => []),
         api.getResearchModels().catch(() => []),
         api.getResearchDatasets().catch(() => []),
         api.getResearchMemory(searchQuery).catch(() => []),
+        api.get4WayBenchmark().catch(() => null),
       ]);
       setJobs(j);
       setExperiments(e);
       setModels(m);
       setDatasets(d);
       setMemoryDocs(mem);
+      if (fway) setFourWayMatrix(fway);
     } catch (err) {
       console.error('Failed to load research data:', err);
     } finally {
@@ -70,6 +86,44 @@ export const ResearchLabScreen: React.FC = () => {
   useEffect(() => {
     refreshData();
   }, [searchQuery]);
+
+  const handleRunAB = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!abPrompt.trim()) return;
+    setAbLoading(true);
+    setAbFeedbackStatus(null);
+    try {
+      const res = await api.compareCopilotAB(abPrompt);
+      setAbResult(res);
+    } catch (err) {
+      alert(`A/B evaluation failed: ${err}`);
+    } finally {
+      setAbLoading(false);
+    }
+  };
+
+  const handleFeedback = async (winner: string) => {
+    if (!abResult) return;
+    try {
+      await api.submitCopilotFeedback({
+        prompt: abResult.prompt,
+        winner,
+        notes: `Workstation user evaluation: ${winner}`,
+      });
+      setAbFeedbackStatus(`Feedback recorded: ${winner}`);
+    } catch (err) {
+      alert(`Feedback submission failed: ${err}`);
+    }
+  };
+
+  const handleAuditModel = async (modelId: string) => {
+    try {
+      const audit = await api.auditModelProvenance(modelId);
+      alert(`MODEL PROVENANCE AUDIT FOR ${modelId}:\nStatus: ${audit.status}\nVerified: ${audit.verified}\nChecks: ${JSON.stringify(audit.checks, null, 2)}`);
+    } catch (err) {
+      alert(`Audit failed: ${err}`);
+    }
+  };
 
   const handleJobSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,6 +198,7 @@ export const ResearchLabScreen: React.FC = () => {
           { id: 'jobs', label: 'Unity Slurm Jobs', icon: Terminal, count: jobs.length },
           { id: 'experiments', label: 'Experiment Registry', icon: Layers, count: experiments.length },
           { id: 'models', label: 'Model Registry & Benchmark', icon: Award, count: models.length },
+          { id: 'ab_eval', label: 'A/B Model Evaluator', icon: GitCompare, count: 2 },
           { id: 'datasets', label: 'Dataset Manifests', icon: Database, count: datasets.length },
           { id: 'memory', label: 'Research Memory (RAG)', icon: Search, count: memoryDocs.length },
         ].map((tab) => {
@@ -168,6 +223,7 @@ export const ResearchLabScreen: React.FC = () => {
           );
         })}
       </div>
+
 
       {/* 3. SUBTAB CONTENT */}
 
@@ -430,14 +486,174 @@ export const ResearchLabScreen: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="pt-2 border-t border-white/5 font-mono text-[10px] text-gray-400">
-                  Checkpoint: <span className="text-gray-300">{model.checkpoint_path}</span>
+                <div className="pt-2 border-t border-white/5 font-mono text-[10px] text-gray-400 flex justify-between items-center">
+                  <span>Checkpoint: <span className="text-gray-300">{model.checkpoint_path}</span></span>
+                  <button
+                    onClick={() => handleAuditModel(model.model_id)}
+                    className="px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 border border-cyan-500/30 text-[10px] hover:bg-cyan-900"
+                  >
+                    Audit Provenance
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         </div>
       )}
+
+      {/* D. A/B MODEL EVALUATION & 4-WAY BENCHMARK */}
+      {activeSubTab === 'ab_eval' && (
+        <div className="space-y-4">
+          {/* Prompt Form */}
+          <div className="glass-panel p-4 space-y-3">
+            <div className="text-xs font-bold font-mono text-white flex items-center gap-2">
+              <GitCompare className="w-4 h-4 text-cyan-400" />
+              CONTROLLED COPILOT A/B COMPARISON: BASE QWEN 2.5 14B vs. MMRM-0.1 (QLoRA)
+            </div>
+            <form onSubmit={handleRunAB} className="flex gap-2">
+              <input
+                type="text"
+                value={abPrompt}
+                onChange={(e) => setAbPrompt(e.target.value)}
+                placeholder="Enter quantitative question (e.g. Why did we buy AMD? How healthy is Alpha A?)..."
+                className="flex-1 bg-black/50 border border-white/10 rounded px-3 py-2 text-xs font-mono text-gray-200 focus:outline-none focus:border-cyan-500"
+              />
+              <button
+                type="submit"
+                disabled={abLoading}
+                className="px-4 py-2 rounded bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold transition-all shadow-md shadow-cyan-600/20 flex items-center gap-1.5"
+              >
+                <Play className={`w-3.5 h-3.5 ${abLoading ? 'animate-spin' : ''}`} />
+                <span>{abLoading ? 'Evaluating...' : 'Run A/B Compare'}</span>
+              </button>
+            </form>
+          </div>
+
+          {/* Side-by-Side Response Viewer */}
+          {abResult && (
+            <div className="space-y-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Base Response */}
+                <div className="glass-panel p-4 space-y-2 border-white/10">
+                  <div className="flex justify-between items-center border-b border-white/10 pb-2">
+                    <span className="text-xs font-bold font-mono text-gray-300">
+                      1. BASE MODEL (Qwen2.5-14B-Instruct)
+                    </span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-gray-900 text-gray-400 border border-white/10">
+                      Zero-Shot Baseline
+                    </span>
+                  </div>
+                  <div className="text-xs font-mono text-gray-300 leading-relaxed whitespace-pre-wrap">
+                    {abResult.base_response.reply}
+                  </div>
+                  <div className="pt-2 border-t border-white/5 text-[10px] font-mono text-gray-500">
+                    Tools: {abResult.base_response.tool_calls.map((t) => t.tool_name).join(', ') || 'None'}
+                  </div>
+                </div>
+
+                {/* MMRM-0.1 Response */}
+                <div className="glass-panel p-4 space-y-2 border-cyan-500/40 bg-cyan-950/10">
+                  <div className="flex justify-between items-center border-b border-white/10 pb-2">
+                    <span className="text-xs font-bold font-mono text-cyan-300 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                      2. MMRM-0.1 (Domain QLoRA Fine-Tune)
+                    </span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30 font-bold">
+                      Domain Fine-Tuned
+                    </span>
+                  </div>
+                  <div className="text-xs font-mono text-gray-200 leading-relaxed whitespace-pre-wrap">
+                    {abResult.mmrm_response.reply}
+                  </div>
+                  <div className="pt-2 border-t border-white/5 text-[10px] font-mono text-cyan-400">
+                    Tools: {abResult.mmrm_response.tool_calls.map((t) => t.tool_name).join(', ') || 'None'} | Badge: {abResult.mmrm_response.evidence_badge}
+                  </div>
+                </div>
+              </div>
+
+              {/* RAG Context Panel */}
+              {abResult.rag_context && (
+                <div className="p-2.5 rounded bg-black/40 border border-white/5 text-[11px] font-mono text-gray-400">
+                  <span className="text-cyan-400 font-bold">Retrieved Grounding Memory:</span> {abResult.rag_context}
+                </div>
+              )}
+
+              {/* Human Evaluation Feedback Buttons */}
+              <div className="glass-panel p-3 flex items-center justify-between font-mono text-xs">
+                <span className="text-gray-300 font-bold">Record Human Evaluation Verdict:</span>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => handleFeedback('MMRM_BETTER')}
+                    className="px-3 py-1 rounded bg-cyan-950 hover:bg-cyan-900 text-cyan-300 border border-cyan-500/40 text-xs font-bold flex items-center gap-1"
+                  >
+                    <ThumbsUp className="w-3 h-3 text-cyan-400" />
+                    MMRM Better
+                  </button>
+                  <button
+                    onClick={() => handleFeedback('BASE_BETTER')}
+                    className="px-3 py-1 rounded bg-gray-900 hover:bg-gray-800 text-gray-300 border border-white/10 text-xs flex items-center gap-1"
+                  >
+                    <ThumbsDown className="w-3 h-3 text-gray-400" />
+                    Base Better
+                  </button>
+                  <button
+                    onClick={() => handleFeedback('EQUAL')}
+                    className="px-3 py-1 rounded bg-black/40 hover:bg-black/60 text-gray-400 border border-white/10 text-xs"
+                  >
+                    Equal / Tie
+                  </button>
+                  <button
+                    onClick={() => handleFeedback('BOTH_BAD')}
+                    className="px-3 py-1 rounded bg-rose-950 hover:bg-rose-900 text-rose-300 border border-rose-500/30 text-xs"
+                  >
+                    Both Deficient
+                  </button>
+                </div>
+                {abFeedbackStatus && (
+                  <span className="text-emerald-400 text-xs font-bold">{abFeedbackStatus}</span>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* 4-Way System Comparison Matrix */}
+          {fourWayMatrix && (
+            <div className="glass-panel overflow-hidden">
+              <div className="p-3.5 border-b border-white/10 flex items-center justify-between font-mono">
+                <span className="text-xs font-bold text-white">4-Way Empirical System Benchmark Matrix</span>
+                <span className="text-[10px] text-emerald-400 font-bold">
+                  McNemar Significance: p = {fourWayMatrix.statistical_significance.mcnemar_p_value_base_vs_mmrm}
+                </span>
+              </div>
+              <table className="data-table font-mono text-xs">
+                <thead>
+                  <tr>
+                    <th>System Configuration</th>
+                    <th>Overall Score</th>
+                    <th>Tool Accuracy</th>
+                    <th>Hallucination Rate</th>
+                    <th>Provenance Accuracy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(fourWayMatrix.comparison_matrix).map(([sys, row]) => (
+                    <tr key={sys}>
+                      <td className="font-bold text-white">{sys.replace(/_/g, ' ')}</td>
+                      <td className="text-cyan-400 font-bold">{row.overall_score.toFixed(1)}%</td>
+                      <td className="text-gray-300">{row.tool_accuracy.toFixed(1)}%</td>
+                      <td className={row.hallucination_rate < 5 ? 'text-emerald-400 font-bold' : 'text-amber-400'}>
+                        {row.hallucination_rate.toFixed(1)}%
+                      </td>
+                      <td className="text-cyan-300">{row.provenance_accuracy.toFixed(1)}%</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      )}
+
 
       {/* D. DATASETS & MANIFESTS */}
       {activeSubTab === 'datasets' && (

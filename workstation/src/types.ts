@@ -325,3 +325,45 @@ export interface ResearchDocument {
   content: string;
 }
 
+export interface CopilotABCompareResponse {
+  prompt: string;
+  base_response: CopilotChatResponse;
+  mmrm_response: CopilotChatResponse;
+  rag_context?: string;
+}
+
+export interface FourWayBenchmarkMatrix {
+  comparison_matrix: {
+    Base_Only: {
+      overall_score: number;
+      tool_accuracy: number;
+      hallucination_rate: number;
+      provenance_accuracy: number;
+    };
+    Base_Plus_RAG: {
+      overall_score: number;
+      tool_accuracy: number;
+      hallucination_rate: number;
+      provenance_accuracy: number;
+    };
+    MMRM_Only: {
+      overall_score: number;
+      tool_accuracy: number;
+      hallucination_rate: number;
+      provenance_accuracy: number;
+    };
+    MMRM_Plus_RAG: {
+      overall_score: number;
+      tool_accuracy: number;
+      hallucination_rate: number;
+      provenance_accuracy: number;
+    };
+  };
+  statistical_significance: {
+    mcnemar_p_value_base_vs_mmrm: number;
+    bootstrap_delta_ci_95: [number, number];
+    verdict: string;
+  };
+}
+
+

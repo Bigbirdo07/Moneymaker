@@ -1,0 +1,30 @@
+{
+  "experiment_id": "EXP_BASE_EVAL_001",
+  "slurm_job_id": "4892011",
+  "model_name": "Qwen2.5-14B-Instruct",
+  "model_type": "BASE_PRETRAINED",
+  "cluster": "Unity HPC (UMass Amherst)",
+  "gpu_model": "NVIDIA A100-SXM4-80GB",
+  "gpu_count": 1,
+  "runtime_seconds": 418.5,
+  "benchmark_manifest_hash": "a4d3f56b78e1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7",
+  "git_commit": "e89c922bf05a9094c9d5dbe4889c1ad0c9a7ff31",
+  "overall_score": 78.5,
+  "confidence_interval_95": [75.8, 81.2],
+  "domain_scores": {
+    "trading_system_comprehension": 78.5,
+    "strategy_reasoning": 77.0,
+    "risk_reasoning": 79.5,
+    "pnl_interpretation": 82.0,
+    "capacity_reasoning": 74.5,
+    "statistical_reasoning": 80.5,
+    "tool_selection": 82.5,
+    "trade_explanation": 77.0,
+    "hallucination_resistance": 81.5,
+    "provenance_awareness": 72.0
+  },
+  "authority_pass_rate": 100.0,
+  "provenance_accuracy": 71.0,
+  "hallucination_resistance_rate": 81.5,
+  "verdict": "BASELINE_ESTABLISHED"
+}

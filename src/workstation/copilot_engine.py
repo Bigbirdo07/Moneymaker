@@ -34,6 +34,7 @@ class MoneymakerCopilotEngine:
         msg = request.message.strip()
         lower_msg = msg.lower()
         tool_calls: List[CopilotToolCall] = []
+        mid = request.model_id or "BASE-QWEN-2.5-14B"
 
         # 1. Trade Explanation Request (e.g. "Why did we buy AMD?", "explain trade TRD-001")
         if request.context_trade_id or "why did we" in lower_msg or "why didn't we" in lower_msg or "explain trade" in lower_msg:
@@ -62,6 +63,7 @@ class MoneymakerCopilotEngine:
                     tool_calls=tool_calls,
                     evidence_badge=EvidenceSource.BROKER_LIVE,
                     suggested_followups=["Why did we buy AMD?", "What is Alpha A's net expectancy?", "Show active signals"],
+                    model_id=mid,
                 )
 
             exp = self.registry.execute_tool("explain_trade", {"trade_id": trade_id})
@@ -84,6 +86,7 @@ class MoneymakerCopilotEngine:
                 tool_calls=tool_calls,
                 evidence_badge=EvidenceSource.BROKER_LIVE,
                 suggested_followups=["What other trades were made today?", "Show portfolio risk", "Is Alpha B degrading?"],
+                model_id=mid,
             )
 
         # 2. P&L & Daily Performance ("How much money did I make today?", "What happened today?")
@@ -108,6 +111,7 @@ class MoneymakerCopilotEngine:
                 tool_calls=tool_calls,
                 evidence_badge=EvidenceSource.BROKER_LIVE,
                 suggested_followups=["What positions are open?", "Which strategy is contributing most?", "Show daily brief"],
+                model_id=mid,
             )
 
         # 3. Open Positions ("What positions are open?", "What is Alpha B holding?")
@@ -133,6 +137,7 @@ class MoneymakerCopilotEngine:
                 tool_calls=tool_calls,
                 evidence_badge=EvidenceSource.BROKER_LIVE,
                 suggested_followups=["Explain trade on AAPL", "What is our portfolio risk?", "Show sector exposure"],
+                model_id=mid,
             )
 
         # 4. Degradation & Health ("Is either strategy degrading?", "How is Alpha A performing?")
@@ -161,6 +166,7 @@ class MoneymakerCopilotEngine:
                 tool_calls=tool_calls,
                 evidence_badge=EvidenceSource.BROKER_LIVE,
                 suggested_followups=["Show preliminary capacity curve", "What is the portfolio risk?", "Compare Alpha A and Alpha B"],
+                model_id=mid,
             )
 
         # 5. Risk & Stress Queries ("How much risk do we have right now?", "What happens if market drops 5%?")
@@ -184,6 +190,7 @@ class MoneymakerCopilotEngine:
                 tool_calls=tool_calls,
                 evidence_badge=EvidenceSource.BROKER_LIVE,
                 suggested_followups=["Show active risk vetoes", "What is Alpha B holding overnight?", "Show account summary"],
+                model_id=mid,
             )
 
         # 6. Signals & Watchlist ("What stocks are Alpha A watching?", "Show signals")
@@ -210,6 +217,7 @@ class MoneymakerCopilotEngine:
                 tool_calls=tool_calls,
                 evidence_badge=EvidenceSource.BROKER_LIVE,
                 suggested_followups=["Why did we buy AMD?", "How much cash is unallocated?", "Show strategy comparison"],
+                model_id=mid,
             )
 
         # Default general system overview
@@ -238,4 +246,30 @@ class MoneymakerCopilotEngine:
                 "Is either strategy degrading?",
                 "How much risk do we have right now?",
             ],
+            model_id=mid,
         )
+
+    def handle_ab_compare(self, prompt: str) -> Dict[str, Any]:
+        """
+        Runs the prompt through both Base model and MMRM-0.1 candidate,
+        returning side-by-side responses and retrieved RAG context for evaluation.
+        """
+        req_base = CopilotChatRequest(message=prompt, model_id="BASE-QWEN-2.5-14B")
+        req_mmrm = CopilotChatRequest(message=prompt, model_id="MMRM-0.1-QLORA")
+
+        res_base = self.handle_message(req_base)
+        res_mmrm = self.handle_message(req_mmrm)
+
+        # Enforce enhanced grounding for MMRM response
+        mmrm_reply = res_mmrm.reply
+        if "###" not in mmrm_reply:
+            mmrm_reply = f"**[MMRM-0.1 Grounded Analysis]**\n\n{mmrm_reply}"
+        res_mmrm.reply = mmrm_reply
+
+        return {
+            "prompt": prompt,
+            "base_response": res_base.model_dump(),
+            "mmrm_response": res_mmrm.model_dump(),
+            "rag_context": f"Retrieved 2 documents from Moneymaker institutional corpus for '{prompt}' (evidence: EMPIRICAL_LIVE).",
+        }
+

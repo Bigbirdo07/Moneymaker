@@ -253,6 +253,7 @@ class CopilotChatRequest(BaseModel):
     message: str
     context_symbol: Optional[str] = None
     context_trade_id: Optional[str] = None
+    model_id: Optional[str] = "BASE-QWEN-2.5-14B"
 
 
 class CopilotToolCall(BaseModel):
@@ -266,6 +267,25 @@ class CopilotChatResponse(BaseModel):
     tool_calls: List[CopilotToolCall] = field(default_factory=list)
     evidence_badge: EvidenceSource = EvidenceSource.BROKER_LIVE
     suggested_followups: List[str] = field(default_factory=list)
+    model_id: str = "BASE-QWEN-2.5-14B"
+
+
+class CopilotABCompareRequest(BaseModel):
+    prompt: str
+
+
+class CopilotABCompareResponse(BaseModel):
+    prompt: str
+    base_response: CopilotChatResponse
+    mmrm_response: CopilotChatResponse
+    rag_context: Optional[str] = None
+
+
+class CopilotABFeedbackRequest(BaseModel):
+    prompt: str
+    winner: str  # "BASE_BETTER", "MMRM_BETTER", "EQUAL", "BOTH_BAD"
+    notes: Optional[str] = None
+
 
 
 class DailyBrief(BaseModel):

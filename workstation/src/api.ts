@@ -3,6 +3,7 @@ import {
   DailyBrief,
   DatasetManifest,
   ExperimentRecord,
+  FourWayBenchmarkMatrix,
   HpcJob,
   LiveEvidenceAuditSummary,
   MarketQuote,
@@ -17,7 +18,9 @@ import {
   TradeExplanation,
   TradeRecord,
   CopilotChatResponse,
+  CopilotABCompareResponse,
 } from './types';
+
 
 const API_BASE = '/api';
 
@@ -175,5 +178,38 @@ export const api = {
     if (!res.ok) throw new Error('Failed to query research memory');
     return res.json();
   },
+
+  async auditModelProvenance(modelId: string): Promise<any> {
+    const res = await fetch(`${API_BASE}/research/models/${encodeURIComponent(modelId)}/audit`);
+    if (!res.ok) throw new Error(`Failed to audit provenance for ${modelId}`);
+    return res.json();
+  },
+
+  async get4WayBenchmark(): Promise<FourWayBenchmarkMatrix> {
+    const res = await fetch(`${API_BASE}/research/benchmark/4way`);
+    if (!res.ok) throw new Error('Failed to fetch 4-way benchmark matrix');
+    return res.json();
+  },
+
+  async compareCopilotAB(prompt: string): Promise<CopilotABCompareResponse> {
+    const res = await fetch(`${API_BASE}/copilot/ab_compare`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt }),
+    });
+    if (!res.ok) throw new Error('Failed to run A/B comparison');
+    return res.json();
+  },
+
+  async submitCopilotFeedback(payload: { prompt: string; winner: string; notes?: string }): Promise<any> {
+    const res = await fetch(`${API_BASE}/copilot/ab_feedback`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error('Failed to record A/B feedback');
+    return res.json();
+  },
 };
+
 
