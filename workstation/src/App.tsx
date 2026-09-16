@@ -8,8 +8,10 @@ import { StrategiesScreen } from './screens/StrategiesScreen';
 import { TradesScreen } from './screens/TradesScreen';
 import { RiskScreen } from './screens/RiskScreen';
 import { AICopilotScreen } from './screens/AICopilotScreen';
+import { ResearchLabScreen } from './screens/ResearchLabScreen';
 import { SystemAuditScreen } from './screens/SystemAuditScreen';
 import { api } from './api';
+
 import {
   AccountSummary,
   MarketQuote,
@@ -82,9 +84,11 @@ export const App: React.FC = () => {
           {currentTab === 'strategies' && <StrategiesScreen strategies={strategies} />}
           {currentTab === 'trades' && <TradesScreen trades={trades} />}
           {currentTab === 'risk' && <RiskScreen risk={risk} />}
+          {currentTab === 'research' && <ResearchLabScreen />}
           {currentTab === 'copilot' && <AICopilotScreen />}
           {currentTab === 'system' && <SystemAuditScreen system={system} />}
         </main>
+
       </div>
     </div>
   );

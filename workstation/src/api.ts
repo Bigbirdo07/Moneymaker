@@ -1,11 +1,16 @@
 import {
   AccountSummary,
   DailyBrief,
+  DatasetManifest,
+  ExperimentRecord,
+  HpcJob,
   LiveEvidenceAuditSummary,
   MarketQuote,
   PortfolioExposure,
   PortfolioRiskTelemetry,
   PositionItem,
+  ResearchDocument,
+  ResearchModelRecord,
   StockDetail,
   StrategyCard,
   SystemStatusTelemetry,
@@ -110,4 +115,65 @@ export const api = {
     if (!res.ok) throw new Error('Copilot query failed');
     return res.json();
   },
+
+  // Research & Unity HPC
+  async getResearchJobs(): Promise<HpcJob[]> {
+    const res = await fetch(`${API_BASE}/research/jobs`);
+    if (!res.ok) throw new Error('Failed to fetch research jobs');
+    return res.json();
+  },
+
+  async submitResearchJob(payload: {
+    slurm_template: string;
+    experiment_id?: string;
+    config_path?: string;
+    compute_target?: string;
+  }): Promise<any> {
+    const res = await fetch(`${API_BASE}/research/jobs/submit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error('Failed to submit research job');
+    return res.json();
+  },
+
+  async cancelResearchJob(jobId: string): Promise<any> {
+    const res = await fetch(`${API_BASE}/research/jobs/${encodeURIComponent(jobId)}/cancel`, {
+      method: 'POST',
+    });
+    if (!res.ok) throw new Error(`Failed to cancel job ${jobId}`);
+    return res.json();
+  },
+
+  async getResearchJobLogs(jobId: string): Promise<{ job_id: string; logs: string }> {
+    const res = await fetch(`${API_BASE}/research/jobs/${encodeURIComponent(jobId)}/logs`);
+    if (!res.ok) throw new Error(`Failed to fetch logs for job ${jobId}`);
+    return res.json();
+  },
+
+  async getResearchExperiments(): Promise<ExperimentRecord[]> {
+    const res = await fetch(`${API_BASE}/research/experiments`);
+    if (!res.ok) throw new Error('Failed to fetch experiments');
+    return res.json();
+  },
+
+  async getResearchModels(): Promise<ResearchModelRecord[]> {
+    const res = await fetch(`${API_BASE}/research/models`);
+    if (!res.ok) throw new Error('Failed to fetch models');
+    return res.json();
+  },
+
+  async getResearchDatasets(): Promise<DatasetManifest[]> {
+    const res = await fetch(`${API_BASE}/research/datasets`);
+    if (!res.ok) throw new Error('Failed to fetch datasets');
+    return res.json();
+  },
+
+  async getResearchMemory(query: string = ''): Promise<ResearchDocument[]> {
+    const res = await fetch(`${API_BASE}/research/memory?query=${encodeURIComponent(query)}`);
+    if (!res.ok) throw new Error('Failed to query research memory');
+    return res.json();
+  },
 };
+

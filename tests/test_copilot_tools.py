@@ -16,7 +16,9 @@ def registry():
 
 
 def test_copilot_tools_count(registry):
-    assert len(registry._tools) == 23
+    # 23 Core Workstation Tools + 5 Research HPC / Memory Tools = 28
+    assert len(registry._tools) == 28
+
 
 
 def test_copilot_tools_execution(registry):

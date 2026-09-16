@@ -248,3 +248,80 @@ export interface SystemStatusTelemetry {
   git_commit_hash: string;
   active_configs: Record<string, string>;
 }
+
+export interface HpcJob {
+  job_id: string;
+  job_name: string;
+  partition: string;
+  status: string;
+  runtime: string;
+  nodes: number;
+  cpus: number;
+}
+
+export interface ExperimentRecord {
+  experiment_id: string;
+  created_at: string;
+  strategy_id: string;
+  git_commit: string;
+  dataset_hash: string;
+  config_hash: string;
+  code_hash: string;
+  random_seed: number;
+  compute_target: string;
+  status: string;
+  slurm_job_id?: string;
+  runtime_seconds: number;
+  hardware_info: Record<string, any>;
+  metrics: Record<string, any>;
+  artifact_paths: string[];
+  manifest_path?: string;
+  rejection_reason?: string;
+}
+
+export interface ResearchModelRecord {
+  model_id: string;
+  base_model_name: string;
+  base_model_path: string;
+  fine_tune_dataset_id: string;
+  dataset_hash: string;
+  training_config: Record<string, any>;
+  checkpoint_path: string;
+  benchmark_score: number;
+  benchmark_details: Record<string, any>;
+  created_at: string;
+  approval_state: string;
+  approval_notes?: string;
+  is_workstation_active: boolean;
+}
+
+export interface DatasetManifest {
+  dataset_id: string;
+  symbols: string[];
+  start_date: string;
+  end_date: string;
+  bar_frequency: string;
+  source_provider: string;
+  adjustment_status: string;
+  feature_columns: string[];
+  target_column: string;
+  row_count: number;
+  created_at: string;
+  dataset_hash: string;
+  training_cutoff_date?: string;
+  embargo_bars: number;
+}
+
+export interface ResearchDocument {
+  document_id: string;
+  document_type: string;
+  title: string;
+  created_at: string;
+  strategy?: string;
+  phase?: string;
+  evidence_type: string;
+  source: string;
+  hash: string;
+  content: string;
+}
+

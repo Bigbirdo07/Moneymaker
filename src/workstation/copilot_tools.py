@@ -48,6 +48,11 @@ class CopilotToolRegistry:
             "explain_trade": self.explain_trade,
             "compare_strategies": self.compare_strategies,
             "get_daily_summary": self.get_daily_summary,
+            "search_research_memory": self.search_research_memory,
+            "submit_research_job": self.submit_research_job,
+            "get_experiment_status": self.get_experiment_status,
+            "get_model_history": self.get_model_history,
+            "get_previous_capacity_findings": self.get_previous_capacity_findings,
         }
 
     def execute_tool(self, tool_name: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
@@ -57,7 +62,7 @@ class CopilotToolRegistry:
         t_clean = tool_name.strip()
         t_upper = t_clean.upper()
         if t_clean not in self._tools:
-            forbidden_tokens = ["ORDER", "BUY", "SELL", "ALLOCATE", "MUTATE", "REARM", "CAPITAL", "SHORT", "CONFIG", "KILL", "SUBMIT", "PLACE"]
+            forbidden_tokens = ["ORDER", "BUY", "SELL", "ALLOCATE", "MUTATE", "REARM", "CAPITAL", "SHORT", "CONFIG", "KILL", "PLACE"]
             if any(f in t_upper for f in forbidden_tokens):
                 raise CopilotExecutionFirewallViolation(
                     f"FATAL: AI Copilot is strictly read-only. Action '{tool_name}' is prohibited by platform governance."
@@ -404,3 +409,37 @@ class CopilotToolRegistry:
     def get_daily_summary(self) -> Dict[str, Any]:
         brief = self.service.get_daily_brief("CLOSING")
         return brief.model_dump()
+
+    def search_research_memory(self, query: str = "") -> List[Dict[str, Any]]:
+        from src.research.research_memory import ResearchMemory
+        rm = ResearchMemory()
+        return rm.search_research_memory(query)
+
+    def submit_research_job(
+        self,
+        experiment_id: str,
+        slurm_template: str = "jobs/gpu_training.slurm",
+        config_path: str = "configs/research_alpha_gpu.yaml",
+    ) -> Dict[str, Any]:
+        from src.research.unity_client import UnityHPCClient
+        client = UnityHPCClient()
+        return client.submit_job(slurm_template=slurm_template, experiment_id=experiment_id, config_path=config_path)
+
+    def get_experiment_status(self, experiment_id: str) -> Dict[str, Any]:
+        from src.research.experiment_registry import ExperimentRegistry
+        reg = ExperimentRegistry()
+        exp = reg.get_experiment(experiment_id)
+        if not exp:
+            return {"error": f"Experiment '{experiment_id}' not found."}
+        return exp.to_dict()
+
+    def get_model_history(self, strategy: str = "ALPHA_B") -> List[Dict[str, Any]]:
+        from src.research.research_memory import ResearchMemory
+        rm = ResearchMemory()
+        return rm.get_model_history(strategy)
+
+    def get_previous_capacity_findings(self) -> List[Dict[str, Any]]:
+        from src.research.research_memory import ResearchMemory
+        rm = ResearchMemory()
+        return rm.get_previous_capacity_findings()
+

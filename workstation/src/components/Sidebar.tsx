@@ -8,6 +8,7 @@ import {
   AlertTriangle,
   Bot,
   Sliders,
+  Server,
 } from 'lucide-react';
 
 export type ScreenTab =
@@ -17,6 +18,7 @@ export type ScreenTab =
   | 'strategies'
   | 'trades'
   | 'risk'
+  | 'research'
   | 'copilot'
   | 'system';
 
@@ -33,9 +35,11 @@ export const Sidebar: React.FC<Props> = ({ currentTab, onSelectTab }) => {
     { id: 'strategies', label: 'Strategies', icon: Layers },
     { id: 'trades', label: 'Trades', icon: ScrollText },
     { id: 'risk', label: 'Risk', icon: AlertTriangle },
+    { id: 'research', label: 'Research Lab', icon: Server },
     { id: 'copilot', label: 'AI Copilot', icon: Bot },
     { id: 'system', label: 'System / Audit', icon: Sliders },
   ];
+
 
   return (
     <aside className="w-56 border-r border-white/10 bg-[#090b10] flex flex-col justify-between p-3 shrink-0 select-none">
