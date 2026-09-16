@@ -1,0 +1,21 @@
+{
+  "job_id": "4893102",
+  "job_name": "mm_rag_embed",
+  "user": "alberto_paz_uri_edu",
+  "account": "alberto_paz_uri_edu",
+  "partition": "gpu",
+  "nodes": "node-g011",
+  "allocated_cpus": 8,
+  "allocated_gpus": "1 (gpu:a100:1)",
+  "gpu_model": "NVIDIA A100-SXM4-80GB",
+  "memory_allocated": "64GB",
+  "state": "COMPLETED",
+  "exit_code": "0:0",
+  "submit_time": "2026-09-15T21:05:00",
+  "start_time": "2026-09-15T21:05:45",
+  "end_time": "2026-09-15T21:08:50.0",
+  "elapsed_seconds": 185.0,
+  "command": "python src/research/research_memory.py --build-dense-index --model BAAI/bge-large-en-v1.5",
+  "raw_sacct": "JobID|JobName|Partition|Account|AllocCPUS|State|ExitCode|Elapsed|AllocTRES\n4893102|mm_rag_embed|gpu|alberto_paz_uri_edu|8|COMPLETED|0:0|00:03:05.0|billing=8,cpu=8,gres/gpu=1,gres/gpu:a100=1,mem=64G,node=1",
+  "raw_scontrol": "JobId=4893102 JobName=mm_rag_embed UserId=alberto_paz_uri_edu(10482) GroupId=uri(1000) Priority=4294901237 Nice=0 Account=alberto_paz_uri_edu QOS=normal JobState=COMPLETED Reason=None Dependency=(null) Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:03:05 TimeLimit=01:00:00 SubmitTime=2026-09-15T21:05:00 StartTime=2026-09-15T21:05:45 EndTime=2026-09-15T21:08:50.0 NodeList=node-g011 BatchHost=node-g011 NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1,gres/gpu:a100=1"
+}

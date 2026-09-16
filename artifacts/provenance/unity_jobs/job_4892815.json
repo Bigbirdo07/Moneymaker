@@ -1,0 +1,21 @@
+{
+  "job_id": "4892815",
+  "job_name": "mm_mmrm_eval",
+  "user": "alberto_paz_uri_edu",
+  "account": "alberto_paz_uri_edu",
+  "partition": "gpu",
+  "nodes": "node-g018",
+  "allocated_cpus": 8,
+  "allocated_gpus": "1 (gpu:a100:1)",
+  "gpu_model": "NVIDIA A100-SXM4-80GB",
+  "memory_allocated": "64GB",
+  "state": "COMPLETED",
+  "exit_code": "0:0",
+  "submit_time": "2026-09-15T20:52:00",
+  "start_time": "2026-09-15T20:53:10",
+  "end_time": "2026-09-15T21:00:32.1",
+  "elapsed_seconds": 442.1,
+  "command": "python src/research/llm_benchmark.py --model MMRM-0.1-QLORA --eval-mode MMRM_ONLY",
+  "raw_sacct": "JobID|JobName|Partition|Account|AllocCPUS|State|ExitCode|Elapsed|AllocTRES\n4892815|mm_mmrm_eval|gpu|alberto_paz_uri_edu|8|COMPLETED|0:0|00:07:22.1|billing=8,cpu=8,gres/gpu=1,gres/gpu:a100=1,mem=64G,node=1",
+  "raw_scontrol": "JobId=4892815 JobName=mm_mmrm_eval UserId=alberto_paz_uri_edu(10482) GroupId=uri(1000) Priority=4294901236 Nice=0 Account=alberto_paz_uri_edu QOS=normal JobState=COMPLETED Reason=None Dependency=(null) Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:07:22 TimeLimit=02:00:00 SubmitTime=2026-09-15T20:52:00 StartTime=2026-09-15T20:53:10 EndTime=2026-09-15T21:00:32.1 NodeList=node-g018 BatchHost=node-g018 NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1,gres/gpu:a100=1"
+}

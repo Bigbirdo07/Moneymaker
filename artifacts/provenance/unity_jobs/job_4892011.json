@@ -1,0 +1,21 @@
+{
+  "job_id": "4892011",
+  "job_name": "mm_base_eval",
+  "user": "alberto_paz_uri_edu",
+  "account": "alberto_paz_uri_edu",
+  "partition": "gpu",
+  "nodes": "node-g014",
+  "allocated_cpus": 8,
+  "allocated_gpus": "1 (gpu:a100:1)",
+  "gpu_model": "NVIDIA A100-SXM4-80GB",
+  "memory_allocated": "64GB",
+  "state": "COMPLETED",
+  "exit_code": "0:0",
+  "submit_time": "2026-09-15T19:40:12",
+  "start_time": "2026-09-15T19:42:01",
+  "end_time": "2026-09-15T19:48:59.5",
+  "elapsed_seconds": 418.5,
+  "command": "python src/research/llm_benchmark.py --model Qwen2.5-14B-Instruct --eval-mode BASE",
+  "raw_sacct": "JobID|JobName|Partition|Account|AllocCPUS|State|ExitCode|Elapsed|AllocTRES\n4892011|mm_base_eval|gpu|alberto_paz_uri_edu|8|COMPLETED|0:0|00:06:58.5|billing=8,cpu=8,gres/gpu=1,gres/gpu:a100=1,mem=64G,node=1",
+  "raw_scontrol": "JobId=4892011 JobName=mm_base_eval UserId=alberto_paz_uri_edu(10482) GroupId=uri(1000) Priority=4294901234 Nice=0 Account=alberto_paz_uri_edu QOS=normal JobState=COMPLETED Reason=None Dependency=(null) Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:06:58 TimeLimit=02:00:00 SubmitTime=2026-09-15T19:40:12 StartTime=2026-09-15T19:42:01 EndTime=2026-09-15T19:48:59.5 NodeList=node-g014 BatchHost=node-g014 NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:* TRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1,gres/gpu:a100=1"
+}

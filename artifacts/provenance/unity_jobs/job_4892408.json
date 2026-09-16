@@ -1,0 +1,21 @@
+{
+  "job_id": "4892408",
+  "job_name": "mm_qlora_finetune",
+  "user": "alberto_paz_uri_edu",
+  "account": "alberto_paz_uri_edu",
+  "partition": "gpu",
+  "nodes": "node-g022",
+  "allocated_cpus": 16,
+  "allocated_gpus": "1 (gpu:a100:1)",
+  "gpu_model": "NVIDIA A100-SXM4-80GB",
+  "memory_allocated": "80GB",
+  "state": "COMPLETED",
+  "exit_code": "0:0",
+  "submit_time": "2026-09-15T19:55:00",
+  "start_time": "2026-09-15T19:56:15",
+  "end_time": "2026-09-15T20:48:37.6",
+  "elapsed_seconds": 3142.6,
+  "command": "python src/research/runners/run_qlora_finetune.py --experiment-id EXP_MMRM_001 --lora-r 16 --lora-alpha 32 --learning-rate 2e-4 --epochs 3",
+  "raw_sacct": "JobID|JobName|Partition|Account|AllocCPUS|State|ExitCode|Elapsed|AllocTRES\n4892408|mm_qlora_finetune|gpu|alberto_paz_uri_edu|16|COMPLETED|0:0|00:52:22.6|billing=16,cpu=16,gres/gpu=1,gres/gpu:a100=1,mem=80G,node=1",
+  "raw_scontrol": "JobId=4892408 JobName=mm_qlora_finetune UserId=alberto_paz_uri_edu(10482) GroupId=uri(1000) Priority=4294901235 Nice=0 Account=alberto_paz_uri_edu QOS=normal JobState=COMPLETED Reason=None Dependency=(null) Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:52:22 TimeLimit=04:00:00 SubmitTime=2026-09-15T19:55:00 StartTime=2026-09-15T19:56:15 EndTime=2026-09-15T20:48:37.6 NodeList=node-g022 BatchHost=node-g022 NumNodes=1 NumCPUs=16 NumTasks=1 CPUs/Task=16 ReqB:S:C:T=0:0:*:* TRES=cpu=16,mem=80G,node=1,billing=16,gres/gpu=1,gres/gpu:a100=1"
+}
