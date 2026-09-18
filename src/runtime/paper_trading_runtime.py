@@ -1,15 +1,10 @@
-"""
-Master Paper Trading Runtime (Phase F).
-
-Autonomous, risk-first forward paper trading runtime orchestrating the entire
-intraday lifecycle: premarket intelligence, streaming scanner cycles, candidate ranking,
-deterministic risk sizing, paper order execution, position monitoring, and EOD flattening.
-"""
-
+import hashlib
+import json
+from pathlib import Path
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 import logging
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Set
 import uuid
 
 from src.broker.execution_environment import ExecutionEnvironment, validate_execution_environment
@@ -44,7 +39,13 @@ class ExecutionAuthorization:
     quantity: int
     target_notional: float
     is_authorized: bool
+    decision_price: float = 0.0
     rejection_reasons: List[str] = field(default_factory=list)
+
+
+class PolicyTamperError(Exception):
+    """Raised if forward paper operating policy has been modified from freeze manifest."""
+    pass
 
 
 class PaperTradingRuntime:
@@ -91,6 +92,35 @@ class PaperTradingRuntime:
         self.policy_version: str = "FORWARD_PAPER_POLICY_V1"
         self.is_halted: bool = False
 
+    def verify_freeze_manifest(
+        self,
+        manifest_path: str = "TRUE_FORWARD_PAPER_FREEZE_MANIFEST.json",
+        policy_path: str = "FORWARD_PAPER_POLICY_V1.yaml",
+    ) -> bool:
+        """
+        Verifies policy hash and runtime integrity against canonical freeze manifest.
+        """
+        p_path = Path(policy_path)
+        m_path = Path(manifest_path)
+        if not p_path.exists() or not m_path.exists():
+            logger.warning("Freeze manifest or policy file not found for verification: %s, %s", p_path, m_path)
+            return True
+
+        with open(p_path, "rb") as f:
+            computed_policy_hash = hashlib.sha256(f.read()).hexdigest()
+
+        with open(m_path, "r") as f:
+            manifest_data = json.load(f)
+
+        expected_hash = manifest_data.get("policy_hash")
+        if expected_hash and computed_policy_hash != expected_hash:
+            raise PolicyTamperError(
+                f"FATAL POLICY INTEGRITY VIOLATION: Computed policy hash ({computed_policy_hash}) "
+                f"does not match freeze manifest policy hash ({expected_hash})."
+            )
+        logger.info("Freeze manifest policy hash verified: %s", computed_policy_hash[:12])
+        return True
+
     def transition_state(self, new_state: RuntimeState, reason: str = "") -> None:
         old_state = self.state
         self.state = new_state
@@ -114,6 +144,9 @@ class PaperTradingRuntime:
         self.daily_entries_count = 0
         self.macro_event_freeze = False
         self.transition_state(RuntimeState.BOOTING, f"Starting session {self.session_id}")
+
+        # 0. Policy & Freeze Manifest Integrity Verification
+        self.verify_freeze_manifest()
 
         # 1. Broker account verification
         account = self.broker.get_account()
@@ -277,6 +310,7 @@ class PaperTradingRuntime:
             quantity=shares,
             target_notional=notional,
             is_authorized=True,
+            decision_price=price,
         )
         self.authorizations.append(auth)
 
@@ -288,7 +322,7 @@ class PaperTradingRuntime:
                 event_type="EXECUTION_AUTHORIZED_DRY_RUN",
                 component="RUNTIME",
                 symbol=symbol,
-                payload={"authorization_id": auth_id, "shares": shares, "target_notional": notional},
+                payload={"authorization_id": auth_id, "shares": shares, "target_notional": notional, "decision_price": price},
             )
             return None
 
@@ -306,6 +340,7 @@ class PaperTradingRuntime:
             limit_price=price,
             stop_loss_price=price * 0.985,  # 1.5% stop
             timestamp=timestamp,
+            metadata={"decision_price": price},
         )
         broker_order = self.broker.submit_order(intent)
 

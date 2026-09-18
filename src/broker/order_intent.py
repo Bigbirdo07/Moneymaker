@@ -74,6 +74,7 @@ class OrderIntent:
         order_type: OrderType = OrderType.MARKET,
         time_in_force: str = "day",
         timestamp: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
     ) -> "OrderIntent":
         t_str = timestamp or datetime.now(timezone.utc).isoformat()
         raw_hash = f"{session_id}_{symbol}_{side.value}_{quantity}_{t_str}"
@@ -92,6 +93,7 @@ class OrderIntent:
             time_in_force=time_in_force,
             creation_timestamp=t_str,
             client_order_id=client_id,
+            metadata=metadata or {},
         )
 
 
@@ -136,6 +138,42 @@ class BrokerFill:
     fill_price: float
     fill_timestamp: str
     commission: float = 0.0
+    decision_price: float = 0.0
+    shortfall_bps: float = 0.0
+
+    @classmethod
+    def create_with_shortfall(
+        cls,
+        fill_id: str,
+        broker_order_id: str,
+        client_order_id: str,
+        symbol: str,
+        side: OrderSide,
+        filled_shares: int,
+        fill_price: float,
+        fill_timestamp: str,
+        commission: float = 0.0,
+        decision_price: float = 0.0,
+    ) -> "BrokerFill":
+        shortfall = 0.0
+        if decision_price > 1e-6:
+            if side == OrderSide.BUY:
+                shortfall = ((fill_price - decision_price) / decision_price) * 10000.0
+            else:
+                shortfall = ((decision_price - fill_price) / decision_price) * 10000.0
+        return cls(
+            fill_id=fill_id,
+            broker_order_id=broker_order_id,
+            client_order_id=client_order_id,
+            symbol=symbol,
+            side=side,
+            filled_shares=filled_shares,
+            fill_price=fill_price,
+            fill_timestamp=fill_timestamp,
+            commission=commission,
+            decision_price=decision_price,
+            shortfall_bps=round(shortfall, 4),
+        )
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -148,4 +186,7 @@ class BrokerFill:
             "fill_price": self.fill_price,
             "fill_timestamp": self.fill_timestamp,
             "commission": self.commission,
+            "decision_price": self.decision_price,
+            "shortfall_bps": self.shortfall_bps,
         }
+

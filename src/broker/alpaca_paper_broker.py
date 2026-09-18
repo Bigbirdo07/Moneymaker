@@ -99,7 +99,8 @@ class AlpacaPaperBrokerAdapter(BrokerAdapter):
         )
         self._submitted_orders[b_id] = order
 
-        fill = BrokerFill(
+        decision_px = intent.metadata.get("decision_price", intent.limit_price or fill_px)
+        fill = BrokerFill.create_with_shortfall(
             fill_id=f"ALPACA_FILL_{intent.order_intent_id}",
             broker_order_id=b_id,
             client_order_id=intent.client_order_id,
@@ -109,6 +110,7 @@ class AlpacaPaperBrokerAdapter(BrokerAdapter):
             fill_price=fill_px,
             fill_timestamp=datetime.now(timezone.utc).isoformat(),
             commission=0.0,
+            decision_price=decision_px,
         )
         self._fills.append(fill)
 

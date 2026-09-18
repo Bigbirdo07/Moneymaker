@@ -1,0 +1,38 @@
+[
+  {
+    "incident_id": "INC_EMERGENCY_HALT_20260918_064721",
+    "timestamp": "2026-09-18T06:47:21.919248+00:00",
+    "type": "MANUAL_EMERGENCY_HALT_AND_FLATTEN",
+    "severity": "CRITICAL",
+    "reason": "PREFLIGHT_TEST",
+    "canceled_orders_count": 0,
+    "flattened_positions_count": 0,
+    "is_flat": true,
+    "ending_equity": 100000.0,
+    "ending_cash": 100000.0
+  },
+  {
+    "incident_id": "INC_EMERGENCY_HALT_20260918_065105",
+    "timestamp": "2026-09-18T06:51:05.373697+00:00",
+    "type": "MANUAL_EMERGENCY_HALT_AND_FLATTEN",
+    "severity": "CRITICAL",
+    "reason": "LAUNCH_READINESS_AUDIT",
+    "canceled_orders_count": 0,
+    "flattened_positions_count": 0,
+    "is_flat": true,
+    "ending_equity": 100000.0,
+    "ending_cash": 100000.0
+  },
+  {
+    "incident_id": "INC_EMERGENCY_HALT_20260918_065124",
+    "timestamp": "2026-09-18T06:51:24.004868+00:00",
+    "type": "MANUAL_EMERGENCY_HALT_AND_FLATTEN",
+    "severity": "CRITICAL",
+    "reason": "LAUNCH_READINESS_AUDIT",
+    "canceled_orders_count": 0,
+    "flattened_positions_count": 0,
+    "is_flat": true,
+    "ending_equity": 100000.0,
+    "ending_cash": 100000.0
+  }
+]

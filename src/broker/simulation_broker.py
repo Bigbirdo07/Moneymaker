@@ -100,7 +100,8 @@ class SimulationBrokerAdapter(BrokerAdapter):
             self.cash += proceeds
             self.positions[intent.symbol] = max(0.0, self.positions.get(intent.symbol, 0.0) - intent.quantity)
 
-        fill = BrokerFill(
+        decision_px = intent.metadata.get("decision_price", intent.limit_price or mkt_price)
+        fill = BrokerFill.create_with_shortfall(
             fill_id=f"SIM_FILL_{uuid.uuid4().hex[:12]}",
             broker_order_id=b_id,
             client_order_id=intent.client_order_id,
@@ -110,6 +111,7 @@ class SimulationBrokerAdapter(BrokerAdapter):
             fill_price=fill_price,
             fill_timestamp=datetime.now(timezone.utc).isoformat(),
             commission=0.0,
+            decision_price=decision_px,
         )
         self.fills.append(fill)
         return order
