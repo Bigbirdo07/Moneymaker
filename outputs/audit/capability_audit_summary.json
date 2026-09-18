@@ -1,0 +1,18 @@
+{
+  "base_strict": 0.0,
+  "base_semantic": 40.0,
+  "base_rag_strict": 42.5,
+  "base_rag_semantic": 64.0,
+  "mmrm_strict": 26.0,
+  "mmrm_semantic": 50.5,
+  "mmrm_rag_strict": 71.5,
+  "mmrm_rag_semantic": 88.0,
+  "base_fn_rate": 33.0,
+  "mmrm_fn_rate": 20.27,
+  "ood_base": 38.0,
+  "ood_mmrm": 49.0,
+  "ood_mmrm_rag": 76.0,
+  "mmrm_verdict": "MMRM_FORMAT_SPECIALIZED",
+  "rag_verdict": "RAG_STRONGLY_COMPLEMENTARY",
+  "copilot_verdict": "BASE_REMAINS_DEFAULT"
+}

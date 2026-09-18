@@ -25,14 +25,17 @@ from src.workstation.models import (
     CopilotABCompareRequest,
     CopilotABCompareResponse,
     CopilotABFeedbackRequest,
+    CopilotAuditSummary,
     CopilotChatRequest,
     CopilotChatResponse,
+    CopilotVoteRequest,
     DailyBrief,
     LiveEvidenceAuditSummary,
     MarketQuote,
     PositionItem,
     PortfolioExposure,
     PortfolioRiskTelemetry,
+    ResearchProposal,
     StockDetail,
     StrategyCard,
     SystemStatusTelemetry,
@@ -179,7 +182,7 @@ def create_workstation_app() -> FastAPI:
         return DataProvenanceEngine.audit_live_evidence(raw_trades)
 
     # =================================================================
-    # AI COPILOT & A/B COMPARISON ENDPOINTS
+    # AI COPILOT & SHADOW A/B COMPARISON ENDPOINTS
     # =================================================================
 
     ab_feedback_log: List[Dict[str, Any]] = []
@@ -193,8 +196,20 @@ def create_workstation_app() -> FastAPI:
         res = copilot_engine.handle_ab_compare(request.prompt)
         return CopilotABCompareResponse(**res)
 
+    @app.post("/api/copilot/ab/vote")
+    @app.post("/api/copilot/ab_vote")
+    def copilot_vote(payload: CopilotVoteRequest) -> Dict[str, Any]:
+        rec = copilot_engine.record_human_vote(
+            interaction_id=payload.interaction_id,
+            preference=payload.preference,
+            reason_tags=payload.reason_tags,
+            notes=payload.notes,
+        )
+        return {"success": True, "record": rec.model_dump()}
+
     @app.post("/api/copilot/ab_feedback")
     def record_ab_feedback(payload: CopilotABFeedbackRequest) -> Dict[str, Any]:
+        # Backwards compatible endpoint
         entry = {
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "prompt": payload.prompt,
@@ -202,7 +217,58 @@ def create_workstation_app() -> FastAPI:
             "notes": payload.notes,
         }
         ab_feedback_log.append(entry)
+        # Try to vote on the most recent matching interaction if found
+        matching = [r for r in copilot_engine._memory_interaction_cache.values() if r.user_query == payload.prompt]
+        if matching:
+            copilot_engine.record_human_vote(
+                interaction_id=matching[-1].interaction_id,
+                preference=payload.winner,
+                notes=payload.notes,
+            )
         return {"success": True, "total_feedbacks": len(ab_feedback_log), "entry": entry}
+
+    @app.get("/api/copilot/ab/audit", response_model=CopilotAuditSummary)
+    def get_copilot_ab_audit() -> CopilotAuditSummary:
+        return copilot_engine.get_audit_summary()
+
+    @app.get("/api/copilot/daily_summary", response_model=DailyBrief)
+    def get_copilot_daily_summary() -> DailyBrief:
+        return copilot_engine.generate_daily_summary()
+
+    @app.get("/api/copilot/models")
+    def get_copilot_models() -> List[Dict[str, Any]]:
+        meta = copilot_engine.get_runtime_model_metadata()
+        return [
+            {
+                "model_id": meta["control"]["model_id"],
+                "name": f"{meta['control']['base_model_name']} (Control)",
+                "role": meta["control"]["role"],
+                "status": meta["control"]["status"],
+                "authority": "READ_ONLY",
+                "device": meta["control"]["device"],
+                "rag_enabled": meta["control"]["rag_enabled"],
+            },
+            {
+                "model_id": meta["challenger"]["model_id"],
+                "name": f"{meta['challenger']['base_model_name']} + MMRM-0.2 Adapter + RAG",
+                "role": meta["challenger"]["role"],
+                "status": meta["challenger"]["status"],
+                "authority": "READ_ONLY",
+                "adapter_sha256": meta["challenger"]["adapter_sha256"],
+                "adapter_verified": meta["challenger"]["adapter_sha256_verified"],
+                "device": meta["challenger"]["device"],
+                "rag_enabled": meta["challenger"]["rag_enabled"],
+            },
+        ]
+
+    @app.get("/api/copilot/runtime_verification")
+    def get_copilot_runtime_verification() -> Dict[str, Any]:
+        return copilot_engine.get_runtime_model_metadata()
+
+    @app.post("/api/research/experiments/propose", response_model=ResearchProposal)
+    def propose_research_experiment(payload: Dict[str, Any]) -> ResearchProposal:
+        query = payload.get("query", "Alpha A momentum parameter optimization")
+        return copilot_engine.propose_experiment(query)
 
     @app.post("/api/copilot/tool")
     def execute_copilot_tool(payload: Dict[str, Any]) -> Dict[str, Any]:

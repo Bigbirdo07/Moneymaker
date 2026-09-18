@@ -1,0 +1,14 @@
+{
+  "symbol": "HD",
+  "session_date": "2026-01-05 to 2026-02-03",
+  "provider": "MONEYMAKER_HISTORICAL_FEED",
+  "feed": "US_EQUITY_1M_L1",
+  "dataset_version": "1.0.0",
+  "download_timestamp": "2026-09-16T23:57:12.293176+00:00",
+  "raw_file_sha256": "56ae1f34624736d89f379d5baf237625569343d36003cf06d0e2ae502dc60df2",
+  "bar_count": 9900,
+  "resolution": "1m",
+  "is_split_adjusted": true,
+  "is_dividend_adjusted": false,
+  "evidence_class": "HISTORICAL_REPLAY"
+}

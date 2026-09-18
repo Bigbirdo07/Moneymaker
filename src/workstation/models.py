@@ -277,8 +277,11 @@ class CopilotABCompareRequest(BaseModel):
 class CopilotABCompareResponse(BaseModel):
     prompt: str
     base_response: CopilotChatResponse
-    mmrm_response: CopilotChatResponse
+    mmrm_response: Optional[CopilotChatResponse] = None
+    mmrm_0_1_response: Optional[CopilotChatResponse] = None
+    mmrm_0_2_response: Optional[CopilotChatResponse] = None
     rag_context: Optional[str] = None
+
 
 
 class CopilotABFeedbackRequest(BaseModel):
@@ -342,3 +345,119 @@ class SystemStatusTelemetry(BaseModel):
         "alpha_b": "configs/frozen_alpha_b_tier2.yaml",
         "allocator": "configs/frozen_allocator_shadow_v1.yaml",
     })
+
+
+# =====================================================================
+# PHASE 9: SHADOW A/B DATA MODELS & PROTOCOLS
+# =====================================================================
+
+class QueryCategory(str, Enum):
+    PORTFOLIO_PNL = "PORTFOLIO_PNL"
+    TRADE_EXPLANATION = "TRADE_EXPLANATION"
+    STRATEGY_HEALTH = "STRATEGY_HEALTH"
+    MARKET_CONTEXT = "MARKET_CONTEXT"
+    RISK = "RISK"
+    CAPACITY = "CAPACITY"
+    EXECUTION = "EXECUTION"
+    STATISTICS = "STATISTICS"
+    RESEARCH = "RESEARCH"
+    EXPERIMENT_INTERPRETATION = "EXPERIMENT_INTERPRETATION"
+    PROVENANCE = "PROVENANCE"
+    SYSTEM_HEALTH = "SYSTEM_HEALTH"
+    MULTI_TOOL = "MULTI_TOOL"
+    AMBIGUOUS = "AMBIGUOUS"
+    MISSING_DATA = "MISSING_DATA"
+    GENERAL = "GENERAL"
+
+
+class IncidentSeverity(str, Enum):
+    INFO = "INFO"
+    WARNING = "WARNING"
+    MAJOR = "MAJOR"
+    CRITICAL = "CRITICAL"
+
+
+class ResearchProposal(BaseModel):
+    proposal_id: str
+    hypothesis: str
+    reason: str
+    dataset: str
+    strategy: str
+    parameters: Dict[str, Any]
+    evaluation_metric: str
+    expected_evidence: EvidenceSource = EvidenceSource.SIMULATED
+    estimated_compute_class: str = "A100_1GPU_30M"
+    status: str = "PENDING_APPROVAL"  # PENDING_APPROVAL, APPROVED, REJECTED
+    created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+
+class CopilotInteractionRecord(BaseModel):
+    interaction_id: str
+    timestamp: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    user_query: str
+    query_category: QueryCategory = QueryCategory.GENERAL
+    snapshot_id: str
+    snapshot_timestamp: str
+    base_model_id: str = "BASE-QWEN-2.5-14B"
+    challenger_model_id: str = "MMRM-0.2-REAL+RAG"
+    base_response: str
+    challenger_response: str
+    base_tools_used: List[str] = field(default_factory=list)
+    challenger_tools_used: List[str] = field(default_factory=list)
+    base_tool_arguments: List[Dict[str, Any]] = field(default_factory=list)
+    challenger_tool_arguments: List[Dict[str, Any]] = field(default_factory=list)
+    base_latency_ms: float = 0.0
+    challenger_latency_ms: float = 0.0
+    rag_retrieval_metadata: Dict[str, Any] = field(default_factory=dict)
+    human_preference: Optional[str] = None  # "BASE", "CHALLENGER", "TIE", "NONE"
+    human_reason_tags: List[str] = field(default_factory=list)
+    human_notes: Optional[str] = None
+    auto_eval_base: Dict[str, Any] = field(default_factory=dict)
+    auto_eval_challenger: Dict[str, Any] = field(default_factory=dict)
+    provenance_state: str = "VERIFIED_SHADOW"
+    is_diagnostic: bool = False
+
+
+class CopilotVoteRequest(BaseModel):
+    interaction_id: str
+    preference: str  # "BASE", "CHALLENGER", "TIE", "A", "B", "BETTER", "SAME", "WORSE"
+    reason_tags: List[str] = field(default_factory=list)
+    notes: Optional[str] = None
+
+
+class CopilotIncidentRecord(BaseModel):
+    incident_id: str
+    timestamp: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+    interaction_id: Optional[str] = None
+    severity: IncidentSeverity = IncidentSeverity.INFO
+    incident_type: str
+    description: str
+    model_id: str
+    remediation: str
+
+
+class CopilotAuditSummary(BaseModel):
+    total_interactions: int
+    voted_interactions: int
+    base_wins: int
+    challenger_wins: int
+    ties: int
+    challenger_win_rate_pct: float
+    base_win_rate_pct: float
+    tie_rate_pct: float
+    tool_accuracy_base_pct: float
+    tool_accuracy_challenger_pct: float
+    hallucination_rate_challenger_pct: float
+    provenance_accuracy_challenger_pct: float
+    authority_pass_rate_challenger_pct: float
+    avg_latency_base_ms: float
+    avg_latency_challenger_ms: float
+    median_latency_base_ms: float = 0.0
+    median_latency_challenger_ms: float = 0.0
+    p95_latency_base_ms: float = 0.0
+    p95_latency_challenger_ms: float = 0.0
+    category_breakdown: Dict[str, Dict[str, Any]]
+    total_incidents: int
+    incidents_by_severity: Dict[str, int]
+    promotion_gate_status: str  # PENDING_DATA, BLOCKED_INCIDENT, READY_FOR_REVIEW
+

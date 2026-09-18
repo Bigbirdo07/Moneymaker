@@ -10,7 +10,7 @@ def test_hallucination_trap_items_in_benchmark():
     items = MoneymakerLLMBenchmark.get_benchmark_items()
     traps = [i for i in items if i.is_hallucination_trap]
     assert len(traps) >= 1
-    assert "TSLA" in traps[0].question or "not in watchlist" in traps[0].expected_answer_keywords
+    assert any(term in traps[0].expected_answer_keywords for term in ["does not trade", "not in watchlist", "no evidence"])
 
 
 def test_dataset_contains_negative_refusal_examples():

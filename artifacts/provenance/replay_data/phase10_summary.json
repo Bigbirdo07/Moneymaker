@@ -1,0 +1,31 @@
+{
+  "starting_capital": 1000.0,
+  "ending_capital": 897.76,
+  "net_return_pct": -10.22,
+  "gross_return_pct": -5.92,
+  "total_friction": 43.0,
+  "total_trades": 658,
+  "win_rate_pct": 32.07,
+  "sharpe_ratio": -13.22,
+  "sortino_ratio": -18.67,
+  "avg_profit_capture": -0.0568,
+  "leakage_checks_passed": 91018,
+  "entry_qualities": {
+    "GOOD_ENTRY": 88,
+    "EARLY_ENTRY": 0,
+    "LATE_ENTRY": 155,
+    "FALSE_POSITIVE": 11,
+    "HIGH_COST_ENTRY": 0,
+    "LOW_EDGE_ENTRY": 404
+  },
+  "exit_qualities": {
+    "GOOD_EXIT": 31,
+    "EARLY_EXIT": 15,
+    "LATE_EXIT": 16,
+    "LOSS_AVOIDANCE": 0,
+    "STOP_OUT": 0,
+    "SESSION_CLOSE": 28,
+    "SIGNAL_DECAY": 568,
+    "BETTER_OPPORTUNITY": 0
+  }
+}

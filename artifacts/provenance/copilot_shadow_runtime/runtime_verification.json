@@ -1,0 +1,60 @@
+{
+  "timestamp": "2026-09-16T22:57:18.470262+00:00",
+  "runtime_verdict": "DUAL_MODEL_RUNTIME_VERIFIED",
+  "trial_status": "REAL_USER_AB_COLLECTION_ACTIVE",
+  "promotion_status": "NOT_YET_ELIGIBLE",
+  "model_identities": {
+    "control": {
+      "model_id": "BASE-QWEN-2.5-14B",
+      "base_model_name": "Qwen2.5-14B-Instruct",
+      "role": "CONTROL",
+      "status": "DEFAULT",
+      "adapter": null,
+      "rag_enabled": false,
+      "device": "mps",
+      "generation_config": {
+        "temperature": 0.0,
+        "top_p": 0.95,
+        "max_new_tokens": 1024
+      },
+      "read_only_tools_count": 23,
+      "broker_execution_authority": false
+    },
+    "challenger": {
+      "model_id": "MMRM-0.2-REAL+RAG",
+      "base_model_name": "Qwen2.5-14B-Instruct",
+      "role": "CHALLENGER",
+      "status": "SHADOW",
+      "adapter_path": "checkpoints/MMRM-0.2-REAL/adapter_model.safetensors",
+      "adapter_size_bytes": 275341720,
+      "adapter_sha256": "c964b6b67136f5feec094cb41558c64ff95cb242d3a9f076ee651867f2ae415d",
+      "adapter_sha256_verified": true,
+      "peft_type": "QLoRA_LORA",
+      "rag_enabled": true,
+      "rag_docs_count": 5,
+      "device": "mps",
+      "generation_config": {
+        "temperature": 0.0,
+        "top_p": 0.95,
+        "max_new_tokens": 1024
+      },
+      "read_only_tools_count": 23,
+      "broker_execution_authority": false
+    },
+    "runtime_verdict": "DUAL_MODEL_RUNTIME_VERIFIED",
+    "trial_status": "REAL_USER_AB_COLLECTION_ACTIVE",
+    "promotion_status": "NOT_YET_ELIGIBLE"
+  },
+  "tool_parity": {
+    "total_read_only_tools": 23,
+    "broker_write_tools_accessible": 0,
+    "execution_firewall_verified": true
+  },
+  "rag_isolation": {
+    "total_documents": 5,
+    "benchmark_leakage_detected": false,
+    "live_data_primacy_enforced": true
+  },
+  "snapshot_parity_asserted": true,
+  "diagnostics_executed_count": 5
+}

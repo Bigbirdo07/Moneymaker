@@ -1,0 +1,14 @@
+{
+  "symbol": "AMD",
+  "session_date": "2026-01-05 to 2026-02-03",
+  "provider": "MONEYMAKER_HISTORICAL_FEED",
+  "feed": "US_EQUITY_1M_L1",
+  "dataset_version": "1.0.0",
+  "download_timestamp": "2026-09-16T23:57:12.440219+00:00",
+  "raw_file_sha256": "e52c2d1cb4408eaccd302d222d23a5e8af61ee7a2315f9163f9125d0e40dfd73",
+  "bar_count": 9900,
+  "resolution": "1m",
+  "is_split_adjusted": true,
+  "is_dividend_adjusted": false,
+  "evidence_class": "HISTORICAL_REPLAY"
+}

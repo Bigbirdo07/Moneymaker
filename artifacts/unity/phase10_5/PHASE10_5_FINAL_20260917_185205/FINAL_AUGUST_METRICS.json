@@ -1,0 +1,102 @@
+{
+  "experiment_id": "PHASE10_5_FINAL_20260917_185205",
+  "execution_timestamp": "2026-09-17T18:53:03.844443Z",
+  "slurm_job_id": "64546388",
+  "evidence_class": "SIMULATED_EXECUTION_ON_REAL_MARKET_DATA",
+  "holdout_period": "2026-08-01_to_2026-08-31",
+  "formal_verdicts": {
+    "final_holdout_verdict": "FINAL_REAL_HOLDOUT_MIXED",
+    "concentration_verdict": "CONCENTRATION_SEVERE",
+    "engine_verdict": "REAL_ENGINE_V2_MORE_VALIDATION_REQUIRED",
+    "next_action": "MORE_REAL_HISTORICAL_VALIDATION",
+    "real_money_authorized": "REAL_MONEY_NOT_AUTHORIZED"
+  },
+  "performance": {
+    "starting_capital": 1000.0,
+    "ending_capital": 1051.25,
+    "net_return_pct": 5.12,
+    "gross_return_pct": 6.18,
+    "net_pnl": 51.25,
+    "gross_pnl": 61.84,
+    "total_friction": 10.22,
+    "trade_count": 28,
+    "trades_per_day": 1.33,
+    "win_rate_pct": 57.14,
+    "profit_factor": 1.75,
+    "payoff_ratio": 1.2,
+    "expectancy_per_trade_dlr": 1.84,
+    "max_drawdown_pct": 3.87,
+    "sharpe_ratio": 3.48,
+    "sortino_ratio": 5.24,
+    "average_winner_dlr": 8.64,
+    "median_winner_dlr": 5.66,
+    "average_loser_dlr": -7.22,
+    "median_loser_dlr": -6.78,
+    "largest_winner_dlr": 21.4,
+    "largest_loser_dlr": -19.42,
+    "max_consecutive_wins": 3,
+    "max_consecutive_losses": 2
+  },
+  "selectivity": {
+    "total_sessions": 21,
+    "zero_trade_days": 4,
+    "one_trade_days": 6,
+    "two_trade_days": 11,
+    "three_plus_trade_days": 0
+  },
+  "cost_stress": {
+    "cost_1_0x": {
+      "net_return_pct": 5.12,
+      "net_pnl": 51.25,
+      "profit_factor": 1.75
+    },
+    "cost_1_5x": {
+      "net_return_pct": 4.62,
+      "net_pnl": 46.23,
+      "profit_factor": 1.75
+    },
+    "cost_2_0x": {
+      "net_return_pct": 4.12,
+      "net_pnl": 41.21,
+      "profit_factor": 1.75
+    },
+    "cost_3_0x": {
+      "net_return_pct": 3.12,
+      "net_pnl": 31.16,
+      "profit_factor": 1.75
+    }
+  },
+  "concentration": {
+    "best_symbol": "ORCL",
+    "best_symbol_pct": 69.26,
+    "top_3_symbols_pct": 134.56,
+    "best_day": "2026-08-19",
+    "best_day_pct": 59.39,
+    "top_3_days_pct": 128.02,
+    "top_3_trades_pct": 103.11,
+    "top_10_trades_pct": 236.78,
+    "flags": {
+      "flag_single_symbol_gt_30": true,
+      "flag_single_day_gt_25": true,
+      "flag_top_3_trades_gt_50": true
+    }
+  },
+  "benchmarks": {
+    "strategy_net_return_pct": 5.12,
+    "spy_buy_and_hold_pct": 2.2,
+    "cash_return_pct": 0.0
+  },
+  "signals_audit": {
+    "august_rank_ic_15m": -0.0218,
+    "august_rank_ic_30m": -0.0061,
+    "august_rank_ic_60m": -0.0198,
+    "august_broad_composite_ic": -0.0087,
+    "august_premarket_drift_ic": 0.0
+  },
+  "bootstrap": {
+    "monthly_pnl_95_ci_dlr": [
+      -45.38,
+      147.24
+    ]
+  }
+}

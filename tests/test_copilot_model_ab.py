@@ -18,7 +18,7 @@ def test_copilot_ab_compare_endpoint():
     assert "mmrm_response" in data
     assert "rag_context" in data
     assert data["base_response"]["model_id"] == "BASE-QWEN-2.5-14B"
-    assert data["mmrm_response"]["model_id"] == "MMRM-0.1-QLORA"
+    assert data["mmrm_response"]["model_id"] in ["MMRM-0.1-QLORA", "MMRM-0.1-REAL", "MMRM-0.2-REAL+RAG", "MMRM-0.2-REAL"]
 
 
 def test_copilot_ab_feedback_endpoint():

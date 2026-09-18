@@ -1,0 +1,113 @@
+# ==============================================================================
+# FORWARD_PAPER_POLICY_V1 — CANONICAL OPERATING POLICY CONFIGURATION
+# ==============================================================================
+# Canonical Product: Autonomous, Risk-First, Intraday Quantitative Portfolio Manager
+# Target: PAPER_CANDIDATE_V1
+# Governance Status: APPROVED FOR FORWARD PAPER TESTING
+# Real Money Status: REAL_MONEY_NOT_AUTHORIZED
+
+policy_metadata:
+  policy_id: "FORWARD_PAPER_POLICY_V1"
+  version: "1.0.0"
+  status: "APPROVED_FOR_FORWARD_PAPER_TESTING"
+  real_money_authorized: false
+  governance_tag: "PAPER_CANDIDATE_V1"
+  freeze_block_sessions: 20
+
+time_windows:
+  market_open_cooldown_until: "09:35:00"
+  entry_window_start: "09:35:00"
+  entry_window_cutoff: "14:30:00"
+  eod_flatten_window_start: "15:45:00"
+  eod_flatten_target_flat: "15:55:00"
+  market_close: "16:00:00"
+  timezone: "America/New_York"
+
+capital_and_sizing:
+  authorized_strategy_capital: 1000.00
+  tier_name: "TIER_PAPER_1000"
+  max_open_positions: 1
+  normal_max_notional: 750.00
+  normal_max_risk_pct_equity: 0.0075
+  normal_max_risk_dollars: 7.50
+  daily_loss_limit_pct_equity: 0.0150
+  daily_loss_limit_dollars: 15.00
+  max_entries_per_symbol_per_day: 1
+  max_total_entries_per_day: 2
+  allow_position_switching: false
+
+session_gate_policies:
+  GO:
+    risk_multiplier: 1.00
+    notional_multiplier: 1.00
+    min_expected_net_edge_bps: 20.0
+    min_model_confidence: 0.55
+  CAUTION:
+    risk_multiplier: 0.50
+    notional_multiplier: 0.50
+    max_notional_ceiling: 375.00
+    max_risk_dollars: 3.75
+    min_expected_net_edge_bps: 30.0
+    min_model_confidence: 0.60
+  NO_GO:
+    new_position_size: 0
+    allow_new_entries: false
+
+macro_event_policy:
+  freeze_window_minutes_before: 15
+  freeze_window_minutes_after: 15
+  high_impact_event_families:
+    - "CPI"
+    - "FOMC"
+    - "NON_FARM_PAYROLLS"
+    - "PPI"
+    - "ISM"
+    - "FED_RATE_DECISION"
+
+eod_policy:
+  flatten_start_time: "15:45:00"
+  flatten_force_flat_time: "15:55:00"
+  zero_overnight_exposure_required: true
+  unplanned_overnight_exposure_incident_type: "UNPLANNED_OVERNIGHT_EXPOSURE"
+  incident_severity: "CRITICAL_OPERATIONAL_INCIDENT"
+
+review_governance:
+  review_cadence_sessions: 20
+  allow_intraday_parameter_tuning: false
+  allow_interim_parameter_mutation: false
+  zero_trade_days_valid: true
+  max_consecutive_zero_trade_days_tolerated: 20
+
+mmrm_authority:
+  execution_authority: false
+  broker_order_submission_allowed: false
+  session_gate_override_allowed: false
+  risk_limit_override_allowed: false
+  advisory_recommendations_allowed: true
+
+asset_scope:
+  asset_class: "US_EQUITIES"
+  direction: "LONG_ONLY"
+  execution_type: "INTRADAY"
+  leverage_allowed: false
+  margin_allowed: false
+  short_selling_allowed: false
+  options_allowed: false
+  futures_allowed: false
+
+standard_reason_codes:
+  - "ENTRY_WINDOW_CLOSED"
+  - "ENTRY_CUTOFF_REACHED"
+  - "MACRO_EVENT_ENTRY_FREEZE"
+  - "POSITION_ALREADY_OPEN"
+  - "SYMBOL_DAILY_ENTRY_LIMIT"
+  - "MAX_DAILY_ENTRIES_REACHED"
+  - "EDGE_TOO_LOW"
+  - "CAUTION_EDGE_TOO_LOW"
+  - "EVENT_VETO"
+  - "SESSION_NO_GO"
+  - "DAILY_LOSS_LIMIT"
+  - "LIQUIDITY_LIMIT"
+  - "CAPACITY_LIMIT"
+  - "RISK_LIMIT"
+  - "STALE_DATA"

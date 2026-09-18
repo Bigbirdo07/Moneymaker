@@ -1,0 +1,57 @@
+{
+  "freeze_name": "REAL_MARKET_ENGINE_V3_FROZEN_CANDIDATE",
+  "freeze_timestamp_utc": "2026-09-17T20:22:00Z",
+  "governance_status": "FROZEN_FOR_FRESH_REPLICATION_EXAM",
+  "architecture_version": "ENGINE_V3.0_PRODUCTION_CANDIDATE",
+  "code_artifacts": {
+    "src/features/real_market_feature_store_v3.py": {
+      "sha256": "810703b04f446f70e349991ccbc1393095243693b51b702736cfadb83ea7c0ca",
+      "size_bytes": 10271,
+      "line_count": 213
+    },
+    "src/models/real_market_ranking_forecaster_v3.py": {
+      "sha256": "c1f3b2652d1123ef49113b8b82f205b19929fbb9d95db7cd9607011fbbeb2ae6",
+      "size_bytes": 7705,
+      "line_count": 198
+    },
+    "src/signals/real_market_entry_model_v3.py": {
+      "sha256": "1fb2f71d08987daabb215618d98cf698a05655da62ae7a461ec2c16af34cf2aa",
+      "size_bytes": 6634,
+      "line_count": 171
+    },
+    "src/signals/real_market_exit_model_v3.py": {
+      "sha256": "78f7d0b1606c72d41bec02e62bf4a46b569ae9f1b7e4618ff0182b15432770a6",
+      "size_bytes": 3485,
+      "line_count": 100
+    },
+    "src/execution/real_market_allocator_v3.py": {
+      "sha256": "fafd0e537ddfae219388d9065fbd4e289127a3006348a6cecd95126e77fad163",
+      "size_bytes": 2264,
+      "line_count": 70
+    },
+    "src/replay/real_engine_v3_runner.py": {
+      "sha256": "725c3289e95bb9ec211d0d9f6474cd5f84df4a618ca012c93912412ea930f3e5",
+      "size_bytes": 11654,
+      "line_count": 253
+    }
+  },
+  "hyperparameters": {
+    "training_period": "2021-01-01 to 2022-12-31",
+    "evaluation_period": "2023-01-01 to 2023-12-31",
+    "starting_capital": 1000.0,
+    "min_net_edge_bps": 25.0,
+    "min_calibrated_prob": 0.58,
+    "min_market_breadth": 0.4,
+    "max_trades_per_day": 1,
+    "max_active_positions": 1,
+    "max_capital_allocation_pct": 0.5,
+    "hard_stop_pct": -0.015,
+    "take_profit_pct": 0.03,
+    "trailing_stop_activation_pct": 0.015,
+    "trailing_stop_step_pct": 0.005,
+    "max_holding_bars": 60,
+    "transaction_cost_bps_per_side": 5.0,
+    "slippage_bps_per_side": 2.5,
+    "total_roundtrip_friction_bps": 15.0
+  }
+}

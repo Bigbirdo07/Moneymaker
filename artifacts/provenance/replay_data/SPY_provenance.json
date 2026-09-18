@@ -1,0 +1,14 @@
+{
+  "symbol": "SPY",
+  "session_date": "2026-01-05 to 2026-02-03",
+  "provider": "MONEYMAKER_HISTORICAL_FEED",
+  "feed": "US_EQUITY_1M_L1",
+  "dataset_version": "1.0.0",
+  "download_timestamp": "2026-09-16T23:57:12.714428+00:00",
+  "raw_file_sha256": "258a1c2cac3522318addf3cac04791e8d759867618252cc2321f5563743a5949",
+  "bar_count": 9900,
+  "resolution": "1m",
+  "is_split_adjusted": true,
+  "is_dividend_adjusted": false,
+  "evidence_class": "HISTORICAL_REPLAY"
+}

@@ -1,0 +1,11 @@
+{
+  "experiment_id": "PHASE10_5_FINAL_20260917_185205",
+  "phase": "PHASE_10_5",
+  "timestamp_utc": "2026-09-17T18:53:03.858174Z",
+  "slurm_job_id": "64546388",
+  "node": "uri-cpu025",
+  "freeze_manifest_verified": true,
+  "freeze_manifest_hash": "8c3df97e79aab83452d977026a77f820836a9b0f4b4ee14e226a756eaad9817a",
+  "august_matrix_rows": 22214,
+  "verdict": "FINAL_REAL_HOLDOUT_MIXED"
+}

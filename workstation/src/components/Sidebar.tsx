@@ -15,6 +15,7 @@ export type ScreenTab =
   | 'dashboard'
   | 'markets'
   | 'portfolio'
+  | 'replay'
   | 'strategies'
   | 'trades'
   | 'risk'
@@ -32,6 +33,7 @@ export const Sidebar: React.FC<Props> = ({ currentTab, onSelectTab }) => {
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'markets', label: 'Markets', icon: TrendingUp },
     { id: 'portfolio', label: 'Portfolio', icon: Briefcase },
+    { id: 'replay', label: 'Market Replay', icon: RotateCcw },
     { id: 'strategies', label: 'Strategies', icon: Layers },
     { id: 'trades', label: 'Trades', icon: ScrollText },
     { id: 'risk', label: 'Risk', icon: AlertTriangle },

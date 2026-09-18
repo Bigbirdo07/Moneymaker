@@ -1,0 +1,14 @@
+{
+  "symbol": "TSLA",
+  "session_date": "2026-01-05 to 2026-02-03",
+  "provider": "MONEYMAKER_HISTORICAL_FEED",
+  "feed": "US_EQUITY_1M_L1",
+  "dataset_version": "1.0.0",
+  "download_timestamp": "2026-09-16T23:57:12.238205+00:00",
+  "raw_file_sha256": "81e39b43c9214c11d47ee0b5fd7508ccdc302d815f314a5c9a33657ecfbfd5a9",
+  "bar_count": 9900,
+  "resolution": "1m",
+  "is_split_adjusted": true,
+  "is_dividend_adjusted": false,
+  "evidence_class": "HISTORICAL_REPLAY"
+}

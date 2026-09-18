@@ -1,0 +1,392 @@
+{
+  "audit_timestamp": "2026-09-17T18:35:00Z",
+  "formal_status": "PRE_HOLDOUT_AUDIT_NEEDS_CORRECTION",
+  "firewall_verified_sealed": true,
+  "august_rows_accessed": 0,
+  "horizon_audit": {
+    "15m": {
+      "sample_count": 112172,
+      "rank_ic": 0.0061,
+      "p_value": 0.0402,
+      "ic_95_ci": [
+        -0.0035,
+        0.0147
+      ],
+      "top_decile_gross_bps": 0.93,
+      "top_decile_net_bps": -8.57,
+      "filtered_opportunities_count": 132,
+      "filtered_net_expectancy_bps": -14.22,
+      "filtered_win_rate_pct": 41.67,
+      "filtered_profit_factor": 0.73,
+      "actual_candidate_trade_count": 20,
+      "actual_candidate_avg_holding_bars": 5.2,
+      "actual_candidate_median_holding_bars": 4.0
+    },
+    "30m": {
+      "sample_count": 112172,
+      "rank_ic": -0.0039,
+      "p_value": 0.197,
+      "ic_95_ci": [
+        -0.0178,
+        0.0081
+      ],
+      "top_decile_gross_bps": 1.24,
+      "top_decile_net_bps": -8.26,
+      "filtered_opportunities_count": 248,
+      "filtered_net_expectancy_bps": 0.24,
+      "filtered_win_rate_pct": 51.21,
+      "filtered_profit_factor": 1.0,
+      "actual_candidate_trade_count": 22,
+      "actual_candidate_avg_holding_bars": 7.6,
+      "actual_candidate_median_holding_bars": 6.5
+    },
+    "60m": {
+      "sample_count": 112172,
+      "rank_ic": -0.0062,
+      "p_value": 0.0366,
+      "ic_95_ci": [
+        -0.0242,
+        0.0072
+      ],
+      "top_decile_gross_bps": 4.16,
+      "top_decile_net_bps": -5.34,
+      "filtered_opportunities_count": 390,
+      "filtered_net_expectancy_bps": 32.3,
+      "filtered_win_rate_pct": 50.26,
+      "filtered_profit_factor": 1.44,
+      "actual_candidate_trade_count": 65,
+      "actual_candidate_avg_holding_bars": 7.3,
+      "actual_candidate_median_holding_bars": 4.0
+    }
+  },
+  "ensemble_ic_audit": {
+    "reported_baseline_ridge_ic": 0.0094,
+    "reported_baseline_hgb_ic": 0.0047,
+    "reported_premarket_model_b_ic": 0.0468,
+    "true_oos_composite_edge_ic_30m": -0.0029,
+    "composite_ic_p_value": 0.34,
+    "composite_ic_95_ci": [
+      -0.0177,
+      0.0097
+    ],
+    "permutation_p_value": 0.31666666666666665,
+    "isotonic_fit_strictly_on_train": true,
+    "zero_validation_labels_in_fitting": true,
+    "zero_target_leakage": true
+  },
+  "secondary_validation_payoff": {
+    "total_trades": 107,
+    "winners_count": 51,
+    "losers_count": 56,
+    "win_rate_pct": 47.66,
+    "average_winner_dlr": 8.13,
+    "median_winner_dlr": 5.86,
+    "average_loser_dlr": -6.37,
+    "median_loser_dlr": -5.0,
+    "largest_winner_dlr": 30.5,
+    "largest_loser_dlr": -23.19,
+    "expectancy_per_trade_dlr": 0.54,
+    "payoff_ratio": 1.28,
+    "profit_factor": 1.26,
+    "max_consecutive_wins": 5,
+    "max_consecutive_losses": 6,
+    "top_3_trades_dlr": 72.08,
+    "top_3_trades_pct": 124.6,
+    "top_5_trades_dlr": 110.17,
+    "top_5_trades_pct": 190.46,
+    "top_10_trades_dlr": 184.84,
+    "top_10_trades_pct": 319.53,
+    "trades_by_session": [
+      {
+        "session_date": "2026-06-02",
+        "net_pnl": -17.333499999999997
+      },
+      {
+        "session_date": "2026-06-03",
+        "net_pnl": -7.672599999999999
+      },
+      {
+        "session_date": "2026-06-04",
+        "net_pnl": -8.8291
+      },
+      {
+        "session_date": "2026-06-05",
+        "net_pnl": -29.894800000000004
+      },
+      {
+        "session_date": "2026-06-08",
+        "net_pnl": 1.7126
+      },
+      {
+        "session_date": "2026-06-09",
+        "net_pnl": -16.5122
+      },
+      {
+        "session_date": "2026-06-10",
+        "net_pnl": -1.8194000000000001
+      },
+      {
+        "session_date": "2026-06-11",
+        "net_pnl": 14.5868
+      },
+      {
+        "session_date": "2026-06-12",
+        "net_pnl": 6.1861
+      },
+      {
+        "session_date": "2026-06-15",
+        "net_pnl": 13.3475
+      },
+      {
+        "session_date": "2026-06-16",
+        "net_pnl": -2.2025
+      },
+      {
+        "session_date": "2026-06-17",
+        "net_pnl": 11.2727
+      },
+      {
+        "session_date": "2026-06-18",
+        "net_pnl": 13.4892
+      },
+      {
+        "session_date": "2026-06-22",
+        "net_pnl": 0.35160000000000036
+      },
+      {
+        "session_date": "2026-06-23",
+        "net_pnl": 30.7992
+      },
+      {
+        "session_date": "2026-06-24",
+        "net_pnl": -9.546299999999999
+      },
+      {
+        "session_date": "2026-06-25",
+        "net_pnl": 30.6862
+      },
+      {
+        "session_date": "2026-06-26",
+        "net_pnl": -3.3061
+      },
+      {
+        "session_date": "2026-06-29",
+        "net_pnl": 16.8339
+      },
+      {
+        "session_date": "2026-06-30",
+        "net_pnl": -5.8143
+      },
+      {
+        "session_date": "2026-07-01",
+        "net_pnl": -35.462199999999996
+      },
+      {
+        "session_date": "2026-07-02",
+        "net_pnl": 13.694
+      },
+      {
+        "session_date": "2026-07-06",
+        "net_pnl": 14.7706
+      },
+      {
+        "session_date": "2026-07-07",
+        "net_pnl": 1.9494999999999998
+      },
+      {
+        "session_date": "2026-07-08",
+        "net_pnl": -9.0358
+      },
+      {
+        "session_date": "2026-07-09",
+        "net_pnl": 21.4795
+      },
+      {
+        "session_date": "2026-07-10",
+        "net_pnl": -7.002899999999999
+      },
+      {
+        "session_date": "2026-07-13",
+        "net_pnl": 11.355
+      },
+      {
+        "session_date": "2026-07-14",
+        "net_pnl": -4.253
+      },
+      {
+        "session_date": "2026-07-15",
+        "net_pnl": 1.6326
+      },
+      {
+        "session_date": "2026-07-16",
+        "net_pnl": -21.1839
+      },
+      {
+        "session_date": "2026-07-17",
+        "net_pnl": -16.4848
+      },
+      {
+        "session_date": "2026-07-20",
+        "net_pnl": -8.3106
+      },
+      {
+        "session_date": "2026-07-21",
+        "net_pnl": -5.4555
+      },
+      {
+        "session_date": "2026-07-22",
+        "net_pnl": 14.7011
+      },
+      {
+        "session_date": "2026-07-23",
+        "net_pnl": 15.2192
+      },
+      {
+        "session_date": "2026-07-24",
+        "net_pnl": -17.3825
+      },
+      {
+        "session_date": "2026-07-27",
+        "net_pnl": 14.5433
+      },
+      {
+        "session_date": "2026-07-28",
+        "net_pnl": -8.1473
+      },
+      {
+        "session_date": "2026-07-29",
+        "net_pnl": 18.131500000000003
+      },
+      {
+        "session_date": "2026-07-30",
+        "net_pnl": -7.2444
+      },
+      {
+        "session_date": "2026-07-31",
+        "net_pnl": 33.9976
+      }
+    ],
+    "trades_by_symbol": [
+      {
+        "symbol": "ABBV",
+        "net_pnl": 7.1262
+      },
+      {
+        "symbol": "ACN",
+        "net_pnl": 53.3184
+      },
+      {
+        "symbol": "ADBE",
+        "net_pnl": -8.3106
+      },
+      {
+        "symbol": "AMZN",
+        "net_pnl": -11.3686
+      },
+      {
+        "symbol": "AVGO",
+        "net_pnl": -23.0406
+      },
+      {
+        "symbol": "CMCSA",
+        "net_pnl": -24.9364
+      },
+      {
+        "symbol": "CRM",
+        "net_pnl": 0.22129999999999939
+      },
+      {
+        "symbol": "CSCO",
+        "net_pnl": -13.043299999999999
+      },
+      {
+        "symbol": "DHR",
+        "net_pnl": 1.2739
+      },
+      {
+        "symbol": "IBM",
+        "net_pnl": -12.956700000000001
+      },
+      {
+        "symbol": "INTC",
+        "net_pnl": 27.707900000000006
+      },
+      {
+        "symbol": "JPM",
+        "net_pnl": 6.075
+      },
+      {
+        "symbol": "LOW",
+        "net_pnl": 5.8439
+      },
+      {
+        "symbol": "NFLX",
+        "net_pnl": -20.2881
+      },
+      {
+        "symbol": "NKE",
+        "net_pnl": 13.694
+      },
+      {
+        "symbol": "ORCL",
+        "net_pnl": 13.679499999999999
+      },
+      {
+        "symbol": "PM",
+        "net_pnl": -2.5021
+      },
+      {
+        "symbol": "QCOM",
+        "net_pnl": -13.195199999999998
+      },
+      {
+        "symbol": "TSLA",
+        "net_pnl": 25.805300000000003
+      },
+      {
+        "symbol": "UNH",
+        "net_pnl": 3.8312
+      },
+      {
+        "symbol": "UNP",
+        "net_pnl": 21.3073
+      },
+      {
+        "symbol": "VZ",
+        "net_pnl": 2.7669
+      },
+      {
+        "symbol": "XOM",
+        "net_pnl": 4.836800000000001
+      }
+    ]
+  },
+  "concentration_audit": {
+    "best_symbol": "ACN",
+    "best_symbol_pct": 92.17,
+    "top_3_symbols_pct": 184.68,
+    "best_day": "2026-07-31",
+    "best_day_pct": 58.77,
+    "top_3_days_pct": 165.06,
+    "top_3_trades_pct": 124.6,
+    "bullish_regime_pct": 58.2,
+    "flags": {
+      "flag_best_symbol_gt_30": true,
+      "flag_best_day_gt_25": true,
+      "flag_top_3_trades_gt_50": true
+    }
+  },
+  "cost_model_audit": {
+    "base_half_spread_bps": 3.0,
+    "base_slippage_bps": 1.5,
+    "per_share_commission": 0.0005,
+    "total_round_trip_friction_bps": 9.0,
+    "target_friction_hurdle_bps": 6.5,
+    "consistent_across_all_pipelines": true
+  },
+  "freeze_verification": {
+    "source_hashes_match": true,
+    "mismatches": [],
+    "parameters_match": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "experiment_id": "EXP_SMOKE_20260917_053357",
+  "slurm_job_id": "64531349",
+  "cluster_node": "uri-cpu065",
+  "train_samples": 466107,
+  "val_samples": 112172,
+  "ridge_rank_ic_15m": 0.0094,
+  "logistic_auc_15m": 0.5755,
+  "logistic_brier_score": 0.2185,
+  "rf_rank_ic_15m": -0.0044,
+  "gbdt_rank_ic_15m": 0.0047,
+  "gbdt_classifier_auc_15m": 0.5836,
+  "firewall_status": "AUGUST_2026_SEALED",
+  "verification_verdict": "BASELINE_REPRODUCED_MATCH_CONFIRMED"
+}

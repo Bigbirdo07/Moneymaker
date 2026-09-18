@@ -1,0 +1,10 @@
+{
+  "experiment_id": "PHASE10_5_FINAL_20260917_185203",
+  "slurm_job_id": "64546388",
+  "execution_node": "uri-cpu025",
+  "completed_timestamp": "2026-09-17T18:53:04Z",
+  "cluster_host": "login7.unity.rc.umass.edu",
+  "partition": "uri-cpu",
+  "evidence_class": "SIMULATED_EXECUTION_ON_REAL_MARKET_DATA",
+  "holdout_evaluation": "AUGUST_2026_FINAL_EXAM_COMPLETED"
+}

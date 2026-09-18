@@ -1,0 +1,25 @@
+{
+  "candidate_id": "PAPER_RUNTIME_V1_FROZEN",
+  "freeze_timestamp": "2026-09-18T04:32:30.538002+00:00",
+  "architecture_version": "V3_CANONICAL",
+  "capital_tier": "TIER_PAPER_1000",
+  "execution_mode": "PAPER",
+  "live_real_money_allowed": false,
+  "firewall_guard": "RealMoneyAuthorizationError",
+  "component_hashes": {
+    "execution_environment": "3bee0797cbb2d9522d0b05756a5ff7ef70d33d4a43576a60bc6553334e378420",
+    "order_intent": "782bb82ee2c80fd5ca47c8c69c95f5f514bc4cc6d40e351fec3842498bf82694",
+    "broker_adapter": "15eb693b5643d711abce276550f29276ffc22dad24f34186e6299ded2fba5c2a",
+    "simulation_broker": "906d2d31a6c9be6fb3ca0bb5a540e76bd2c66849b3451b4dc97e08796b6ba01f",
+    "alpaca_paper_broker": "e9c5b9bf0f3f4858c0f8a3728112ad1fb74ed95371476a2246e46c4164f7ffb7",
+    "strategy_capital_ledger": "09dee8cac12629009a79b8e26d45990cf9bd00a08a2a4aa5b04fd354799645dd",
+    "position_lifecycle": "49b45c0cba2dd315a6929094ce493ccabf6412cb3ae208c780d71f1899906253",
+    "runtime_state": "b33d8bba16d2697363686e36947fe442030a6eb6deb8b0d7bc88a1f27e8010b8",
+    "paper_trading_runtime": "ff67cac5a1ac3fec988d18c9a38062b38aafba4d724a52fb54ab0efec4d81b50",
+    "post_close_journal": "422d62151f630f0f06c27f6366d6a0bd8949abda9badf3cb3452bca36616ce3f"
+  },
+  "governance_verdicts": {
+    "part1_status": "PAPER_RUNTIME_IMPLEMENTED_NOT_FORWARD_VALIDATED",
+    "live_status": "REAL_MONEY_NOT_AUTHORIZED"
+  }
+}

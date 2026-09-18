@@ -1,0 +1,29 @@
+{
+  "engine_state": "REAL_MARKET_ENGINE_V2_CANDIDATE_FROZEN",
+  "freeze_timestamp": "2026-09-17T03:55:00Z",
+  "evidence_class": "SIMULATED_EXECUTION_ON_REAL_MARKET_DATA",
+  "starting_capital": 1000.0,
+  "parameters": {
+    "entry_min_net_edge_bps": 12.0,
+    "entry_min_calibrated_prob": 0.55,
+    "entry_max_daily_trades": 3,
+    "entry_cooldown_bars": 30,
+    "exit_stop_loss_pct": 0.015,
+    "exit_take_profit_pct": 0.03,
+    "exit_trailing_drawdown_pct": 0.008,
+    "exit_max_holding_bars": 90,
+    "allocator_max_positions": 2,
+    "allocator_sizing_policy": "VOLATILITY_ADJUSTED",
+    "allocator_max_capital_pct": 0.5
+  },
+  "source_hashes": {
+    "src/features/real_market_feature_store.py": "a0bd40615a8521b9eb4fa7c1f5e588518d54e2ebbe6667c8a9277ac3c61766be",
+    "src/models/real_market_multi_horizon_forecaster_v2.py": "003593178a2ca71906fcbc0bf4d1bfd8521ce43bb70896b492a02d65e73fd159",
+    "src/signals/real_market_entry_model_v2.py": "00b7d56d35ee52d82dd6ce280d705cbc2ace8d0b5039d27271c9cb6e7764309b",
+    "src/signals/real_market_exit_model_v2.py": "0e2dcca879306ff47cbe11200cfa524843ccab37c4dad3d8756195475ba69783",
+    "src/execution/real_market_allocator_v2.py": "d50e32e1ea30c63ef3304193baf8e76f07663736ba3b0285b88bd81eb42d8c2d",
+    "src/replay/real_engine_v2_runner.py": "e1ea6281e4cbf1d607c512275284d1ab3bdb66ca44c09f8831ec49c80014ed6d"
+  },
+  "data_provenance": "ALPACA_IEX_REAL_HISTORICAL_1M",
+  "holdout_protection": "AUGUST_2026_SEALED"
+}

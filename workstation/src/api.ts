@@ -19,6 +19,10 @@ import {
   TradeRecord,
   CopilotChatResponse,
   CopilotABCompareResponse,
+  CopilotAuditSummary,
+  CopilotModelInfo,
+  ResearchProposal,
+  CopilotInteractionRecord,
 } from './types';
 
 
@@ -197,17 +201,64 @@ export const api = {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt }),
     });
-    if (!res.ok) throw new Error('Failed to run A/B comparison');
+    if (!res.ok) throw new Error('Failed to run Copilot A/B comparison');
     return res.json();
   },
 
-  async submitCopilotFeedback(payload: { prompt: string; winner: string; notes?: string }): Promise<any> {
+  async submitCopilotFeedback(payload: {
+    prompt: string;
+    winner: string;
+    notes?: string;
+  }): Promise<any> {
     const res = await fetch(`${API_BASE}/copilot/ab_feedback`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
-    if (!res.ok) throw new Error('Failed to record A/B feedback');
+    if (!res.ok) throw new Error('Failed to submit Copilot feedback');
+    return res.json();
+  },
+
+  async voteCopilotAB(payload: {
+    interaction_id: string;
+    preference: string;
+    reason_tags?: string[];
+    notes?: string;
+  }): Promise<any> {
+    const res = await fetch(`${API_BASE}/copilot/ab/vote`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error('Failed to submit vote');
+    return res.json();
+  },
+
+  async getCopilotAudit(): Promise<CopilotAuditSummary> {
+    const res = await fetch(`${API_BASE}/copilot/ab/audit`);
+    if (!res.ok) throw new Error('Failed to fetch Copilot A/B audit');
+    return res.json();
+  },
+
+  async getCopilotDailySummary(): Promise<DailyBrief> {
+    const res = await fetch(`${API_BASE}/copilot/daily_summary`);
+    if (!res.ok) throw new Error('Failed to fetch daily summary');
+    return res.json();
+  },
+
+  async getCopilotModels(): Promise<CopilotModelInfo[]> {
+    const res = await fetch(`${API_BASE}/copilot/models`);
+    if (!res.ok) throw new Error('Failed to fetch Copilot models');
+    return res.json();
+  },
+
+  async proposeResearchExperiment(query: string): Promise<{ success: boolean; proposal: ResearchProposal }> {
+    const res = await fetch(`${API_BASE}/research/experiments/propose`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query }),
+    });
+    if (!res.ok) throw new Error('Failed to propose research experiment');
     return res.json();
   },
 };

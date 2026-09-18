@@ -149,19 +149,20 @@ def main():
 
         train_ds = ListDataset(tokenized_inputs)
 
-        training_args = TrainingArguments(
-            output_dir=args.output_dir,
-            per_device_train_batch_size=args.batch_size,
-            gradient_accumulation_steps=args.gradient_accumulation_steps,
-            learning_rate=args.learning_rate,
-            num_train_epochs=args.epochs,
-            logging_steps=10,
-            save_strategy="epoch",
-            evaluation_strategy="no",
-            bf16=True,
-            optim="paged_adamw_8bit",
-            report_to="none",
-        )
+        training_args_kwargs = {
+            "output_dir": args.output_dir,
+            "per_device_train_batch_size": args.batch_size,
+            "gradient_accumulation_steps": args.gradient_accumulation_steps,
+            "learning_rate": args.learning_rate,
+            "num_train_epochs": args.epochs,
+            "logging_steps": 10,
+            "save_strategy": "epoch",
+            "bf16": True,
+            "optim": "paged_adamw_8bit",
+            "report_to": "none",
+        }
+
+        training_args = TrainingArguments(**training_args_kwargs)
 
         trainer = Trainer(
             model=model,
@@ -199,8 +200,8 @@ def main():
     env_info = {
         "hostname": socket.gethostname(),
         "slurm_job_id": os.environ.get("SLURM_JOB_ID", "LOCAL_VERIFY"),
-        "gpu_model": "NVIDIA A100-SXM4-80GB" if has_gpu else "CPU_ONLY",
-        "gpu_count": 1 if has_gpu else 0,
+        "gpu_model": torch.cuda.get_device_name(0) if has_gpu else "CPU_ONLY",
+        "gpu_count": torch.cuda.device_count() if has_gpu else 0,
         "cuda_available": has_gpu,
         "runtime_timestamp": datetime.now(timezone.utc).isoformat(),
         "git_commit": git_commit,

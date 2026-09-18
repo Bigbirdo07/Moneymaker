@@ -17,9 +17,13 @@ cd "$PROJECT_ROOT"
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate "/scratch4/workspace/alberto_paz_uri_edu-azera-voice/.conda/envs/azera-voice"
 
+export PATH="/scratch4/workspace/alberto_paz_uri_edu-azera-voice/.conda/envs/azera-voice/bin:$PATH"
+export PYTHON_BIN="/scratch4/workspace/alberto_paz_uri_edu-azera-voice/.conda/envs/azera-voice/bin/python3"
+
 export QWEN_MODEL_PATH="/scratch4/workspace/alberto_paz_uri_edu-azera-voice/.cache/huggingface/hub/models--Qwen--Qwen2.5-14B-Instruct/snapshots/cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8"
 
 echo "Node: $(hostname) | Job ID: $SLURM_JOB_ID | Base Model: Qwen 2.5 14B Instruct"
+echo "Python: $("$PYTHON_BIN" --version) at $PYTHON_BIN"
 
 EXPERIMENT_ID="${EXPERIMENT_ID:-EXP_MMRM_REAL_$(date +%Y%m%d_%H%M%S)}"
 DATASET_PATH="${DATASET_PATH:-data/moneymaker_llm/v2/train.jsonl}"
@@ -27,7 +31,7 @@ VAL_DATASET_PATH="${VAL_DATASET_PATH:-data/moneymaker_llm/v2/val.jsonl}"
 OUTPUT_DIR="$PROJECT_ROOT/outputs/$EXPERIMENT_ID"
 mkdir -p "$OUTPUT_DIR"
 
-python3 -m src.research.runners.run_qlora_finetune \
+"$PYTHON_BIN" -m src.research.runners.run_qlora_finetune \
     --base-model-path "$QWEN_MODEL_PATH" \
     --dataset-path "$DATASET_PATH" \
     --val-dataset-path "$VAL_DATASET_PATH" \

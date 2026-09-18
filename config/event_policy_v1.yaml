@@ -1,0 +1,60 @@
+# ==============================================================================
+# MONEYMAKER DETERMINISTIC EVENT RISK POLICY CONFIGURATION V1
+# ==============================================================================
+version: "1.0.0"
+governance:
+  rule_engine_type: "DETERMINISTIC_EXPLICIT_TREE"
+  llm_discretion_allowed: false
+  real_money_authorized: false
+
+rules:
+  trading_halt:
+    entry_action: "VETO"
+    open_position_action: "FREEZE_NO_ACTION_IF_HALTED"
+    reason: "EXCHANGE_TRADING_HALT_ACTIVE"
+
+  bankruptcy_distress:
+    entry_action: "VETO"
+    open_position_action: "EXIT"
+    reason: "BANKRUPTCY_DISTRESS_RISK"
+
+  same_day_earnings:
+    entry_action: "VETO"
+    open_position_action: "HOLD"
+    reason: "SAME_DAY_EARNINGS_BINARY_RISK"
+
+  clinical_fda_binary:
+    entry_action: "VETO"
+    open_position_action: "EXIT"
+    reason: "FDA_CLINICAL_BINARY_EVENT"
+
+  merger_acquisition:
+    entry_action: "VETO"
+    open_position_action: "HOLD"
+    reason: "MERGER_ACQUISITION_DISCONTINUITY"
+
+  share_offering_dilution:
+    entry_action: "REDUCE_RISK"
+    open_position_action: "HOLD"
+    size_multiplier: 0.50
+    reason: "SECONDARY_OFFERING_DILUTION_RISK"
+
+  major_legal_critical:
+    entry_action: "VETO"
+    open_position_action: "HOLD"
+    reason: "CRITICAL_GOVERNMENT_LEGAL_ENFORCEMENT"
+
+  data_quote_anomaly:
+    entry_action: "VETO"
+    open_position_action: "FREEZE_NO_ACTION_IF_HALTED"
+    reason: "MARKET_DATA_INTEGRITY_ANOMALY"
+
+  market_wide_emergency:
+    entry_action: "VETO"
+    open_position_action: "HOLD"
+    reason: "MARKET_WIDE_CIRCUIT_BREAKER"
+
+fail_safe:
+  degraded_provider_action: "REDUCE_RISK"
+  unavailable_provider_action: "VETO"
+  stale_heartbeat_seconds: 300

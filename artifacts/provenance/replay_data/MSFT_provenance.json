@@ -1,0 +1,14 @@
+{
+  "symbol": "MSFT",
+  "session_date": "2026-01-05 to 2026-02-03",
+  "provider": "MONEYMAKER_HISTORICAL_FEED",
+  "feed": "US_EQUITY_1M_L1",
+  "dataset_version": "1.0.0",
+  "download_timestamp": "2026-09-16T23:57:12.199821+00:00",
+  "raw_file_sha256": "8a3186772cd8e1373ad3e4c963425c3f1cb29ebd4a11a0509e42a83f122af869",
+  "bar_count": 9900,
+  "resolution": "1m",
+  "is_split_adjusted": true,
+  "is_dividend_adjusted": false,
+  "evidence_class": "HISTORICAL_REPLAY"
+}

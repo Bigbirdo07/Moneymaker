@@ -1,0 +1,60 @@
+{
+  "phase": "PHASE_D",
+  "timestamp_utc": "2026-09-18T03:08:37.737366+00:00Z",
+  "verdicts": {
+    "risk_sizing": "RISK_SIZING_VALIDATED",
+    "capacity_model": "CAPACITY_MODEL_VALIDATED",
+    "capital_scaling": "CAPITAL_SCALING_ARCHITECTURE_READY",
+    "paper_readiness": "RISK_LAYER_READY_FOR_PAPER_INTEGRATION",
+    "real_money": "REAL_MONEY_NOT_AUTHORIZED"
+  },
+  "capital_tiers_evaluated": [
+    {
+      "capital_tier": "TIER_PAPER_1000",
+      "starting_equity": 1000.0,
+      "max_authorized_positions": 1,
+      "max_position_equity_pct": 75.0,
+      "average_position_dollars": 281.6,
+      "max_position_dollars": 674.75,
+      "capital_utilization_pct": 28.2,
+      "constrained_trades_pct": 65.5,
+      "capacity_scalability_status": "HIGHLY_SCALABLE"
+    },
+    {
+      "capital_tier": "TIER_5000",
+      "starting_equity": 5000.0,
+      "max_authorized_positions": 2,
+      "max_position_equity_pct": 50.0,
+      "average_position_dollars": 1660.85,
+      "max_position_dollars": 2495.75,
+      "capital_utilization_pct": 33.2,
+      "constrained_trades_pct": 33.3,
+      "capacity_scalability_status": "HIGHLY_SCALABLE"
+    },
+    {
+      "capital_tier": "TIER_25000",
+      "starting_equity": 25000.0,
+      "max_authorized_positions": 3,
+      "max_position_equity_pct": 35.0,
+      "average_position_dollars": 7138.67,
+      "max_position_dollars": 8742.69,
+      "capital_utilization_pct": 28.6,
+      "constrained_trades_pct": 40.0,
+      "capacity_scalability_status": "HIGHLY_SCALABLE"
+    },
+    {
+      "capital_tier": "TIER_100000",
+      "starting_equity": 100000.0,
+      "max_authorized_positions": 5,
+      "max_position_equity_pct": 25.0,
+      "average_position_dollars": 12781.82,
+      "max_position_dollars": 24913.67,
+      "capital_utilization_pct": 12.8,
+      "constrained_trades_pct": 83.3,
+      "capacity_scalability_status": "CAPACITY_MANAGED"
+    }
+  ],
+  "optimal_risk_budget_pct": 0.75,
+  "monotonicity_verified": true,
+  "fail_closed_verified": true
+}

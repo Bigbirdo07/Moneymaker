@@ -1,0 +1,59 @@
+{
+  "provenance_standard": "REAL_HISTORICAL_MARKET_DATA_IEX",
+  "generated_at": "2026-09-17T19:06:00Z",
+  "canonical_universe": "STANDARD_50_UNIVERSE",
+  "total_calendar_months": 32,
+  "start_date": "2024-01-02",
+  "end_date": "2026-08-31",
+  "historical_windows": {
+    "2024_TRAIN_BASELINE": {
+      "start": "2024-01-01",
+      "end": "2024-12-31",
+      "status": "TRAIN_BASELINE_PRIOR_HISTORY",
+      "months_count": 12,
+      "description": "Baseline historical development data for expanding walk-forward training windows."
+    },
+    "2025_ROLLING_WALK_FORWARD_OOS": {
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "status": "ELIGIBLE_FRESH_OOS_VALIDATION",
+      "months_count": 12,
+      "description": "12 fresh, independent out-of-sample monthly evaluation windows evaluated via rolling origin."
+    },
+    "2026_MODEL_DEVELOPMENT_VALIDATION": {
+      "start": "2026-01-01",
+      "end": "2026-05-31",
+      "status": "USED_MODEL_VALIDATION",
+      "months_count": 5,
+      "description": "Used in Phase 10.4 initial candidate development and ranking."
+    },
+    "2026_SECONDARY_VALIDATION": {
+      "start": "2026-06-01",
+      "end": "2026-07-31",
+      "status": "USED_SECONDARY_VALIDATION",
+      "months_count": 2,
+      "description": "Used in Phase 10.4 secondary validation (+5.76% net return, 107 trades)."
+    },
+    "2026_AUGUST_FINAL_HOLDOUT": {
+      "start": "2026-08-01",
+      "end": "2026-08-31",
+      "status": "BURNED_HOLDOUT_DO_NOT_REUSE",
+      "months_count": 1,
+      "description": "Permanently burned holdout evaluated in Phase 10.5 (+5.12% net return, 28 trades). Sealed from tuning/retraining."
+    }
+  },
+  "rolling_windows_2025": [
+    {"month_id": "2025-01", "train_start": "2024-01-02", "train_end": "2024-12-31", "eval_start": "2025-01-02", "eval_end": "2025-01-31"},
+    {"month_id": "2025-02", "train_start": "2024-01-02", "train_end": "2025-01-31", "eval_start": "2025-02-03", "eval_end": "2025-02-28"},
+    {"month_id": "2025-03", "train_start": "2024-01-02", "train_end": "2025-02-28", "eval_start": "2025-03-03", "eval_end": "2025-03-31"},
+    {"month_id": "2025-04", "train_start": "2024-01-02", "train_end": "2025-03-31", "eval_start": "2025-04-01", "eval_end": "2025-04-30"},
+    {"month_id": "2025-05", "train_start": "2024-01-02", "train_end": "2025-04-30", "eval_start": "2025-05-01", "eval_end": "2025-05-30"},
+    {"month_id": "2025-06", "train_start": "2024-01-02", "train_end": "2025-05-30", "eval_start": "2025-06-02", "eval_end": "2025-06-30"},
+    {"month_id": "2025-07", "train_start": "2024-01-02", "train_end": "2025-06-30", "eval_start": "2025-07-01", "eval_end": "2025-07-31"},
+    {"month_id": "2025-08", "train_start": "2024-01-02", "train_end": "2025-07-31", "eval_start": "2025-08-01", "eval_end": "2025-08-29"},
+    {"month_id": "2025-09", "train_start": "2024-01-02", "train_end": "2025-08-29", "eval_start": "2025-09-02", "eval_end": "2025-09-30"},
+    {"month_id": "2025-10", "train_start": "2024-01-02", "train_end": "2025-09-30", "eval_start": "2025-10-01", "eval_end": "2025-10-31"},
+    {"month_id": "2025-11", "train_start": "2024-01-02", "train_end": "2025-10-31", "eval_start": "2025-11-03", "eval_end": "2025-11-28"},
+    {"month_id": "2025-12", "train_start": "2024-01-02", "train_end": "2025-11-28", "eval_start": "2025-12-01", "eval_end": "2025-12-31"}
+  ]
+}

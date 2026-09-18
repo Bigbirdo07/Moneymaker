@@ -55,6 +55,10 @@ class CopilotToolRegistry:
             "get_previous_capacity_findings": self.get_previous_capacity_findings,
         }
 
+    def list_tools(self) -> List[str]:
+        """Returns the list of all registered tool names."""
+        return list(self._tools.keys())
+
     def execute_tool(self, tool_name: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """Executes a registered tool securely, enforcing strict read-only execution firewall."""
         params = params or {}

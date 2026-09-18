@@ -1,0 +1,509 @@
+{
+  "dataset_name": "ALPACA_IEX_6M_REAL_HISTORICAL_1M",
+  "evidence_class": "REAL_HISTORICAL_MARKET_DATA",
+  "date_range": "2026-03-01 to 2026-09-02",
+  "total_symbols": 50,
+  "total_bars": 2227357,
+  "symbols": {
+    "AAPL": {
+      "symbol": "AAPL",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/AAPL/2026/AAPL_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/AAPL_1m.parquet",
+      "sha256": "b9e5e2f06556c97a9e05de20c1d922c6b3e9255cff547792761facff29928833",
+      "bar_count": 50960,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "MSFT": {
+      "symbol": "MSFT",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/MSFT/2026/MSFT_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/MSFT_1m.parquet",
+      "sha256": "2feb6edce0693364f883d109b88cbc3593e6c82605f9998e7ae9f7cd6703216d",
+      "bar_count": 50640,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "NVDA": {
+      "symbol": "NVDA",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/NVDA/2026/NVDA_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/NVDA_1m.parquet",
+      "sha256": "ff8e11d503c366cae14d40abebc6777f6d14ffaae25f99cb8654c25835cca5b5",
+      "bar_count": 51005,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "AMZN": {
+      "symbol": "AMZN",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/AMZN/2026/AMZN_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/AMZN_1m.parquet",
+      "sha256": "de690a525125702e7bc27240e1d078cad51c8103a5cfb2ee8f50009f385b8e1a",
+      "bar_count": 50144,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "GOOGL": {
+      "symbol": "GOOGL",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/GOOGL/2026/GOOGL_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/GOOGL_1m.parquet",
+      "sha256": "8ab304c72b17232951f19d0c0c57410d04840d0f72cfb56b7ef40f9e6a8dbbbf",
+      "bar_count": 50212,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "META": {
+      "symbol": "META",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/META/2026/META_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/META_1m.parquet",
+      "sha256": "568dba01c59ff8406b1f940602a0b59a054314176ea2a823b3d03cdf17b36817",
+      "bar_count": 49807,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "TSLA": {
+      "symbol": "TSLA",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/TSLA/2026/TSLA_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/TSLA_1m.parquet",
+      "sha256": "554d8d59e8e6a41451afd27c777ca0f3675aeae88095674a3aa87a02bbcf7e03",
+      "bar_count": 50939,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "BRK.B": {
+      "symbol": "BRK.B",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/BRK.B/2026/BRK.B_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/BRK.B_1m.parquet",
+      "sha256": "2dfaf7e7e3b2b1b556e1f6cfda4a04350fece55decc31cb8abc7d2b7ea58b638",
+      "bar_count": 38642,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "UNH": {
+      "symbol": "UNH",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/UNH/2026/UNH_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/UNH_1m.parquet",
+      "sha256": "c727b518dffaf8adf7073d43eee52827cfd6649e447f78c970bb6d5093eda5c7",
+      "bar_count": 46086,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "JNJ": {
+      "symbol": "JNJ",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/JNJ/2026/JNJ_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/JNJ_1m.parquet",
+      "sha256": "609a7dcfd61dfdd489b62a8c03f600c6efb44f434cc79ee630e768b8ecd48fcd",
+      "bar_count": 40226,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "XOM": {
+      "symbol": "XOM",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/XOM/2026/XOM_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/XOM_1m.parquet",
+      "sha256": "bbd0bfd9842f41c575a47a8958ed4b85abc676405756aedd8b29d39340540876",
+      "bar_count": 47410,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "JPM": {
+      "symbol": "JPM",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/JPM/2026/JPM_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/JPM_1m.parquet",
+      "sha256": "02f2fb71604a3ac2ef52a614ee5d95008002946d80b64871bc222bfd42ce5447",
+      "bar_count": 46844,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "V": {
+      "symbol": "V",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/V/2026/V_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/V_1m.parquet",
+      "sha256": "352043edbecb0dd7d4657cc60712e4a706ad3be3992d670d202a4a0e01ed9ac1",
+      "bar_count": 48154,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "PG": {
+      "symbol": "PG",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/PG/2026/PG_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/PG_1m.parquet",
+      "sha256": "d4dce837382aa208c5e1ede51c33517980f34b8e2c5f123619ebada651ba755e",
+      "bar_count": 43843,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "MA": {
+      "symbol": "MA",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/MA/2026/MA_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/MA_1m.parquet",
+      "sha256": "b8c3837e56f92d84417c10aebb802f1f52399493ff05bf5307d68b4cc403cedb",
+      "bar_count": 43788,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "HD": {
+      "symbol": "HD",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/HD/2026/HD_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/HD_1m.parquet",
+      "sha256": "f2568ff7b5371d0f4aadc0642ff9d2787231a5075566b4212a110a1cc269e65a",
+      "bar_count": 43679,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "CVX": {
+      "symbol": "CVX",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/CVX/2026/CVX_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/CVX_1m.parquet",
+      "sha256": "b394f161d0743cc7a7922ca0990a301d0efb6e83f0487bfbec71b8bbef398209",
+      "bar_count": 42809,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "ABBV": {
+      "symbol": "ABBV",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/ABBV/2026/ABBV_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/ABBV_1m.parquet",
+      "sha256": "1b5b4dc6a9b90f4417b3309d67283cc079d9c9a80f16a4cf599e2ba51c4962e5",
+      "bar_count": 36875,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "MRK": {
+      "symbol": "MRK",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/MRK/2026/MRK_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/MRK_1m.parquet",
+      "sha256": "bda80bfd9206b33c11be5553ac711161fa84aea52b13c3c09133c7a3db7bca13",
+      "bar_count": 42742,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "COST": {
+      "symbol": "COST",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/COST/2026/COST_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/COST_1m.parquet",
+      "sha256": "68a54eaa61bf8ff34937943ae6f456df4af7b9c45bed4195e83bb08321a75285",
+      "bar_count": 30311,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "PEP": {
+      "symbol": "PEP",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/PEP/2026/PEP_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/PEP_1m.parquet",
+      "sha256": "889efa01a72963a5e13d99a4f1775e636be3be601570b2941531aa4128e750f9",
+      "bar_count": 39796,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "KO": {
+      "symbol": "KO",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/KO/2026/KO_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/KO_1m.parquet",
+      "sha256": "62799f7419d7f42eff5651e71fa63332d11407fa1f5510c9c59a0aba3b13bcd0",
+      "bar_count": 49307,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "AVGO": {
+      "symbol": "AVGO",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/AVGO/2026/AVGO_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/AVGO_1m.parquet",
+      "sha256": "3e4bf63c7d7f441341df7166fad6bf21154b0bd862fc48b8850af80ef0dc72b7",
+      "bar_count": 50464,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "ADBE": {
+      "symbol": "ADBE",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/ADBE/2026/ADBE_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/ADBE_1m.parquet",
+      "sha256": "e901e828e9b60da61598f3f02210ac29d53870b52287aaabbe5f9f1ba11908bb",
+      "bar_count": 45549,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "WMT": {
+      "symbol": "WMT",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/WMT/2026/WMT_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/WMT_1m.parquet",
+      "sha256": "a7122748f070fb8187294f87a4b0b5cb6ff1cd67a3adb3370580f69c9a787402",
+      "bar_count": 49284,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "CSCO": {
+      "symbol": "CSCO",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/CSCO/2026/CSCO_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/CSCO_1m.parquet",
+      "sha256": "c7ad70f236dae209bb68b17a3b16c0e563c3779c23d1a7291bdfd80ddd7ff53b",
+      "bar_count": 49666,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "MCD": {
+      "symbol": "MCD",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/MCD/2026/MCD_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/MCD_1m.parquet",
+      "sha256": "8c654617576a91202881ba0839821940e207156f10915e7c986b169e8d986f9b",
+      "bar_count": 43401,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "CRM": {
+      "symbol": "CRM",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/CRM/2026/CRM_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/CRM_1m.parquet",
+      "sha256": "02e80fbb672072a2de58bab35c445133619d716ebc799ce364e86bb54aa1fe72",
+      "bar_count": 46263,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "BAC": {
+      "symbol": "BAC",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/BAC/2026/BAC_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/BAC_1m.parquet",
+      "sha256": "79495e5834ff59e21e38b54ec3fe0438fefcff189b385a887a98201c74ba1301",
+      "bar_count": 49686,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "ACN": {
+      "symbol": "ACN",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/ACN/2026/ACN_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/ACN_1m.parquet",
+      "sha256": "cabed9046c4d1a24a33457d9dfa23276fb4b9707c5a1a93534aa27125043bf76",
+      "bar_count": 40264,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "TMO": {
+      "symbol": "TMO",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/TMO/2026/TMO_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/TMO_1m.parquet",
+      "sha256": "95d14cf356eff295327688a75b01e5b4ee9d26194be2cd664b8270c835473dc6",
+      "bar_count": 38755,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "LIN": {
+      "symbol": "LIN",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/LIN/2026/LIN_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/LIN_1m.parquet",
+      "sha256": "a7f3b0efedb8f2d6cd75a2266ff742c67025b94a5b16e2c137742ddf22ec0594",
+      "bar_count": 35535,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "NFLX": {
+      "symbol": "NFLX",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/NFLX/2026/NFLX_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/NFLX_1m.parquet",
+      "sha256": "4a15fe69c6dd374d259343dbcc13bb5a280dd07011a011c6b610b0576957d143",
+      "bar_count": 50340,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "AMD": {
+      "symbol": "AMD",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/AMD/2026/AMD_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/AMD_1m.parquet",
+      "sha256": "c00ece54bb0c1fd32bc58779ae4d114c165af540a950224fd2c935b7e5d931a2",
+      "bar_count": 48197,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "DIS": {
+      "symbol": "DIS",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/DIS/2026/DIS_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/DIS_1m.parquet",
+      "sha256": "bc38cf9f5249394a0abe8887bd10f46f3d239dfb5ae6bf43e2a198fd73986df1",
+      "bar_count": 46621,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "ABT": {
+      "symbol": "ABT",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/ABT/2026/ABT_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/ABT_1m.parquet",
+      "sha256": "1bbe2b89f6c2477e2b7f40d485a09369c3026202455b78604638fa135bb14039",
+      "bar_count": 46499,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "ORCL": {
+      "symbol": "ORCL",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/ORCL/2026/ORCL_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/ORCL_1m.parquet",
+      "sha256": "53592fce06823a3ed0792f2db1191df3fa4fa33a2209470e45297ba70ec4e2ec",
+      "bar_count": 49444,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "INTC": {
+      "symbol": "INTC",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/INTC/2026/INTC_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/INTC_1m.parquet",
+      "sha256": "df7ce9ee7fb43294155a6203ca9e679282a463ed8a323a887d4d679ba59bfdf2",
+      "bar_count": 50958,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "CMCSA": {
+      "symbol": "CMCSA",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/CMCSA/2026/CMCSA_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/CMCSA_1m.parquet",
+      "sha256": "997d89d0becdf4da18548af5bd986ad6e8285aceeb24789ed84b8f6a9837f930",
+      "bar_count": 48459,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "VZ": {
+      "symbol": "VZ",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/VZ/2026/VZ_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/VZ_1m.parquet",
+      "sha256": "e4a21cedda458d3ed0e08051ec70554c235ee88a72500e7f266a23b33d8b7a8c",
+      "bar_count": 49299,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "QCOM": {
+      "symbol": "QCOM",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/QCOM/2026/QCOM_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/QCOM_1m.parquet",
+      "sha256": "56d423439155d16ec6021c50771536ac2576c2105a23faea85c910446317e5f0",
+      "bar_count": 45490,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "TXN": {
+      "symbol": "TXN",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/TXN/2026/TXN_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/TXN_1m.parquet",
+      "sha256": "8063367089f888e3dffccac7ffc660c90954c1c27d6a981e193e95fb452e7579",
+      "bar_count": 39872,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "DHR": {
+      "symbol": "DHR",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/DHR/2026/DHR_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/DHR_1m.parquet",
+      "sha256": "46ecc5351e614ff5a5c08379fca38f531e50055e7cbda39b3e1b30d597b5da42",
+      "bar_count": 37314,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "PM": {
+      "symbol": "PM",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/PM/2026/PM_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/PM_1m.parquet",
+      "sha256": "344ce5d1242cfdf33e047c398b2fcb7bd97cbbdcd94b60ae8b12c7ea5f124667",
+      "bar_count": 33859,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "CAT": {
+      "symbol": "CAT",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/CAT/2026/CAT_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/CAT_1m.parquet",
+      "sha256": "1842c581fba73380161e61dd83288967cd00362e76115fd8b63a5b1a25788cc8",
+      "bar_count": 38394,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "NKE": {
+      "symbol": "NKE",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/NKE/2026/NKE_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/NKE_1m.parquet",
+      "sha256": "01d8c139e1f660a80e79d00462cbe82ca468f3df02028bd24e63760c2af97283",
+      "bar_count": 49346,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "IBM": {
+      "symbol": "IBM",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/IBM/2026/IBM_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/IBM_1m.parquet",
+      "sha256": "00283db35a191a99fba2f0ab66de35c8964185470e627d215cfbba9f6e527b6e",
+      "bar_count": 40676,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "UNP": {
+      "symbol": "UNP",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/UNP/2026/UNP_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/UNP_1m.parquet",
+      "sha256": "0f0ce4770a41c62e3f47c2afcd7a50e847c630c1380c5cddedbf71017553175b",
+      "bar_count": 27353,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "LOW": {
+      "symbol": "LOW",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/LOW/2026/LOW_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/LOW_1m.parquet",
+      "sha256": "f271bf1bbe3845ff980608fdd2f4a8fddfc519e54e50aa3fcaee2fbf3b123f3b",
+      "bar_count": 30694,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    },
+    "SPY": {
+      "symbol": "SPY",
+      "provider": "ALPACA",
+      "feed": "IEX",
+      "raw_file": "data/raw/alpaca/iex/SPY/2026/SPY_raw_1m.parquet",
+      "processed_file": "data/processed/alpaca_1m/SPY_1m.parquet",
+      "sha256": "8ccd6065c5eeaa072414dc3620d4a4bf2d3d5dd15262bec726be889f922d914a",
+      "bar_count": 51456,
+      "evidence_class": "REAL_HISTORICAL_MARKET_DATA"
+    }
+  }
+}

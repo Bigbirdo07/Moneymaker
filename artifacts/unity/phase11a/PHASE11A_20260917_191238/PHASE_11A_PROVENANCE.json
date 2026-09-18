@@ -1,0 +1,62 @@
+{
+  "experiment_id": "PHASE11A_20260917_191240",
+  "completed_at": "2026-09-17T19:15:29.526088+00:00",
+  "total_windows": 12,
+  "formal_verdicts": {
+    "broader_validation_verdict": "BROADER_VALIDATION_FAILED",
+    "concentration_verdict": "CONCENTRATION_STRUCTURAL",
+    "engine_status": "ENGINE_V2_REDESIGN_REQUIRED",
+    "forward_paper_trading_gate": "MORE_REAL_HISTORICAL_VALIDATION",
+    "real_money_authorized": "REAL_MONEY_NOT_AUTHORIZED"
+  },
+  "aggregate_metrics": {
+    "total_evaluated_months": 12,
+    "profitable_months_count": 7,
+    "losing_months_count": 5,
+    "pct_profitable_months": 58.3,
+    "median_monthly_return_pct": 0.33,
+    "mean_monthly_return_pct": -0.14,
+    "best_month_return_pct": 7.93,
+    "worst_month_return_pct": -9.46,
+    "compounded_capital": 971.87,
+    "compounded_return_pct": -2.81,
+    "total_net_pnl": -28.12,
+    "total_gross_pnl": 77.86,
+    "total_friction_paid": 106.0,
+    "total_trades_count": 319,
+    "overall_win_rate_pct": 49.22,
+    "overall_profit_factor": 0.98,
+    "expectancy_per_trade_dlr": -0.09,
+    "bootstrap_aggregate_pnl_95_ci": [
+      -411.72,
+      366.25
+    ],
+    "bootstrap_expectancy_95_ci": [
+      -1.29,
+      1.15
+    ],
+    "concentration_diagnostics": {
+      "best_aggregate_symbol": "TXN",
+      "top_3_symbols_share_pct": 495.2,
+      "top_3_trades_share_pct": 442.2,
+      "top_10_trades_share_pct": 1051.5,
+      "counterfactual_ex_best_trade_pnl": -71.65,
+      "counterfactual_ex_top3_trades_pnl": -152.46,
+      "counterfactual_ex_best_symbol_pnl": -90.37
+    },
+    "cost_stress_summary": {
+      "profitable_months_1_0x": 7,
+      "profitable_months_1_5x": 6,
+      "profitable_months_2_0x": 5,
+      "profitable_months_3_0x": 4,
+      "aggregate_breakeven_cost_mult": 0.73
+    },
+    "formal_verdicts": {
+      "broader_validation_verdict": "BROADER_VALIDATION_FAILED",
+      "concentration_verdict": "CONCENTRATION_STRUCTURAL",
+      "engine_status": "ENGINE_V2_REDESIGN_REQUIRED",
+      "forward_paper_trading_gate": "MORE_REAL_HISTORICAL_VALIDATION",
+      "real_money_authorized": "REAL_MONEY_NOT_AUTHORIZED"
+    }
+  }
+}

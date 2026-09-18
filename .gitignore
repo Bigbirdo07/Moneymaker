@@ -52,3 +52,9 @@ htmlcov/
 *.log
 .env
 .env.local
+# Model Checkpoints & Large Weights
+checkpoints/
+*.safetensors
+*.pt
+*.bin
+*.pth

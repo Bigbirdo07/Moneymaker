@@ -1,24 +1,25 @@
 """
-Dual Execution Ledger, Account Reconciliation Engine, and Hard Kill Switch for Phase 3B.
-Maintains simultaneous Broker Paper vs. Realistic Shadow books, tracks fill optimism,
-reconciles state discrepancies, and enforces emergency fail-safe controls.
+Broker Reconciliation & Dual Execution Tracking (Phase 3B, 5A, 6A, and Phase F).
+
+Reconciles internal portfolio and position states against broker ground truth at
+startup, intraday intervals, and post-market close.
 """
+
+from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
-from typing import Dict, List, Optional, Set, Tuple
+import logging
+from typing import Any, Dict, List, Optional, Set, Tuple
+
 import numpy as np
 import pandas as pd
 
-from src.broker.adapter import (
-    BrokerAdapter,
-    BrokerOrder,
-    BrokerPosition,
-    OrderStatus,
-    OrderSide,
-)
-from src.portfolio.shadow_portfolio import ShadowPaperPortfolio
+from src.portfolio.position_lifecycle import ManagedPosition
+from src.portfolio.strategy_capital_ledger import StrategyCapitalLedger
+
+logger = logging.getLogger("src.broker.reconciliation")
 
 
 class KillSwitchCommand(str, Enum):
@@ -62,14 +63,18 @@ class DualExecutionComparison:
         """
         return self.shadow_shortfall_bps - self.broker_shortfall_bps
 
+    @property
+    def paper_optimism_bps(self) -> float:
+        return self.paper_fill_advantage_bps
+
 
 @dataclass
 class ReconciliationErrorRecord:
     timestamp: pd.Timestamp
     symbol: Optional[str]
     error_type: str  # "CASH_MISMATCH", "POSITION_QTY_MISMATCH", "AVG_PRICE_MISMATCH", "GHOST_ORDER"
-    internal_value: any
-    broker_value: any
+    internal_value: Any
+    broker_value: Any
     discrepancy: str
     resolved: bool = False
 
@@ -86,7 +91,10 @@ class DualExecutionLedger:
     def record_dual_execution(self, comparison: DualExecutionComparison) -> None:
         self.comparisons.append(comparison)
 
-    def compute_optimism_summary(self) -> Dict[str, any]:
+    def record_comparison(self, comp: DualExecutionComparison) -> None:
+        self.comparisons.append(comp)
+
+    def compute_optimism_summary(self) -> Dict[str, Any]:
         """Compute aggregate paper fill advantage and breakdown by symbol and spread."""
         if not self.comparisons:
             return {
@@ -115,6 +123,9 @@ class DualExecutionLedger:
             "by_symbol": by_symbol,
         }
 
+    def get_summary(self) -> Dict[str, Any]:
+        return self.compute_optimism_summary()
+
 
 class AccountReconciler:
     """
@@ -124,8 +135,8 @@ class AccountReconciler:
 
     def __init__(
         self,
-        broker: BrokerAdapter,
-        internal_portfolio: ShadowPaperPortfolio,
+        broker: Any,
+        internal_portfolio: Any,
         max_cash_tolerance_usd: float = 1.0,
         max_qty_tolerance: float = 1e-4,
     ):
@@ -169,7 +180,7 @@ class AccountReconciler:
             broker_pos = broker_positions.get(sym)
 
             internal_qty = internal_pos.shares if internal_pos else 0.0
-            broker_qty = broker_pos.qty if broker_pos else 0.0
+            broker_qty = broker_pos.qty if hasattr(broker_pos, "qty") else (broker_pos if isinstance(broker_pos, (int, float)) else 0.0)
 
             if abs(internal_qty - broker_qty) > self.max_qty_tolerance:
                 err = ReconciliationErrorRecord(
@@ -182,7 +193,7 @@ class AccountReconciler:
                 )
                 errors.append(err)
 
-            if internal_pos and broker_pos:
+            if internal_pos and broker_pos and hasattr(broker_pos, "avg_entry_price"):
                 price_diff = abs(internal_pos.entry_price - broker_pos.avg_entry_price)
                 if price_diff > 0.05:  # $0.05 tolerance
                     err = ReconciliationErrorRecord(
@@ -228,14 +239,101 @@ class AccountReconciler:
 
         from src.portfolio.shadow_portfolio import ShadowPosition
         for sym, pos in broker_positions.items():
+            qty = pos.qty if hasattr(pos, "qty") else float(pos)
+            price = pos.avg_entry_price if hasattr(pos, "avg_entry_price") else 100.0
+            cur_p = pos.current_price if hasattr(pos, "current_price") else price
+
             self.internal.positions[sym] = ShadowPosition(
                 symbol=sym,
-                shares=pos.qty,
-                entry_price=pos.avg_entry_price,
+                shares=qty,
+                entry_price=price,
                 entry_timestamp=pd.Timestamp.now(tz=timezone.utc),
                 sector="Technology",
-                current_price=pos.current_price,
-                stop_loss_price=pos.avg_entry_price * 0.985,
-                take_profit_price=pos.avg_entry_price * 1.030,
+                current_price=cur_p,
+                stop_loss_price=price * 0.985,
+                take_profit_price=price * 1.030,
             )
         self.has_active_error = False
+
+
+# ==============================================================================
+# Phase F Modular Reconciliation Services
+# ==============================================================================
+
+class ReconciliationStatus(str, Enum):
+    CLEAN = "CLEAN"
+    WARNING = "WARNING"
+    FAILED = "FAILED"
+
+
+@dataclass
+class ReconciliationReport:
+    timestamp: str
+    status: ReconciliationStatus
+    unexplained_position_mismatches: List[str]
+    unexplained_order_mismatches: List[str]
+    is_safe_to_operate: bool
+    details: Dict[str, Any]
+
+
+class BrokerReconciliationService:
+    """
+    Performs deterministic reconciliation against broker state for Phase F runtime.
+    """
+    def __init__(self, broker: Any):
+        self.broker = broker
+
+    def reconcile(
+        self,
+        internal_positions: Dict[str, ManagedPosition],
+        strategy_ledger: StrategyCapitalLedger,
+    ) -> ReconciliationReport:
+        t_now = datetime.now(timezone.utc).isoformat()
+        mismatches: List[str] = []
+        order_mismatches: List[str] = []
+
+        try:
+            broker_pos = self.broker.get_positions()
+            broker_orders = self.broker.get_open_orders()
+
+            all_syms = set(internal_positions.keys()).union(set(broker_pos.keys()))
+            for sym in all_syms:
+                int_shares = internal_positions[sym].shares if sym in internal_positions else 0
+                brk_val = broker_pos.get(sym, 0.0)
+                brk_shares = int(brk_val.qty if hasattr(brk_val, "qty") else brk_val)
+
+                if int_shares != brk_shares:
+                    mismatches.append(
+                        f"POSITION_MISMATCH: {sym} internal={int_shares}, broker={brk_shares}"
+                    )
+
+            if len(broker_orders) > 0 and len(internal_positions) == 0:
+                for o in broker_orders:
+                    o_id = o.broker_order_id if hasattr(o, "broker_order_id") else (o.client_order_id if hasattr(o, "client_order_id") else "UNKNOWN")
+                    order_mismatches.append(f"UNTRACKED_OPEN_ORDER: {o_id} for {getattr(o, 'symbol', 'UNKNOWN')}")
+
+            is_clean = len(mismatches) == 0 and len(order_mismatches) == 0
+            status = ReconciliationStatus.CLEAN if is_clean else ReconciliationStatus.FAILED
+
+            return ReconciliationReport(
+                timestamp=t_now,
+                status=status,
+                unexplained_position_mismatches=mismatches,
+                unexplained_order_mismatches=order_mismatches,
+                is_safe_to_operate=is_clean,
+                details={
+                    "internal_position_count": len(internal_positions),
+                    "broker_position_count": len(broker_pos),
+                    "open_order_count": len(broker_orders),
+                }
+            )
+        except Exception as exc:
+            logger.error("Reconciliation threw exception: %s", exc)
+            return ReconciliationReport(
+                timestamp=t_now,
+                status=ReconciliationStatus.FAILED,
+                unexplained_position_mismatches=[f"EXCEPTION: {str(exc)}"],
+                unexplained_order_mismatches=[],
+                is_safe_to_operate=False,
+                details={"error": str(exc)},
+            )

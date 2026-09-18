@@ -1,0 +1,37 @@
+{
+  "phase": "PHASE_E_PREMARKET_INTELLIGENCE",
+  "timestamp_start": "2026-09-18T03:51:40.016077+00:00",
+  "timestamp_end": "2026-09-18T03:51:40.201426+00:00",
+  "elapsed_seconds": 0.185349,
+  "sessions_evaluated": 260,
+  "regime_distribution": {
+    "BULLISH_CONTINUATION": 102,
+    "BEARISH_CONTINUATION": 78,
+    "MEAN_REVERSION": 0,
+    "LOW_VOL_CHOP": 0,
+    "HIGH_VOL_SHOCK": 0,
+    "REGIME_UNCERTAIN": 80
+  },
+  "session_gate_distribution": {
+    "GO": 177,
+    "CAUTION": 83,
+    "NO_GO": 0
+  },
+  "candidate_recall_top1_pct": 89.23,
+  "candidate_recall_top5_pct": 79.62,
+  "lookahead_violations": 0,
+  "narrative_grounding_rate": 1.0,
+  "latency_benchmarks_ms": {
+    "500": 0.54,
+    "1000": 0.6,
+    "1500": 0.74
+  },
+  "governance_verdicts": {
+    "morning_intelligence": "MORNING_INTELLIGENCE_VALIDATED",
+    "session_gate": "SESSION_GATE_VALIDATED",
+    "narrative_grounding": "MORNING_NARRATIVE_GROUNDED",
+    "lookahead_audit": "MORNING_LOOKAHEAD_CLEAN",
+    "paper_readiness": "MORNING_LAYER_READY_FOR_PAPER_RUNTIME",
+    "real_money": "REAL_MONEY_NOT_AUTHORIZED"
+  }
+}

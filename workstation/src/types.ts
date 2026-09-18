@@ -367,4 +367,77 @@ export interface FourWayBenchmarkMatrix {
   };
 }
 
+export interface CopilotInteractionRecord {
+  interaction_id: string;
+  timestamp: string;
+  user_query: string;
+  query_category: string;
+  snapshot_id: string;
+  snapshot_timestamp: string;
+  base_model_id: string;
+  challenger_model_id: string;
+  base_response: string;
+  challenger_response: string;
+  base_tools_used: string[];
+  challenger_tools_used: string[];
+  base_latency_ms: number;
+  challenger_latency_ms: number;
+  rag_retrieval_metadata: Record<string, any>;
+  human_preference?: string | null;
+  human_reason_tags: string[];
+  human_notes?: string | null;
+  provenance_state: string;
+}
+
+export interface CopilotAuditSummary {
+  total_interactions: number;
+  voted_interactions: number;
+  base_wins: number;
+  challenger_wins: number;
+  ties: number;
+  challenger_win_rate_pct: number;
+  base_win_rate_pct: number;
+  tie_rate_pct: number;
+  tool_accuracy_base_pct: number;
+  tool_accuracy_challenger_pct: number;
+  hallucination_rate_challenger_pct: number;
+  provenance_accuracy_challenger_pct: number;
+  authority_pass_rate_challenger_pct: number;
+  avg_latency_base_ms: number;
+  avg_latency_challenger_ms: number;
+  category_breakdown: Record<string, {
+    total: number;
+    challenger_wins: number;
+    base_wins: number;
+    ties: number;
+    challenger_win_pct: number;
+  }>;
+  total_incidents: number;
+  incidents_by_severity: Record<string, number>;
+  promotion_gate_status: string;
+}
+
+export interface ResearchProposal {
+  proposal_id: string;
+  hypothesis: string;
+  reason: string;
+  dataset: string;
+  strategy: string;
+  parameters: Record<string, any>;
+  evaluation_metric: string;
+  expected_evidence: EvidenceSource;
+  estimated_compute_class: string;
+  status: string;
+  created_at: string;
+}
+
+export interface CopilotModelInfo {
+  model_id: string;
+  name: string;
+  role: string;
+  status: string;
+  authority: string;
+}
+
+
 

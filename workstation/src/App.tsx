@@ -4,6 +4,7 @@ import { Sidebar, ScreenTab } from './components/Sidebar';
 import { DashboardScreen } from './screens/DashboardScreen';
 import { MarketsScreen } from './screens/MarketsScreen';
 import { PortfolioScreen } from './screens/PortfolioScreen';
+import { HistoricalReplayScreen } from './screens/HistoricalReplayScreen';
 import { StrategiesScreen } from './screens/StrategiesScreen';
 import { TradesScreen } from './screens/TradesScreen';
 import { RiskScreen } from './screens/RiskScreen';
@@ -81,6 +82,7 @@ export const App: React.FC = () => {
           {currentTab === 'portfolio' && (
             <PortfolioScreen positions={positions} exposure={exposure} risk={risk} />
           )}
+          {currentTab === 'replay' && <HistoricalReplayScreen />}
           {currentTab === 'strategies' && <StrategiesScreen strategies={strategies} />}
           {currentTab === 'trades' && <TradesScreen trades={trades} />}
           {currentTab === 'risk' && <RiskScreen risk={risk} />}

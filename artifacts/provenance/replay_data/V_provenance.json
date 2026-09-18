@@ -1,0 +1,14 @@
+{
+  "symbol": "V",
+  "session_date": "2026-01-05 to 2026-02-03",
+  "provider": "MONEYMAKER_HISTORICAL_FEED",
+  "feed": "US_EQUITY_1M_L1",
+  "dataset_version": "1.0.0",
+  "download_timestamp": "2026-09-16T23:57:12.274356+00:00",
+  "raw_file_sha256": "eed3946dfc9a28bb881aae12be00b8e9e97ca0f2d090b13c1a3fe70cdf189f49",
+  "bar_count": 9900,
+  "resolution": "1m",
+  "is_split_adjusted": true,
+  "is_dividend_adjusted": false,
+  "evidence_class": "HISTORICAL_REPLAY"
+}

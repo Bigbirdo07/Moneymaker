@@ -1,0 +1,17 @@
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+          64506479   uri-gpu v1_8-D-H alberto_ PD       0:00      1 (MaxGRESPerAccount)
+          64506478   uri-gpu v1_8-D-7 alberto_ PD       0:00      1 (MaxGRESPerAccount)
+          64507020   uri-gpu mm_llm_f alberto_ PD       0:00      1 (Priority)
+          64507019   uri-gpu mm_llm_b alberto_ PD       0:00      1 (Priority)
+          64501768   uri-gpu v1_8-C-H alberto_  R    2:39:43      1 uri-gpu006
+          64501762   uri-gpu v1_8-C-P alberto_  R    3:30:06      1 uri-gpu013
+          64501765   uri-gpu v1_8-C-5 alberto_  R    2:49:01      1 uri-gpu013
+          64506477   uri-gpu v1_8-D-4 alberto_  R       2:06      1 uri-gpu005
+          64506476   uri-gpu v1_8-D-5 alberto_  R      17:46      1 uri-gpu004
+          64506474   uri-gpu v1_8-D-3 alberto_  R      18:19      1 uri-gpu011
+          64506475   uri-gpu v1_8-D-2 alberto_  R      18:19      1 uri-gpu014
+          64506473   uri-gpu v1_8-D-P alberto_  R      22:33      1 uri-gpu003
+JobID           JobName      User  Partition      State    Elapsed  AllocCPUS     ReqMem        NodeList 
+------------ ---------- --------- ---------- ---------- ---------- ---------- ---------- --------------- 
+64507019     mm_llm_be+ alberto_+    uri-gpu    PENDING   00:00:00          0        64G   None assigned 
+64507020     mm_llm_fi+ alberto_+    uri-gpu    PENDING   00:00:00          0        64G   None assigned 

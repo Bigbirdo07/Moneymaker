@@ -26,6 +26,17 @@ class SessionType(str, Enum):
     CLOSED = "CLOSED"
 
 
+class EvidenceClass(str, Enum):
+    """Evidence tagging class for provenance integrity."""
+    HISTORICAL_REPLAY = "HISTORICAL_REPLAY"
+    SIMULATED_EXECUTION = "SIMULATED_EXECUTION"
+    HINDSIGHT_ORACLE = "HINDSIGHT_ORACLE"
+    MODEL_PREDICTION = "MODEL_PREDICTION"
+    RESEARCH_FINDING = "RESEARCH_FINDING"
+    REAL_HISTORICAL_MARKET_DATA = "REAL_HISTORICAL_MARKET_DATA"
+    SIMULATED_EXECUTION_ON_REAL_MARKET_DATA = "SIMULATED_EXECUTION_ON_REAL_MARKET_DATA"
+
+
 class SignalDirection(str, Enum):
     """Direction of a trading signal."""
     BUY = "BUY"
@@ -202,12 +213,14 @@ class PortfolioState:
     buying_power: float
     positions: Dict[str, Position] = field(default_factory=dict)
     portfolio_value: float = 1000.0
+    initial_capital: float = 1000.0
     daily_pnl: float = 0.0
     total_realized_pnl: float = 0.0
     total_fees: float = 0.0
     total_slippage: float = 0.0
     peak_portfolio_value: float = 1000.0
     drawdown_pct: float = 0.0
+    max_drawdown_pct: float = 0.0
 
     def update_metrics(self) -> None:
         positions_market_value = sum(p.market_value for p in self.positions.values())
@@ -219,3 +232,5 @@ class PortfolioState:
             self.drawdown_pct = (self.peak_portfolio_value - self.portfolio_value) / self.peak_portfolio_value
         else:
             self.drawdown_pct = 0.0
+        if self.drawdown_pct > self.max_drawdown_pct:
+            self.max_drawdown_pct = self.drawdown_pct

@@ -1,0 +1,32 @@
+{
+  "phase": "PHASE_C",
+  "timestamp_utc": "2026-09-18T02:37:21.485963+00:00Z",
+  "verdicts": {
+    "event_risk_policy": "EVENT_RISK_POLICY_VALIDATED",
+    "lookahead_status": "EVENT_LOOKAHEAD_CLEAN",
+    "paper_readiness": "EVENT_POLICY_READY_FOR_PAPER_INTEGRATION",
+    "real_money": "REAL_MONEY_NOT_AUTHORIZED"
+  },
+  "metrics": {
+    "total_candidates_evaluated": 5200,
+    "total_vetoed": 81,
+    "total_risk_reduced": 0,
+    "veto_false_positive_rate_pct": 46.91,
+    "veto_risk_avoidance_rate_pct": 53.09,
+    "lookahead_violations": 0
+  },
+  "event_families_supported": [
+    "EARNINGS",
+    "TRADING_HALT",
+    "REGULATORY_DECISION",
+    "CLINICAL_FDA_BINARY",
+    "MERGER_ACQUISITION",
+    "BANKRUPTCY_DISTRESS",
+    "MATERIAL_CORPORATE_ACTION",
+    "SHARE_OFFERING_DILUTION",
+    "MAJOR_LEGAL_GOVERNMENT",
+    "INDEX_EXCHANGE_LISTING",
+    "DATA_QUOTE_ANOMALY",
+    "MARKET_WIDE_EMERGENCY"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "phase": "PHASE_11C",
+  "timestamp_utc": "2026-09-17T21:51:47.635862+00:00Z",
+  "evaluation_target": "REAL_MARKET_ENGINE_V3_CANDIDATE",
+  "evidence_class": "REAL_HISTORICAL_MARKET_DATA",
+  "dataset_name": "ALPACA_IEX_2021_2023_REAL_HISTORICAL_1M",
+  "training_period": "2021-01-01 to 2022-12-31",
+  "holdout_period": "2023-01-01 to 2023-12-31",
+  "holdout_verdict": "V3_FRESH_HOLDOUT_POSITIVE",
+  "concentration_verdict": "V3_CONCENTRATION_SEVERE",
+  "recommendation_verdict": "ENGINE_V3_REDESIGN_REQUIRED",
+  "forward_paper_gate": "MORE_ALPHA_RESEARCH",
+  "real_money_authorized": false,
+  "holdout_burn_status": "BURNED_HOLDOUT_DO_NOT_REUSE",
+  "metrics": {
+    "starting_capital": 1000.0,
+    "ending_capital": 1059.52,
+    "compounded_net_return_pct": 5.95,
+    "total_net_pnl": 59.52,
+    "total_gross_pnl": 64.83,
+    "total_friction": 5.31,
+    "total_trades": 12,
+    "profitable_months": 6,
+    "overall_profit_factor": 2.03,
+    "expectancy_per_trade": 4.96
+  }
+}

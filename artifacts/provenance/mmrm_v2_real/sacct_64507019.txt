@@ -1,0 +1,5 @@
+JobID           JobName  Partition  AllocCPUS    Elapsed      State ExitCode        NodeList 
+------------ ---------- ---------- ---------- ---------- ---------- -------- --------------- 
+64507019     mm_llm_be+    uri-gpu          8   00:17:37  COMPLETED      0:0      uri-gpu013 
+64507019.ba+      batch                     8   00:17:37  COMPLETED      0:0      uri-gpu013 
+64507019.ex+     extern                     8   00:17:37  COMPLETED      0:0      uri-gpu013 

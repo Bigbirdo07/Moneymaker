@@ -123,8 +123,9 @@ class ResearchMemory:
         ]
         self._documents = default_docs
 
-    def search(self, query: str, limit: int = 5) -> List[CorpusDocument]:
+    def search(self, query: str, limit: int = 5, k: Optional[int] = None) -> List[CorpusDocument]:
         """Returns matching CorpusDocument objects ranked by token relevance and title match."""
+        effective_limit = k if k is not None else limit
         tokens = [t.lower() for t in re.findall(r"\w+", query) if len(t) >= 1]
         scored: List[tuple[int, CorpusDocument]] = []
 
@@ -147,7 +148,7 @@ class ResearchMemory:
                 scored.append((score, doc))
 
         scored.sort(key=lambda x: x[0], reverse=True)
-        return [doc for _, doc in scored[:limit]] if scored else self._documents[:limit]
+        return [doc for _, doc in scored[:effective_limit]] if scored else self._documents[:effective_limit]
 
     def search_research_memory(self, query: str, limit: int = 5) -> List[Dict[str, Any]]:
         """Keyword and token matching across research corpus returning structured chunks."""

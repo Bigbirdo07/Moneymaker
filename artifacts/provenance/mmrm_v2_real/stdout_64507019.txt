@@ -1,0 +1,3 @@
+Node: uri-gpu013 | Job ID: 64507019 | Base Model: Qwen 2.5 14B Instruct
+[INFO] Running real GPU inference for BASE_ONLY (200 items)...
+[SUCCESS] Benchmark evaluation saved to /scratch3/workspace/alberto_paz_uri_edu-quahog_neoplasia_analysis/MM/outputs/evaluations/REAL_BASE_ONLY_V2.jsonl

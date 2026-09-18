@@ -1,0 +1,461 @@
+{
+  "timestamp": "2026-09-17T01:25:00Z",
+  "evidence_class": "HISTORICAL_REPLAY",
+  "baseline_summary": {},
+  "holding_metrics": {
+    "mean_bars": 33.2,
+    "median_bars": 28.0,
+    "p25_bars": 19.0,
+    "p50_bars": 28.0,
+    "p75_bars": 43.0,
+    "p90_bars": 61.0,
+    "max_bars": 120.0,
+    "min_bars": 3.0
+  },
+  "asymmetry": {
+    "total_trades": 658,
+    "winning_trades": 213,
+    "losing_trades": 445,
+    "win_rate_pct": 32.37,
+    "avg_winner_dollars": 1.0814,
+    "avg_loser_dollars": 0.7851,
+    "median_winner_dollars": 0.7697,
+    "median_loser_dollars": 0.7265,
+    "largest_winner_dollars": 5.2739,
+    "largest_loser_dollars": -2.7939,
+    "win_loss_payoff_ratio": 1.38,
+    "profit_factor": 0.66,
+    "gross_expectancy_per_trade_dollars": -0.1156,
+    "friction_per_trade_dollars": 0.0653,
+    "net_expectancy_per_trade_dollars": -0.1809
+  },
+  "deciles": [
+    {
+      "decile": 1,
+      "min_score": -20.08,
+      "max_score": -9.35,
+      "count": 6542,
+      "realized_5m_ret_bps": -6.84,
+      "realized_15m_ret_bps": -12.02,
+      "realized_30m_ret_bps": -10.79,
+      "realized_60m_ret_bps": -9.22,
+      "realized_net_ret_bps": -18.52,
+      "hit_rate_15m_pct": 41.3
+    },
+    {
+      "decile": 2,
+      "min_score": -9.34,
+      "max_score": -7.83,
+      "count": 6486,
+      "realized_5m_ret_bps": -5.92,
+      "realized_15m_ret_bps": -10.06,
+      "realized_30m_ret_bps": -9.18,
+      "realized_60m_ret_bps": -8.07,
+      "realized_net_ret_bps": -16.56,
+      "hit_rate_15m_pct": 43.2
+    },
+    {
+      "decile": 3,
+      "min_score": -7.82,
+      "max_score": -6.64,
+      "count": 6501,
+      "realized_5m_ret_bps": -5.39,
+      "realized_15m_ret_bps": -8.93,
+      "realized_30m_ret_bps": -8.25,
+      "realized_60m_ret_bps": -7.41,
+      "realized_net_ret_bps": -15.43,
+      "hit_rate_15m_pct": 44.2
+    },
+    {
+      "decile": 4,
+      "min_score": -6.63,
+      "max_score": -5.48,
+      "count": 6488,
+      "realized_5m_ret_bps": -4.92,
+      "realized_15m_ret_bps": -7.95,
+      "realized_30m_ret_bps": -7.44,
+      "realized_60m_ret_bps": -6.83,
+      "realized_net_ret_bps": -14.45,
+      "hit_rate_15m_pct": 45.2
+    },
+    {
+      "decile": 5,
+      "min_score": -5.47,
+      "max_score": -4.06,
+      "count": 6519,
+      "realized_5m_ret_bps": -4.42,
+      "realized_15m_ret_bps": -6.87,
+      "realized_30m_ret_bps": -6.56,
+      "realized_60m_ret_bps": -6.2,
+      "realized_net_ret_bps": -13.37,
+      "hit_rate_15m_pct": 46.2
+    },
+    {
+      "decile": 6,
+      "min_score": -4.05,
+      "max_score": -1.68,
+      "count": 6480,
+      "realized_5m_ret_bps": -3.71,
+      "realized_15m_ret_bps": -5.37,
+      "realized_30m_ret_bps": -5.31,
+      "realized_60m_ret_bps": -5.31,
+      "realized_net_ret_bps": -11.87,
+      "hit_rate_15m_pct": 47.6
+    },
+    {
+      "decile": 7,
+      "min_score": -1.67,
+      "max_score": 3.41,
+      "count": 6509,
+      "realized_5m_ret_bps": -2.23,
+      "realized_15m_ret_bps": -2.23,
+      "realized_30m_ret_bps": -2.73,
+      "realized_60m_ret_bps": -3.47,
+      "realized_net_ret_bps": -8.73,
+      "hit_rate_15m_pct": 50.5
+    },
+    {
+      "decile": 8,
+      "min_score": 3.42,
+      "max_score": 10.62,
+      "count": 6502,
+      "realized_5m_ret_bps": 0.26,
+      "realized_15m_ret_bps": 3.06,
+      "realized_30m_ret_bps": 1.63,
+      "realized_60m_ret_bps": -0.35,
+      "realized_net_ret_bps": -3.44,
+      "hit_rate_15m_pct": 55.5
+    },
+    {
+      "decile": 9,
+      "min_score": 10.63,
+      "max_score": 21.25,
+      "count": 6492,
+      "realized_5m_ret_bps": 3.68,
+      "realized_15m_ret_bps": 10.33,
+      "realized_30m_ret_bps": 7.61,
+      "realized_60m_ret_bps": 3.92,
+      "realized_net_ret_bps": 3.83,
+      "hit_rate_15m_pct": 62.4
+    },
+    {
+      "decile": 10,
+      "min_score": 21.26,
+      "max_score": 73.5,
+      "count": 6502,
+      "realized_5m_ret_bps": 11.44,
+      "realized_15m_ret_bps": 26.83,
+      "realized_30m_ret_bps": 21.2,
+      "realized_60m_ret_bps": 13.63,
+      "realized_net_ret_bps": 20.33,
+      "hit_rate_15m_pct": 75.0
+    }
+  ],
+  "half_life": {
+    "signal_strength_entry": 20.0,
+    "signal_strength_5m": 15.2,
+    "signal_strength_10m": 10.4,
+    "signal_strength_15m": 6.8,
+    "signal_strength_30m": 2.1,
+    "signal_strength_60m": -0.5,
+    "decay_pct_5m": 24.0,
+    "decay_pct_15m": 66.0,
+    "decay_pct_30m": 89.5,
+    "empirical_half_life_minutes": 10.5
+  },
+  "probability_calibration": [
+    {
+      "bin_range": "0.50 - 0.525",
+      "predicted_prob_mean": 0.5121,
+      "realized_win_rate": 0.4682,
+      "observation_count": 8060,
+      "calibration_error": 0.0439
+    },
+    {
+      "bin_range": "0.525 - 0.55",
+      "predicted_prob_mean": 0.5366,
+      "realized_win_rate": 0.4849,
+      "observation_count": 6164,
+      "calibration_error": 0.0517
+    },
+    {
+      "bin_range": "0.55 - 0.575",
+      "predicted_prob_mean": 0.5612,
+      "realized_win_rate": 0.5016,
+      "observation_count": 3923,
+      "calibration_error": 0.0596
+    },
+    {
+      "bin_range": "0.575 - 0.60",
+      "predicted_prob_mean": 0.5866,
+      "realized_win_rate": 0.5189,
+      "observation_count": 2526,
+      "calibration_error": 0.0677
+    },
+    {
+      "bin_range": "0.60 - 0.65",
+      "predicted_prob_mean": 0.6243,
+      "realized_win_rate": 0.5445,
+      "observation_count": 3868,
+      "calibration_error": 0.0798
+    },
+    {
+      "bin_range": "> 0.65",
+      "predicted_prob_mean": 0.8098,
+      "realized_win_rate": 0.6706,
+      "observation_count": 20179,
+      "calibration_error": 0.1391
+    }
+  ],
+  "time_of_day_breakdown": [
+    {
+      "time_bucket": "09:30 - 10:30 (Market Open)",
+      "trade_count": 218,
+      "win_rate_pct": 28.4,
+      "gross_pnl_dollars": -26.4,
+      "friction_dollars": 14.2,
+      "net_pnl_dollars": -40.6
+    },
+    {
+      "time_bucket": "10:30 - 11:30 (Morning)",
+      "trade_count": 142,
+      "win_rate_pct": 33.1,
+      "gross_pnl_dollars": -12.1,
+      "friction_dollars": 9.3,
+      "net_pnl_dollars": -21.4
+    },
+    {
+      "time_bucket": "11:30 - 14:00 (Midday Lull)",
+      "trade_count": 164,
+      "win_rate_pct": 30.5,
+      "gross_pnl_dollars": -18.2,
+      "friction_dollars": 10.7,
+      "net_pnl_dollars": -28.9
+    },
+    {
+      "time_bucket": "14:00 - 15:30 (Afternoon)",
+      "trade_count": 108,
+      "win_rate_pct": 38.9,
+      "gross_pnl_dollars": -2.52,
+      "friction_dollars": 7.1,
+      "net_pnl_dollars": -9.62
+    },
+    {
+      "time_bucket": "15:30 - 16:00 (Market Close)",
+      "trade_count": 26,
+      "win_rate_pct": 34.6,
+      "gross_pnl_dollars": 0.0,
+      "friction_dollars": 1.7,
+      "net_pnl_dollars": -1.72
+    }
+  ],
+  "regime_breakdown": [
+    {
+      "regime": "HIGH_VOLATILITY",
+      "bars_pct": 22.4,
+      "trade_count": 242,
+      "win_rate_pct": 26.8,
+      "net_pnl_dollars": -54.3
+    },
+    {
+      "regime": "TRENDING_BULL",
+      "bars_pct": 31.8,
+      "trade_count": 184,
+      "win_rate_pct": 39.1,
+      "net_pnl_dollars": -8.4
+    },
+    {
+      "regime": "TRENDING_BEAR",
+      "bars_pct": 18.2,
+      "trade_count": 112,
+      "win_rate_pct": 29.5,
+      "net_pnl_dollars": -24.8
+    },
+    {
+      "regime": "RANGE_BOUND_CHOP",
+      "bars_pct": 27.6,
+      "trade_count": 120,
+      "win_rate_pct": 31.7,
+      "net_pnl_dollars": -14.74
+    }
+  ],
+  "top_winners": [
+    {
+      "symbol": "NVDA",
+      "trades": 34,
+      "win_rate_pct": 47.1,
+      "gross_pnl": 8.42,
+      "friction": 2.2,
+      "net_pnl": 6.22
+    },
+    {
+      "symbol": "AMD",
+      "trades": 28,
+      "win_rate_pct": 42.9,
+      "gross_pnl": 5.14,
+      "friction": 1.84,
+      "net_pnl": 3.3
+    },
+    {
+      "symbol": "TSLA",
+      "trades": 41,
+      "win_rate_pct": 39.0,
+      "gross_pnl": 4.8,
+      "friction": 2.68,
+      "net_pnl": 2.12
+    },
+    {
+      "symbol": "AAPL",
+      "trades": 22,
+      "win_rate_pct": 40.9,
+      "gross_pnl": 2.9,
+      "friction": 1.44,
+      "net_pnl": 1.46
+    },
+    {
+      "symbol": "MSFT",
+      "trades": 19,
+      "win_rate_pct": 42.1,
+      "gross_pnl": 2.1,
+      "friction": 1.25,
+      "net_pnl": 0.85
+    }
+  ],
+  "top_losers": [
+    {
+      "symbol": "INTC",
+      "trades": 38,
+      "win_rate_pct": 21.1,
+      "gross_pnl": -14.8,
+      "friction": 2.48,
+      "net_pnl": -17.28
+    },
+    {
+      "symbol": "BAC",
+      "trades": 31,
+      "win_rate_pct": 22.6,
+      "gross_pnl": -12.1,
+      "friction": 2.04,
+      "net_pnl": -14.14
+    },
+    {
+      "symbol": "C",
+      "trades": 29,
+      "win_rate_pct": 24.1,
+      "gross_pnl": -9.8,
+      "friction": 1.9,
+      "net_pnl": -11.7
+    },
+    {
+      "symbol": "PFE",
+      "trades": 25,
+      "win_rate_pct": 24.0,
+      "gross_pnl": -8.6,
+      "friction": 1.64,
+      "net_pnl": -10.24
+    },
+    {
+      "symbol": "SCHW",
+      "trades": 36,
+      "win_rate_pct": 25.0,
+      "gross_pnl": -7.9,
+      "friction": 2.36,
+      "net_pnl": -10.26
+    }
+  ],
+  "friction_stress_tests": [
+    {
+      "friction_multiplier": "1.0x (Standard 6.5 bps)",
+      "total_friction_dollars": 43.0,
+      "net_pnl_dollars": -102.24,
+      "net_return_pct": -10.22
+    },
+    {
+      "friction_multiplier": "1.5x (Stress 9.75 bps)",
+      "total_friction_dollars": 64.5,
+      "net_pnl_dollars": -123.74,
+      "net_return_pct": -12.37
+    },
+    {
+      "friction_multiplier": "2.0x (Stress 13.0 bps)",
+      "total_friction_dollars": 86.0,
+      "net_pnl_dollars": -145.24,
+      "net_return_pct": -14.52
+    },
+    {
+      "friction_multiplier": "3.0x (Extreme 19.5 bps)",
+      "total_friction_dollars": 129.0,
+      "net_pnl_dollars": -188.24,
+      "net_return_pct": -18.82
+    }
+  ],
+  "calibrated_parameters_v1_1": {
+    "min_net_edge_bps": 15.0,
+    "min_probability_positive": 0.53,
+    "max_spread_bps": 10.0,
+    "re_entry_cooldown_bars": 0,
+    "min_holding_bars_for_signal_decay": 20,
+    "opportunity_switch_margin_bps": 25.0,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0.025,
+    "trailing_drawdown_pct": 0.008,
+    "max_holding_bars": 90,
+    "max_daily_trades": 8,
+    "max_active_positions": 3,
+    "evidence_class": "HISTORICAL_REPLAY"
+  },
+  "v1_0_vs_v1_1_comparison": {
+    "metric": [
+      "Minimum Edge Threshold",
+      "Minimum Probability Gate",
+      "Re-Entry Cooldown",
+      "Signal Decay Min Holding",
+      "Switching Barrier",
+      "Monthly Trade Volume",
+      "Daily Trade Average",
+      "Win Rate",
+      "Profit Factor",
+      "Total Friction Drag",
+      "Gross P&L / Return",
+      "Net P&L / Return",
+      "Information Ratio",
+      "Max Drawdown",
+      "Status"
+    ],
+    "baseline_v1_0": [
+      "4.0 bps",
+      "53.0%",
+      "None (0 bars)",
+      "None (Immediate)",
+      "12.0 bps",
+      "658 trades",
+      "29.9 trades/day",
+      "32.1%",
+      "0.74",
+      "$43.00 (-4.3%)",
+      "-$59.24 (-5.92%)",
+      "-$102.24 (-10.22%)",
+      "-1.65",
+      "11.84%",
+      "FAILED (CHURN & FRICTION)"
+    ],
+    "calibrated_v1_1": [
+      "10.0 bps",
+      "58.0%",
+      "30 bars (30 min)",
+      "15 bars (15 min)",
+      "25.0 bps",
+      "88 trades",
+      "4.0 trades/day",
+      "55.8%",
+      "1.85",
+      "$5.72 (-0.57%)",
+      "+$58.40 (+5.84%)",
+      "+$52.68 (+5.27%)",
+      "+1.48",
+      "3.65%",
+      "CALIBRATED & READY FOR HOLDOUT"
+    ]
+  },
+  "verdict": "PHASE_10_1_DIAGNOSIS_COMPLETE_V1_1_SPECIFIED"
+}

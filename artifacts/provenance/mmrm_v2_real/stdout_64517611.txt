@@ -1,0 +1,4 @@
+Node: uri-gpu007 | Job ID: 64517611 | Base Model: Qwen 2.5 14B Instruct
+Python: Python 3.10.20 at /scratch4/workspace/alberto_paz_uri_edu-azera-voice/.conda/envs/azera-voice/bin/python3
+[INFO] Running real GPU inference for MMRM_ONLY (200 items)...
+[SUCCESS] Benchmark evaluation saved to /scratch3/workspace/alberto_paz_uri_edu-quahog_neoplasia_analysis/MM/outputs/evaluations/REAL_MMRM_ONLY_V2.jsonl

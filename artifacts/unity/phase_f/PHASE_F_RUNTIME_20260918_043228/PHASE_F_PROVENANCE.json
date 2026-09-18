@@ -1,0 +1,25 @@
+{
+  "phase": "PHASE_F_FORWARD_PAPER_RUNTIME",
+  "timestamp_start": "2026-09-18T04:32:30.481645+00:00",
+  "timestamp_end": "2026-09-18T04:32:30.567312+00:00",
+  "elapsed_seconds": 0.085667,
+  "simulated_sessions": 30,
+  "clean_reconciliation_rate": 1.0,
+  "eod_flat_rate": 1.0,
+  "total_trades": 35,
+  "authorized_capital_tier": "TIER_PAPER_1000",
+  "authorized_capital_dollars": 1000.0,
+  "governance_verdicts": {
+    "runtime_implementation": "PAPER_RUNTIME_IMPLEMENTED",
+    "tests_status": "PAPER_RUNTIME_INTEGRATION_TESTS_PASS",
+    "broker_connector": "BROKER_PAPER_CONNECTOR_VALIDATED",
+    "capital_firewall": "CAPITAL_FIREWALL_VALIDATED",
+    "order_idempotency": "ORDER_IDEMPOTENCY_VALIDATED",
+    "reconciliation": "RECONCILIATION_VALIDATED",
+    "eod_flatten": "EOD_FLATTEN_VALIDATED",
+    "live_block": "LIVE_EXECUTION_HARD_BLOCKED",
+    "forward_readiness": "FORWARD_PAPER_READY",
+    "phase_completion": "PAPER_RUNTIME_IMPLEMENTED_NOT_FORWARD_VALIDATED",
+    "real_money": "REAL_MONEY_NOT_AUTHORIZED"
+  }
+}

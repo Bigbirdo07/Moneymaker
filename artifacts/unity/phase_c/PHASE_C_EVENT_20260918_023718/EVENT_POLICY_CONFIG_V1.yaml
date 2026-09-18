@@ -1,0 +1,35 @@
+rules:
+  bankruptcy_distress:
+    entry_action: VETO
+    open_position_action: EXIT
+    reason: BANKRUPTCY_DISTRESS_RISK
+  clinical_fda_binary:
+    entry_action: VETO
+    open_position_action: EXIT
+    reason: FDA_CLINICAL_BINARY_EVENT
+  data_quote_anomaly:
+    entry_action: VETO
+    open_position_action: FREEZE_NO_ACTION_IF_HALTED
+    reason: MARKET_DATA_INTEGRITY_ANOMALY
+  market_wide_emergency:
+    entry_action: VETO
+    open_position_action: HOLD
+    reason: MARKET_WIDE_CIRCUIT_BREAKER
+  merger_acquisition:
+    entry_action: VETO
+    open_position_action: HOLD
+    reason: MERGER_ACQUISITION_DISCONTINUITY
+  same_day_earnings:
+    entry_action: VETO
+    open_position_action: HOLD
+    reason: SAME_DAY_EARNINGS_BINARY_RISK
+  share_offering_dilution:
+    entry_action: REDUCE_RISK
+    open_position_action: HOLD
+    reason: SECONDARY_OFFERING_DILUTION_RISK
+    size_multiplier: 0.5
+  trading_halt:
+    entry_action: VETO
+    open_position_action: FREEZE_NO_ACTION_IF_HALTED
+    reason: EXCHANGE_TRADING_HALT_ACTIVE
+version: 1.0.0

@@ -1,0 +1,29 @@
+Node: uri-gpu004 | Job ID: 64516939 | Base Model: Qwen 2.5 14B Instruct
+Python: Python 3.10.20 at /scratch4/workspace/alberto_paz_uri_edu-azera-voice/.conda/envs/azera-voice/bin/python3
+================================================================================
+MONEYMAKER QLORA FINE-TUNING EXECUTION
+================================================================================
+Experiment ID:      EXP_MMRM_REAL_20260916_171943
+Git Commit:         c7e94bc5c43e81092e52ececdbecf7cdd0717fe2
+Base Model Path:    /scratch4/workspace/alberto_paz_uri_edu-azera-voice/.cache/huggingface/hub/models--Qwen--Qwen2.5-14B-Instruct/snapshots/cf98f3b3bbb457ad9e2bb7baf9a0125b6b88caa8
+Train Dataset Path: data/moneymaker_llm/v2/train.jsonl
+Train Dataset Hash: 7b48d5de4303a5085fa40feca6c3ab7c18f170623b2eb06ab1f15a402150a433
+Train Examples:     400
+Approx Tokens:      29730
+LoRA Rank (r):      16
+LoRA Alpha:         32
+Learning Rate:      0.0002
+Epochs:             3
+================================================================================
+[INFO] CUDA Available: NVIDIA A100-SXM4-80GB (Count: 1)
+trainable params: 68,812,800 || all params: 14,838,846,464 || trainable%: 0.4637
+{'loss': '2.669', 'grad_norm': '0.588', 'learning_rate': '0.000176', 'epoch': '0.4'}
+{'loss': '0.8839', 'grad_norm': '0.9232', 'learning_rate': '0.0001493', 'epoch': '0.8'}
+{'loss': '0.2305', 'grad_norm': '0.5722', 'learning_rate': '0.0001227', 'epoch': '1.2'}
+{'loss': '0.1183', 'grad_norm': '0.3819', 'learning_rate': '9.6e-05', 'epoch': '1.6'}
+{'loss': '0.1081', 'grad_norm': '0.3014', 'learning_rate': '6.933e-05', 'epoch': '2'}
+{'loss': '0.09137', 'grad_norm': '0.2635', 'learning_rate': '4.267e-05', 'epoch': '2.4'}
+{'loss': '0.08565', 'grad_norm': '0.2401', 'learning_rate': '1.6e-05', 'epoch': '2.8'}
+{'train_runtime': '438.5', 'train_samples_per_second': '2.736', 'train_steps_per_second': '0.171', 'train_loss': '0.5639', 'epoch': '3'}
+[INFO] Training finished: loss = 0.5639
+[SUCCESS] Fine-tuning runner completed for EXP_MMRM_REAL_20260916_171943.

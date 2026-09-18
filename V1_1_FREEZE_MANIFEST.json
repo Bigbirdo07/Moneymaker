@@ -1,0 +1,27 @@
+{
+  "engine_state": "AUTONOMOUS_ENGINE_V1_1_FROZEN",
+  "freeze_timestamp": "2026-09-17T01:45:00Z",
+  "parameters": {
+    "min_net_edge_bps": 10.0,
+    "min_probability_positive": 0.58,
+    "max_spread_bps": 10.0,
+    "re_entry_cooldown_bars": 30,
+    "min_holding_bars_for_signal_decay": 15,
+    "opportunity_switch_margin_bps": 25.0,
+    "max_daily_trades": 8,
+    "max_concurrent_positions": 3,
+    "stop_loss_pct": 0.015,
+    "take_profit_pct": 0.025,
+    "trailing_drawdown_pct": 0.008,
+    "max_holding_bars": 90
+  },
+  "source_hashes": {
+    "src/signals/entry_model_v1_1.py": "19099eb5771843e0284f371142bbcc0f679da2baa45449358fbc427a0e18e7ac",
+    "src/signals/exit_model_v1_1.py": "339f5af489f9d4acaf2df7f6b650b2bfa61e18de2ccce6c5c6fe5452bfa16f2b",
+    "src/models/multi_horizon_forecaster.py": "36b2a0c0161c9c5ab4ebfd9e4f5646363106070c97591d7c58fc73ca3377597b",
+    "src/execution/capital_allocator.py": "d068026e8c73fa67319a28b2f6719f565f9cde6521614466007ad5a106589329",
+    "src/execution/replay_execution_simulator.py": "88b32f42f3b4f25f76604b33a8f362f26c08a852776b87435fb5cb6c61989f04",
+    "src/replay/market_replay_engine.py": "0b31a3ba1a10fec1183ddf61057952b0fb4cd0f30be96615596684514b2ee54c"
+  },
+  "git_commit": "HEAD_PHASE10_1_VALIDATED_c964b6b6"
+}

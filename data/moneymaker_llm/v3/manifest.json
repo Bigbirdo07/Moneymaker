@@ -1,0 +1,27 @@
+{
+  "dataset_id": "DS_MM_LLM_V3",
+  "version": "3.0.0",
+  "total_examples": 1800,
+  "approx_tokens": 745792,
+  "splits": {
+    "train": {
+      "count": 1440,
+      "path": "data/moneymaker_llm/v3/train.jsonl",
+      "sha256": "baa1182e9b866b006cbfcac8467b5c009e95ff456c2b73adee9731ef2639c676"
+    },
+    "val": {
+      "count": 180,
+      "path": "data/moneymaker_llm/v3/val.jsonl",
+      "sha256": "2f185914f9a790f444610534b9a2538fd0ebaf96137f09a0eeed6cc7c0c840dc"
+    },
+    "test": {
+      "count": 180,
+      "path": "data/moneymaker_llm/v3/test.jsonl",
+      "sha256": "3865d741477ebf26d4ecc918bafe1f09f6d19d3387bda60f949e7d494d4d2c6d"
+    }
+  },
+  "human_curated_count": 400,
+  "synthetic_count": 1400,
+  "synthetic_percentage": 77.78,
+  "manifest_sha256": "36c18d8c17bd9016d6015d38436eabb91a456a7778323ae836f658d24c561a03"
+}

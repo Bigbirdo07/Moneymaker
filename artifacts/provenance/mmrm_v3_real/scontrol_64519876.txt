@@ -1,0 +1,30 @@
+JobId=64519876 JobName=mm_llm_finetune_v3
+   UserId=alberto_paz_uri_edu(2426) GroupId=alberto_paz_uri_edu(2426) MCS_label=N/A
+   Priority=5159 Nice=0 Account=pi_j_nicholas_fisk_uri_edu QOS=normal
+   JobState=PENDING Reason=Priority Dependency=(null)
+   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:00 TimeLimit=08:00:00 TimeMin=N/A
+   SubmitTime=2026-09-16T19:04:07 EligibleTime=2026-09-16T19:04:07
+   AccrueTime=2026-09-16T19:04:07
+   StartTime=Unknown EndTime=Unknown Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-09-16T19:04:11 Scheduler=Main
+   Partition=uri-gpu AllocNode:Sid=login7:2470313
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=
+   StepMgrEnabled=Yes
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1
+   AllocTRES=(null)
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/scratch3/workspace/alberto_paz_uri_edu-quahog_neoplasia_analysis/MM/jobs/llm_finetune_v3.slurm
+   SubmitLine=sbatch jobs/llm_finetune_v3.slurm
+   WorkDir=/scratch3/workspace/alberto_paz_uri_edu-quahog_neoplasia_analysis/MM
+   StdErr=/scratch3/workspace/alberto_paz_uri_edu-quahog_neoplasia_analysis/MM/logs/llm_finetune_v3_64519876.err
+   StdIn=/dev/null
+   StdOut=/scratch3/workspace/alberto_paz_uri_edu-quahog_neoplasia_analysis/MM/logs/llm_finetune_v3_64519876.out
+   TresPerNode=gres/gpu:1
+   TresPerTask=cpu=8
+

@@ -1,0 +1,23 @@
+{
+  "session_id": "PAPER_20260731_487484",
+  "date": "2026-07-31",
+  "execution_environment": "PAPER",
+  "evidence_classification": "FORWARD_PAPER_TRADING",
+  "freeze_manifest_hash": "5c8387b17d501809c4b4a75ec0be2e10a213157085175c157a382a717d9dc2b4",
+  "runtime_version": "V3_FORWARD_PAPER_RUNTIME_1.0.0",
+  "strategy_version": "REAL_MARKET_ENGINE_V3_CANDIDATE",
+  "authorized_capital_tier": "TIER_PAPER_1000",
+  "starting_capital": 1000.0,
+  "ending_capital": 1007.0300000000001,
+  "realized_pnl": 7.030000000000086,
+  "trade_count": 1,
+  "order_count": 2,
+  "fill_count": 2,
+  "reconciliation_status": "CLEAN",
+  "is_flat_at_close": true,
+  "governance_verdicts": {
+    "session_status": "FORWARD_PAPER_SESSION_COMPLETED",
+    "validation_claim": "FORWARD_PAPER_SESSION_COMPLETED_NOT_VALIDATED",
+    "live_status": "REAL_MONEY_NOT_AUTHORIZED"
+  }
+}
