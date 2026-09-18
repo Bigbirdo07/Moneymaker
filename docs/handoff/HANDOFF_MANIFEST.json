@@ -1,0 +1,37 @@
+{
+  "manifest_version": "1.0.0",
+  "generated_at": "2026-09-18T13:50:00-04:00",
+  "git_branch": "main",
+  "git_commit": "2f46360",
+  "working_tree_clean": true,
+  "candidate": "PAPER_CANDIDATE_V1",
+  "policy_file": "FORWARD_PAPER_POLICY_V1.yaml",
+  "policy_sha256": "9c2bc9f33a931f822fbd0574bbe28d7deefc87fb1da741604d3eec8207e0cb3b",
+  "freeze_manifest_sha256": "02813d0eae122293a1850bbaaa526b83ba83be19f419f7473bd546dbbf48d201",
+  "capital_tier": "TIER_PAPER_1000",
+  "authorized_capital": 1000.0,
+  "execution_environment": "PAPER",
+  "broker": "ALPACA_PAPER",
+  "real_money_authorized": false,
+  "forward_sessions_completed": 1,
+  "forward_sessions_target": 20,
+  "latest_forward_session_id": "TRUE_FORWARD_20260918_PCV1_df3c84",
+  "latest_forward_session_date": "2026-09-18",
+  "latest_forward_verdict": "TRUE_FORWARD_PAPER_SESSION_COMPLETED_CASH",
+  "latest_test_count": "455 passed",
+  "known_burned_holdouts": [
+    "2023 fresh replication holdout (TSLA concentration ~93.3%)",
+    "August 2026 final holdout (ORCL concentration ~68.8%)"
+  ],
+  "handoff_files": {
+    "CODEX_BOOTSTRAP.md": "48a530d8346e89d9b77bd5ab1d325bac96f509ba161f2813a269cf7c53dda9d3",
+    "CURRENT_SYSTEM_STATE.md": "203d28d408b2d2706698f4429688d20ac7a5c52a963933249e3e2f0b95aa3270",
+    "ARCHITECTURE.md": "27bdbf0d654e79e38c5ffe1ff3f58c7bfc9c5f612abf080cd6298be005099ee8",
+    "EMPIRICAL_HISTORY.md": "b7494a39553b1f5b56001d2c13bc560ba1458a40641b1450ecd1a29f2ee570a3",
+    "GOVERNANCE_AND_PROVENANCE.md": "d56401fcf8a2278f33e6c1024ae2d68473a2584a3a2833c0b14b0e37aefb2198",
+    "FORWARD_PAPER_RUNBOOK.md": "8a067df8fd25535280328a199d6ee708861791827b33f06b109ca7b1dc13f9ad",
+    "OPEN_QUESTIONS.md": "69bea8454405da3f2f124c70c2dde3ace43fa2938550f8851c2373479e36c392",
+    "REPOSITORY_MAP.md": "3d729f2818e7711c42d457a971d3aed20e6e57dc721ecce755065b9d1663ecc4",
+    "CODEX_FIRST_PROMPT.md": "6de65f5bbb7c3001e76b92addc93db0597a4c75806d8d2c821a701f6f46199ae"
+  }
+}
