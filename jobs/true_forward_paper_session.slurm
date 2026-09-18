@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=mm_true_forward
-#SBATCH --partition=uri-cpu,cpu
+#SBATCH --partition=cpu,uri-cpu
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
