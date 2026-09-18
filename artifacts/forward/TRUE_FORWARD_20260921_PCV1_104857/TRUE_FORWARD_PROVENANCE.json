@@ -1,0 +1,22 @@
+{
+  "session_id": "TRUE_FORWARD_20260921_PCV1_104857",
+  "market_session_date": "2026-09-21",
+  "wall_clock_start_timestamp": "2026-09-18T07:45:33.925663+00:00",
+  "wall_clock_end_timestamp": "2026-09-18T07:45:34.121723+00:00",
+  "slurm_job_id": "LOCAL_PROCESS",
+  "compute_node": "Mac.mynetworksettings.com",
+  "candidate_id": "PAPER_CANDIDATE_V1",
+  "policy_version": "FORWARD_PAPER_POLICY_V1",
+  "policy_hash": "9c2bc9f33a931f822fbd0574bbe28d7deefc87fb1da741604d3eec8207e0cb3b",
+  "freeze_manifest_hash": "9c2bc9f33a931f822fbd0574bbe28d7deefc87fb1da741604d3eec8207e0cb3b",
+  "execution_environment": "PAPER",
+  "capital_tier": "TIER_PAPER_1000",
+  "authorized_capital_usd": 1000.0,
+  "forward_block_session_number": 1,
+  "freeze_block_duration_sessions": 20,
+  "counts_toward_forward_block": true,
+  "evidence_classification": "FORWARD_PAPER_TRADING",
+  "verdict": "TRUE_FORWARD_PAPER_SESSION_COMPLETED_CASH",
+  "validation_state": "FORWARD_PAPER_EVIDENCE_ACCUMULATING",
+  "live_real_money_authorized": false
+}

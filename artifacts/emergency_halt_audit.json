@@ -58,5 +58,41 @@
     "is_flat": true,
     "ending_equity": 100000.0,
     "ending_cash": 100000.0
+  },
+  {
+    "incident_id": "INC_EMERGENCY_HALT_20260918_074059",
+    "timestamp": "2026-09-18T07:40:59.265004+00:00",
+    "type": "MANUAL_EMERGENCY_HALT_AND_FLATTEN",
+    "severity": "CRITICAL",
+    "reason": "LAUNCH_READINESS_AUDIT",
+    "canceled_orders_count": 0,
+    "flattened_positions_count": 0,
+    "is_flat": true,
+    "ending_equity": 100000.0,
+    "ending_cash": 100000.0
+  },
+  {
+    "incident_id": "INC_EMERGENCY_HALT_20260918_074112",
+    "timestamp": "2026-09-18T07:41:12.066193+00:00",
+    "type": "MANUAL_EMERGENCY_HALT_AND_FLATTEN",
+    "severity": "CRITICAL",
+    "reason": "LAUNCH_READINESS_AUDIT",
+    "canceled_orders_count": 0,
+    "flattened_positions_count": 0,
+    "is_flat": true,
+    "ending_equity": 100000.0,
+    "ending_cash": 100000.0
+  },
+  {
+    "incident_id": "INC_EMERGENCY_HALT_20260918_074610",
+    "timestamp": "2026-09-18T07:46:10.390949+00:00",
+    "type": "MANUAL_EMERGENCY_HALT_AND_FLATTEN",
+    "severity": "CRITICAL",
+    "reason": "LAUNCH_READINESS_AUDIT",
+    "canceled_orders_count": 0,
+    "flattened_positions_count": 0,
+    "is_flat": true,
+    "ending_equity": 100000.0,
+    "ending_cash": 100000.0
   }
 ]
