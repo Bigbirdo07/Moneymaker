@@ -1,0 +1,37 @@
+{
+  "rehearsal_id": "REHEARSAL_20260901_be42e3",
+  "wall_clock_execution_timestamp": "2026-09-18T07:22:09.712346+00:00",
+  "target_date_requested": "2026-09-17",
+  "historical_market_session_date": "2026-09-01",
+  "evidence_classification": "HISTORICAL_OPERATIONAL_REHEARSAL",
+  "counts_toward_20_session_forward_block": false,
+  "real_money_authorized": false,
+  "execution_mode": "SIMULATION",
+  "policy_version": "FORWARD_PAPER_POLICY_V1",
+  "policy_hash": "9c2bc9f33a931f822fbd0574bbe28d7deefc87fb1da741604d3eec8207e0cb3b",
+  "freeze_manifest_hash": "2026-09-18T06:24:41.619020+00:00",
+  "capital_tier": "TIER_PAPER_1000",
+  "starting_capital": 1000.0,
+  "ending_capital": 1000.0,
+  "realized_pnl": 0.0,
+  "is_flat_at_close": true,
+  "trade_count": 0,
+  "order_count": 0,
+  "fill_count": 0,
+  "reconciliation_status": "CLEAN",
+  "universe_metrics": {
+    "raw_listed_count": 299,
+    "structurally_eligible_count": 280,
+    "data_quality_eligible_count": 280,
+    "liquid_eligible_count": 280,
+    "top_100_count": 100,
+    "top_250_count": 250,
+    "fastscanner_survivors": 15,
+    "deep_ranked_candidates": 15
+  },
+  "shortfall_metrics": {
+    "entry_implementation_shortfall_bps": 0.0,
+    "exit_implementation_shortfall_bps": 0.0
+  },
+  "verdict": "HISTORICAL_DRESS_REHEARSAL_COMPLETED"
+}
